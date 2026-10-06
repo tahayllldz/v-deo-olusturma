@@ -1,0 +1,226 @@
+<template id="naga-admin-template">
+  <div data-composition-id="naga-admin" data-width="1920" data-height="1080" data-duration="9">
+    <div class="stage-bg"></div>
+    <div id="fadewrap" class="fill">
+      <div class="win-pos">
+        <div class="win">
+          <div class="win__bar"><i></i><i></i><i></i><div class="win__url">NAGA VIP · Admin Panel</div></div>
+          <div class="adm">
+            <aside class="adm__side">
+              <div class="adm__logo"><span class="logo-h"></span></div>
+              <div class="adm__label">BRANCH DESK</div>
+              <nav class="adm__nav">
+                <a class="on">Today <span class="count" id="nav-count">3</span></a>
+                <a>Reservations</a>
+                <a>Customers</a>
+                <a>Rates</a>
+                <a>Settings</a>
+              </nav>
+              <div class="adm__branch"><b>İskele Branch</b>Front desk · 2 staff online</div>
+            </aside>
+
+            <main class="adm__main">
+              <div class="adm__head">
+                <div>
+                  <div class="adm__title">Today's Reservations</div>
+                  <div class="adm__date">Tuesday, 6 October · İskele Branch</div>
+                </div>
+                <span class="demo-chip">DEMO DATA</span>
+              </div>
+              <div class="stats">
+                <div class="stat"><div class="stat__k">Total today</div><div class="stat__v" id="s-total">3</div></div>
+                <div class="stat stat--new"><div class="stat__k">New</div><div class="stat__v" id="s-new">0</div></div>
+                <div class="stat stat--prep"><div class="stat__k">Preparing</div><div class="stat__v" id="s-prep">1</div></div>
+                <div class="stat stat--ready"><div class="stat__k">Ready</div><div class="stat__v" id="s-ready">2</div></div>
+              </div>
+              <div class="list">
+                <div class="list__head"><span>TIME</span><span>CUSTOMER</span><span>CURRENCY</span><span>AMOUNT</span><span>STATUS</span></div>
+                <div class="row">
+                  <span class="row__time">10:30</span>
+                  <span class="row__cust">Customer #1039<small>Reservation via app</small></span>
+                  <span class="row__pair">EUR → TRY</span>
+                  <span class="row__amt">€5,000</span>
+                  <span class="st st--ready">READY</span>
+                </div>
+                <div class="row">
+                  <span class="row__time">12:00</span>
+                  <span class="row__cust">Customer #1040<small>Reservation via app</small></span>
+                  <span class="row__pair">GBP → TRY</span>
+                  <span class="row__amt">£3,000</span>
+                  <span class="st st--prep">PREPARING</span>
+                </div>
+                <div class="row row--anim" id="row-n">
+                  <div class="row-fx" id="rn-flash"></div>
+                  <div class="row-fx row-fx--sel" id="rn-hl"></div>
+                  <span class="row__time">16:30</span>
+                  <span class="row__cust">VIP Customer <span class="vip">VIP</span><small>#1042 · created 14:13</small></span>
+                  <span class="row__pair">GBP → TRY</span>
+                  <span class="row__amt">£10,000</span>
+                  <span class="st st--new" id="rn-pill">NEW</span>
+                </div>
+                <div class="row" id="row-c">
+                  <span class="row__time">18:00</span>
+                  <span class="row__cust">Customer #1043<small>Reservation via app</small></span>
+                  <span class="row__pair">USD → TRY</span>
+                  <span class="row__amt">$7,500</span>
+                  <span class="st st--ready">READY</span>
+                </div>
+              </div>
+              <div class="toast" id="toast"><i></i>New reservation from the app · #1042 · 16:30 · £10,000</div>
+            </main>
+
+            <section class="adm__detail">
+              <div class="det-empty" id="det-empty">
+                <div class="det-empty__ic"></div>
+                Select a reservation to see details
+              </div>
+              <div class="det-full" id="det-full">
+                <div class="det__over" id="d-over">RESERVATION</div>
+                <div class="det__title" id="d-title">#1042</div>
+                <div class="det__list">
+                  <div class="det__kv" id="d1"><span>Customer</span><b>VIP Customer <span class="vip">VIP</span></b></div>
+                  <div class="det__kv" id="d2"><span>Currency</span><b>GBP → TRY</b></div>
+                  <div class="det__kv det__amt" id="d3"><span>Amount</span><b>£10,000</b></div>
+                  <div class="det__kv" id="d4"><span>Branch</span><b>İskele</b></div>
+                  <div class="det__kv" id="d5"><span>Time</span><b>Today · 16:30</b></div>
+                  <div class="det__kv" id="d6"><span>Status</span><span class="st st--new" id="d-pill">NEW</span></div>
+                </div>
+                <div class="det__btns">
+                  <div class="abtn abtn--gold" id="b-prep">PREPARE</div>
+                  <div class="abtn abtn--line">CONTACT CUSTOMER</div>
+                  <div class="abtn abtn--ready" id="b-ready">MARK AS READY</div>
+                </div>
+                <div class="det__hint hint-swap">
+                  <span id="h-a">Rate and final terms are confirmed by Naga at the counter.</span>
+                  <span id="h-b" class="hint-ok">✓ Customer notified: “Your exchange is ready.”</span>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="click-ring" id="click"></div>
+        <div class="cursor" id="cursor">
+          <svg width="30" height="34" viewBox="0 0 30 34"><path d="M3 2l22 15.5-9.6 1.9 5.6 11.2-4.4 2.2-5.6-11.3L3 28z" fill="#ffffff" stroke="#121216" stroke-width="2" stroke-linejoin="round" /></svg>
+        </div>
+      </div>
+
+      <div class="notif-wrap" id="notif">
+        <div class="notif-label">MÜŞTERİNİN TELEFONUNDA</div>
+        <div class="notif-card">
+          <div class="notif-top"><span class="notif-app"><span class="mono-s"></span></span>NAGA VIP<em>şimdi</em></div>
+          <div class="notif-text">İşleminiz hazır. Bugün 16:30'da İskele şubesinde sizi bekliyoruz.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+
+      // Layout constants measured once from this static layout (window coordinates, unscaled).
+      const P = {
+        start: { x: 760, y: 960 },
+        row: { x: 600, y: 512 },
+        prep: { x: 1245, y: 650 },
+        ready: { x: 1245, y: 774 },
+        rest: { x: 1010, y: 880 },
+      };
+      const ROW_H = 78;
+      const T_INSERT = 0.95;
+      const T_SELECT = 2.2;
+      const T_PREP = 3.55;
+      const T_READY = 5.15;
+
+      // ---- loop fade (in / out) ----
+      tl.fromTo("#fadewrap", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.out" }, 0);
+      tl.fromTo("#fadewrap", { opacity: 1 }, { opacity: 0, duration: 0.4, ease: "power1.in", immediateRender: false }, 8.6);
+
+      // ---- new reservation lands ----
+      tl.fromTo("#row-c", { y: -ROW_H }, { y: 0, duration: 0.45, ease: "power3.out" }, T_INSERT);
+      tl.fromTo("#row-n", { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, T_INSERT + 0.12);
+      tl.fromTo("#rn-flash", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, T_INSERT + 0.15);
+      tl.fromTo("#rn-flash", { opacity: 1 }, { opacity: 0, duration: 0.8, ease: "power1.in", immediateRender: false }, T_INSERT + 0.6);
+      tl.fromTo("#toast", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, T_INSERT + 0.1);
+      tl.fromTo("#toast", { opacity: 1 }, { opacity: 0, duration: 0.3, immediateRender: false }, 2.9);
+
+      // ---- cursor path ----
+      const cursor = "#cursor";
+      tl.fromTo(cursor, { x: P.start.x, y: P.start.y, opacity: 0 }, { x: P.row.x, y: P.row.y, opacity: 1, duration: 0.65, ease: "power2.inOut" }, 1.45);
+      tl.fromTo(cursor, { x: P.row.x, y: P.row.y }, { x: P.prep.x, y: P.prep.y, duration: 0.7, ease: "power2.inOut", immediateRender: false }, 2.75);
+      tl.fromTo(cursor, { x: P.prep.x, y: P.prep.y }, { x: P.ready.x, y: P.ready.y, duration: 0.6, ease: "power2.inOut", immediateRender: false }, 4.35);
+      tl.fromTo(cursor, { x: P.ready.x, y: P.ready.y, opacity: 1 }, { x: P.rest.x, y: P.rest.y, opacity: 0, duration: 0.7, ease: "power2.inOut", immediateRender: false }, 5.6);
+
+      // click rings at each press
+      [
+        [P.row, T_SELECT - 0.08],
+        [P.prep, T_PREP - 0.08],
+        [P.ready, T_READY - 0.08],
+      ].forEach(([pt, t], i) => {
+        const first = i === 0;
+        tl.fromTo("#click", { x: pt.x, y: pt.y, scale: 0.3, opacity: 0.9 }, { x: pt.x, y: pt.y, scale: 1.6, opacity: 0, duration: 0.5, ease: "power2.out", immediateRender: first }, t);
+      });
+
+      // ---- select the row: highlight + detail panel fills ----
+      tl.fromTo("#rn-hl", { opacity: 0 }, { opacity: 1, duration: 0.2 }, T_SELECT);
+      tl.fromTo("#det-empty", { opacity: 1 }, { opacity: 0, duration: 0.18 }, T_SELECT);
+      tl.fromTo(["#d-over", "#d-title"], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.05 }, T_SELECT + 0.08);
+      tl.fromTo(["#d1", "#d2", "#d3", "#d4", "#d5", "#d6"], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out", stagger: 0.05 }, T_SELECT + 0.18);
+      tl.fromTo(".det__btns, .hint-swap", { opacity: 0 }, { opacity: 1, duration: 0.3 }, T_SELECT + 0.45);
+
+      // ---- PREPARE ----
+      tl.fromTo("#b-prep", { scale: 1 }, { scale: 0.95, duration: 0.1, ease: "power1.in" }, T_PREP - 0.1);
+      tl.fromTo("#b-prep", { scale: 0.95 }, { scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T_PREP);
+      // ---- MARK AS READY ----
+      tl.fromTo("#b-ready", { scale: 1 }, { scale: 0.95, duration: 0.1, ease: "power1.in" }, T_READY - 0.1);
+      tl.fromTo("#b-ready", { scale: 0.95 }, { scale: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, T_READY);
+      tl.fromTo("#h-a", { opacity: 1 }, { opacity: 0, duration: 0.2 }, T_READY + 0.15);
+      tl.fromTo("#h-b", { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, T_READY + 0.25);
+
+      // status pills pop on each change
+      [T_PREP, T_READY].forEach((t, i) => {
+        const first = i === 0;
+        tl.fromTo(["#rn-pill", "#d-pill"], { scale: 0.8 }, { scale: 1, duration: 0.35, ease: "back.out(2.4)", immediateRender: first }, t);
+      });
+
+      // ---- customer's phone gets the "ready" notification ----
+      tl.fromTo("#notif", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 5.7);
+
+      // ---- discrete states (pure function of time) ----
+      const el = (id) => document.getElementById(id);
+      const S = { total: el("s-total"), nw: el("s-new"), prep: el("s-prep"), ready: el("s-ready"), nav: el("nav-count"), rp: el("rn-pill"), dp: el("d-pill") };
+      const PILL = {
+        NEW: "st st--new",
+        PREPARING: "st st--prep",
+        READY: "st st--ready",
+      };
+      const driver = { t: 0 };
+      tl.fromTo(
+        driver,
+        { t: 0 },
+        {
+          t: 9,
+          duration: 9,
+          ease: "none",
+          onUpdate: () => {
+            const t = driver.t;
+            const inserted = t >= T_INSERT + 0.2;
+            const status = t >= T_READY ? "READY" : t >= T_PREP ? "PREPARING" : "NEW";
+            S.total.textContent = inserted ? "4" : "3";
+            S.nav.textContent = inserted ? "4" : "3";
+            S.nw.textContent = inserted && status === "NEW" ? "1" : "0";
+            S.prep.textContent = status === "PREPARING" && inserted ? "2" : "1";
+            S.ready.textContent = status === "READY" ? "3" : "2";
+            S.rp.textContent = status;
+            S.rp.className = PILL[status];
+            S.dp.textContent = status;
+            S.dp.className = PILL[status];
+          },
+        },
+        0,
+      );
+
+      window.__timelines["naga-admin"] = tl;
+    })();
+  </script>
+</template>
