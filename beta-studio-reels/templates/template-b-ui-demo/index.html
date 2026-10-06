@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE B — UI demo (annotated browser walkthrough)          18.0 s · 1080×1920
+  Use for: "30 Saniyede Dijital", "Beta Breakdown", website / funnel / booking tips.
+  Reference reel: compositions/reel-01-website
+
+  A new video = a new content file. Nothing in this HTML needs editing:
+    npx hyperframes render --variables-file content/example.json --output out.mp4
+  (or from beta-studio-reels/:  npm run template -- b content/my-video.json)
+
+  The browser shows a SYNTHETIC site built from the site* variables — never a
+  screenshot of a real business. Each step points the cursor at one target
+  (nav | headline | cta | float | cards) and draws a red-pen circle (problem)
+  or a cobalt box + click (fix). If siteHeadlineFix is set, the headline is
+  re-typed at the end of the first "problem" step that targets it.
+
+  Timeline (change data-duration + the T constants below together):
+    hook 0–2.6 · step 1 2.6–5.8 · step 2 5.8–9.0 · step 3 9.0–12.2 · result 12.2–14.6
+    payoff 14.6–16.4 · end card 16.4–18.0
+  Text markup in every string:  *serif voice*  _accent_  ~red-pen underline~  ^red text^  | line break
+  Steps use "LABEL::Headline". Lists use "a||b||c".
+-->
+<html lang="tr" data-resolution="portrait" data-composition-variables="[
+    {&quot;id&quot;: &quot;series&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Seri etiketi&quot;, &quot;default&quot;: &quot;30 Saniyede Dijital · 08&quot;},
+    {&quot;id&quot;: &quot;hookVariant&quot;, &quot;type&quot;: &quot;enum&quot;, &quot;label&quot;: &quot;Hook varyantı&quot;, &quot;default&quot;: &quot;A&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;A&quot;, &quot;label&quot;: &quot;A — problem önce&quot;}, {&quot;value&quot;: &quot;B&quot;, &quot;label&quot;: &quot;B — tartışmalı&quot;}]},
+    {&quot;id&quot;: &quot;hookA&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Hook A&quot;, &quot;default&quot;: &quot;Siteniz var.|Peki randevu|~getiriyor mu?~&quot;},
+    {&quot;id&quot;: &quot;hookB&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Hook B&quot;, &quot;default&quot;: &quot;Güzel site|randevu|*getirmez.*&quot;},
+    {&quot;id&quot;: &quot;siteName&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Site: işletme adı (kurgusal)&quot;, &quot;default&quot;: &quot;Mavi Kapı Kuaför&quot;},
+    {&quot;id&quot;: &quot;siteUrl&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Site: adres&quot;, &quot;default&quot;: &quot;isletmeniz.com&quot;},
+    {&quot;id&quot;: &quot;siteHeadline&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Site: başlık (önce)&quot;, &quot;default&quot;: &quot;Hoş geldiniz!&quot;},
+    {&quot;id&quot;: &quot;siteHeadlineFix&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Site: başlık (sonra — boş bırakılırsa değişmez)&quot;, &quot;default&quot;: &quot;Saç kesimi ve bakım, online randevuyla.&quot;},
+    {&quot;id&quot;: &quot;siteSub&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Site: alt başlık&quot;, &quot;default&quot;: &quot;Şehir merkezi · Pazartesi hariç her gün&quot;},
+    {&quot;id&quot;: &quot;siteCta&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Site: buton&quot;, &quot;default&quot;: &quot;Randevu al&quot;},
+    {&quot;id&quot;: &quot;siteCards&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Site: kartlar (a||b||c)&quot;, &quot;default&quot;: &quot;Kesim||Renk||Bakım&quot;},
+    {&quot;id&quot;: &quot;siteAccent&quot;, &quot;type&quot;: &quot;color&quot;, &quot;label&quot;: &quot;Site: vurgu rengi&quot;, &quot;default&quot;: &quot;#1F5F73&quot;},
+    {&quot;id&quot;: &quot;step1&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Adım 1 (ETİKET::metin)&quot;, &quot;default&quot;: &quot;Sorun::“Hoş geldiniz”|*hiçbir şey* anlatmaz.&quot;},
+    {&quot;id&quot;: &quot;step1Target&quot;, &quot;type&quot;: &quot;enum&quot;, &quot;label&quot;: &quot;Adım 1 hedef&quot;, &quot;default&quot;: &quot;headline&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;nav&quot;, &quot;label&quot;: &quot;Menü&quot;}, {&quot;value&quot;: &quot;headline&quot;, &quot;label&quot;: &quot;Başlık&quot;}, {&quot;value&quot;: &quot;cta&quot;, &quot;label&quot;: &quot;Buton&quot;}, {&quot;value&quot;: &quot;float&quot;, &quot;label&quot;: &quot;Yüzen buton&quot;}, {&quot;value&quot;: &quot;cards&quot;, &quot;label&quot;: &quot;Kartlar&quot;}]},
+    {&quot;id&quot;: &quot;step1Mark&quot;, &quot;type&quot;: &quot;enum&quot;, &quot;label&quot;: &quot;Adım 1 işaret&quot;, &quot;default&quot;: &quot;problem&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;problem&quot;, &quot;label&quot;: &quot;Kırmızı kalem (sorun)&quot;}, {&quot;value&quot;: &quot;fix&quot;, &quot;label&quot;: &quot;Kobalt kutu + tık (çözüm)&quot;}]},
+    {&quot;id&quot;: &quot;step2&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Adım 2 (ETİKET::metin)&quot;, &quot;default&quot;: &quot;Dokunuş 1::Tek, net|bir *buton.*&quot;},
+    {&quot;id&quot;: &quot;step2Target&quot;, &quot;type&quot;: &quot;enum&quot;, &quot;label&quot;: &quot;Adım 2 hedef&quot;, &quot;default&quot;: &quot;cta&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;nav&quot;, &quot;label&quot;: &quot;Menü&quot;}, {&quot;value&quot;: &quot;headline&quot;, &quot;label&quot;: &quot;Başlık&quot;}, {&quot;value&quot;: &quot;cta&quot;, &quot;label&quot;: &quot;Buton&quot;}, {&quot;value&quot;: &quot;float&quot;, &quot;label&quot;: &quot;Yüzen buton&quot;}, {&quot;value&quot;: &quot;cards&quot;, &quot;label&quot;: &quot;Kartlar&quot;}]},
+    {&quot;id&quot;: &quot;step2Mark&quot;, &quot;type&quot;: &quot;enum&quot;, &quot;label&quot;: &quot;Adım 2 işaret&quot;, &quot;default&quot;: &quot;fix&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;problem&quot;, &quot;label&quot;: &quot;Kırmızı kalem (sorun)&quot;}, {&quot;value&quot;: &quot;fix&quot;, &quot;label&quot;: &quot;Kobalt kutu + tık (çözüm)&quot;}]},
+    {&quot;id&quot;: &quot;step3&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Adım 3 (ETİKET::metin)&quot;, &quot;default&quot;: &quot;Dokunuş 2::Sorusu olan|*tek dokunuşla* yazsın.&quot;},
+    {&quot;id&quot;: &quot;step3Target&quot;, &quot;type&quot;: &quot;enum&quot;, &quot;label&quot;: &quot;Adım 3 hedef&quot;, &quot;default&quot;: &quot;float&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;nav&quot;, &quot;label&quot;: &quot;Menü&quot;}, {&quot;value&quot;: &quot;headline&quot;, &quot;label&quot;: &quot;Başlık&quot;}, {&quot;value&quot;: &quot;cta&quot;, &quot;label&quot;: &quot;Buton&quot;}, {&quot;value&quot;: &quot;float&quot;, &quot;label&quot;: &quot;Yüzen buton&quot;}, {&quot;value&quot;: &quot;cards&quot;, &quot;label&quot;: &quot;Kartlar&quot;}]},
+    {&quot;id&quot;: &quot;step3Mark&quot;, &quot;type&quot;: &quot;enum&quot;, &quot;label&quot;: &quot;Adım 3 işaret&quot;, &quot;default&quot;: &quot;fix&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;problem&quot;, &quot;label&quot;: &quot;Kırmızı kalem (sorun)&quot;}, {&quot;value&quot;: &quot;fix&quot;, &quot;label&quot;: &quot;Kobalt kutu + tık (çözüm)&quot;}]},
+    {&quot;id&quot;: &quot;resultApp&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Sonuç bildirimi: uygulama&quot;, &quot;default&quot;: &quot;Randevu&quot;},
+    {&quot;id&quot;: &quot;resultTitle&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Sonuç bildirimi: başlık&quot;, &quot;default&quot;: &quot;Yeni randevu talebi&quot;},
+    {&quot;id&quot;: &quot;resultBody&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Sonuç bildirimi: metin (örnek)&quot;, &quot;default&quot;: &quot;Cuma 14:30 · Saç kesimi&quot;},
+    {&quot;id&quot;: &quot;payoffA&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Payoff (sessiz satır)&quot;, &quot;default&quot;: &quot;Güzel site değil,&quot;},
+    {&quot;id&quot;: &quot;payoffB&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Payoff (güçlü satır)&quot;, &quot;default&quot;: &quot;*çalışan* site.&quot;},
+    {&quot;id&quot;: &quot;cta&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;CTA&quot;, &quot;default&quot;: &quot;Sitenize bu gözle bakın, *kaydedin.*&quot;}
+  ]">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <title>Template B — UI demo</title>
+    <link rel="stylesheet" href="system/fonts.css">
+    <link rel="stylesheet" href="system/beta.css">
+    <script src="system/gsap.min.js"></script>
+    <script src="system/beta.js"></script>
+    <script src="system/brand.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #f2f0eb;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      .tb-layer {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+      }
+      #tb-hook {
+        position: absolute;
+        left: 72px;
+        top: 330px;
+        width: 920px;
+        font-size: 128px;
+      }
+      .tb-cap {
+        position: absolute;
+        left: 72px;
+        top: 296px;
+        width: 900px;
+        opacity: 0;
+      }
+      .tb-cap .bs-label {
+        display: block;
+        margin-bottom: 18px;
+        color: var(--accent-text);
+      }
+      .tb-cap .bs-label.is-pen {
+        color: var(--pen);
+      }
+      .tb-cap h2 {
+        margin: 0;
+        font-size: 84px;
+      }
+      /* ---------- synthetic client site (inside the browser view) ---------- */
+      #tb-browser {
+        position: absolute;
+        left: 90px;
+        top: 620px;
+      }
+      #tb-browser .bs-browser__view {
+        height: 780px;
+        background: var(--bs-sheet);
+      }
+      .sb-nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 44px;
+        border-bottom: 2px solid #ebe5da;
+        font-family: var(--bs-font-display);
+      }
+      .sb-nav b {
+        font-size: 34px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--siteAccent, #1f5f73);
+      }
+      .sb-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .sb-menu i {
+        display: block;
+        width: 40px;
+        height: 5px;
+        border-radius: 3px;
+        background: #3a3530;
+      }
+      .sb-head {
+        position: absolute;
+        left: 48px;
+        top: 136px;
+        width: 800px;
+        height: 170px;
+        font-family: var(--bs-font-display);
+        font-weight: 800;
+        font-size: 66px;
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+        color: #1c1915;
+      }
+      .sb-head span {
+        display: block;
+      }
+      .sb-sub {
+        position: absolute;
+        left: 48px;
+        top: 318px;
+        width: 780px;
+        font-family: var(--bs-font-display);
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 1.25;
+        color: #5a5249;
+      }
+      .sb-cta {
+        position: absolute;
+        left: 48px;
+        top: 428px;
+        width: 520px;
+        height: 104px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 52px;
+        background: var(--siteAccent, #1f5f73);
+        color: #fbfaf7;
+        font-family: var(--bs-font-display);
+        font-weight: 750;
+        font-size: 38px;
+        letter-spacing: -0.01em;
+      }
+      .sb-float {
+        position: absolute;
+        left: 734px;
+        top: 422px;
+        width: 116px;
+        height: 116px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        background: #1c1915;
+        color: #fbfaf7;
+        font-family: var(--bs-font-mono);
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: 0.02em;
+        box-shadow: 0 18px 30px -16px rgba(22, 19, 15, 0.6);
+      }
+      .sb-float i {
+        display: block;
+        width: 46px;
+        height: 34px;
+        border-radius: 14px 14px 14px 4px;
+        background: #fbfaf7;
+      }
+      .sb-cards {
+        position: absolute;
+        left: 48px;
+        top: 584px;
+        width: 804px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .sb-card {
+        height: 164px;
+        padding: 22px 24px;
+        box-sizing: border-box;
+        border-radius: 24px;
+        background: #f1ece3;
+        font-family: var(--bs-font-display);
+        font-weight: 700;
+        font-size: 30px;
+        color: #2a2520;
+      }
+      .sb-card i {
+        display: block;
+        width: 52px;
+        height: 52px;
+        margin-bottom: 18px;
+        border-radius: 16px;
+        background: var(--siteAccent, #1f5f73);
+        opacity: 0.22;
+      }
+      #tb-marks {
+        position: absolute;
+        left: 90px;
+        top: 704px;
+        width: 900px;
+        height: 780px;
+      }
+      #tb-cursor {
+        z-index: 40;
+      }
+      #tb-notif {
+        position: absolute;
+        left: 110px;
+        top: 300px;
+        opacity: 0;
+      }
+      #tb-pa {
+        position: absolute;
+        left: 72px;
+        top: 620px;
+        width: 900px;
+        font-size: 92px;
+        color: var(--fg-muted);
+      }
+      #tb-pb {
+        position: absolute;
+        left: 72px;
+        top: 740px;
+        width: 990px;
+        font-size: 132px;
+      }
+      .tb-glow {
+        position: absolute;
+        left: -120px;
+        top: 560px;
+        width: 1200px;
+        height: 1000px;
+        border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(139, 92, 246, 0.26), rgba(76, 107, 255, 0.1) 55%, rgba(10, 12, 22, 0) 100%);
+      }
+      .bs-serif {
+        color: var(--accent-text);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18" data-width="1080" data-height="1920">
+      <div id="tb-bg" class="bs-scene bs-theme-paper"><div class="bs-dots"></div></div>
+
+      <div id="tb-stage" class="tb-layer bs-theme-paper" style="opacity: 1">
+        <h1 id="tb-hook" class="bs-hook">Hook</h1>
+        <div id="tb-c1" class="tb-cap"><span id="tb-c1-l" class="bs-label">Label</span><h2 id="tb-c1-t" class="bs-headline">Step 1</h2></div>
+        <div id="tb-c2" class="tb-cap"><span id="tb-c2-l" class="bs-label">Label</span><h2 id="tb-c2-t" class="bs-headline">Step 2</h2></div>
+        <div id="tb-c3" class="tb-cap"><span id="tb-c3-l" class="bs-label">Label</span><h2 id="tb-c3-t" class="bs-headline">Step 3</h2></div>
+
+        <div id="tb-browser" class="bs-browser">
+          <div class="bs-browser__bar">
+            <div class="bs-browser__dots"><i></i><i></i><i></i></div>
+            <div id="tb-url" class="bs-browser__url" lang="en">isletmeniz.com</div>
+            <div class="bs-browser__close">×</div>
+          </div>
+          <div class="bs-browser__view">
+            <div id="sb-nav" class="sb-nav"><b id="sb-name">İşletme</b><span class="sb-menu"><i></i><i></i><i></i></span></div>
+            <div id="sb-head" class="sb-head"><span id="sb-head-old">Başlık</span><span id="sb-head-new"></span></div>
+            <div id="sb-sub" class="sb-sub">Alt başlık</div>
+            <div id="sb-cta" class="sb-cta">Buton</div>
+            <div id="sb-float" class="sb-float"><i></i><span>SOR</span></div>
+            <div id="sb-cards" class="sb-cards"></div>
+          </div>
+        </div>
+        <div id="tb-marks" data-layout-ignore></div>
+        <div id="tb-notif" class="bs-notif">
+          <div class="bs-notif__icon">✓</div>
+          <div>
+            <div class="bs-notif__head"><span id="tb-notif-app">Randevu</span><span>şimdi</span></div>
+            <div id="tb-notif-title" class="bs-notif__title">Title</div>
+            <div id="tb-notif-body" class="bs-notif__body">Body</div>
+          </div>
+        </div>
+        <div id="tb-cursor" class="bs-cursor" data-layout-allow-overlap><span class="bs-ripple"></span></div>
+      </div>
+
+      <div id="tb-pay" class="tb-layer bs-scene bs-theme-ink">
+        <div class="bs-dots"></div>
+        <div class="tb-glow" data-layout-ignore></div>
+        <h2 id="tb-pa" class="bs-headline">Payoff A</h2>
+        <h2 id="tb-pb" class="bs-hook">Payoff B<span id="tb-caret" class="bs-caret"></span></h2>
+      </div>
+      <div id="tb-end"></div>
+
+      <div id="chrome" class="bs-chrome bs-theme-paper">
+        <div id="tag" class="bs-tag"><span class="bs-tag__dot"></span><span id="tag-text">Seri</span></div>
+        <div class="bs-ticks"><span class="bs-tick"><i id="tick1"></i></span><span class="bs-tick"><i id="tick2"></i></span><span class="bs-tick"><i id="tick3"></i></span><span class="bs-tick"><i id="tick4"></i></span></div>
+        <div id="handle" class="bs-handle">@betastudio.cy</div>
+      </div>
+
+      <audio id="a-music" src="system/music/cuts/template-b-ui-demo.mp3" data-start="0" data-duration="18" data-track-index="10" data-volume="0.9"></audio>
+      <audio id="sfx-k1" src="system/sfx/key-press.mp3" data-start="0.12" data-duration="0.4" data-track-index="11" data-volume="0.5"></audio>
+      <audio id="sfx-k2" src="system/sfx/key-press.mp3" data-start="0.62" data-duration="0.4" data-track-index="12" data-volume="0.45"></audio>
+      <audio id="sfx-k3" src="system/sfx/key-press.mp3" data-start="1.12" data-duration="0.4" data-track-index="13" data-volume="0.5"></audio>
+      <audio id="sfx-up" src="system/sfx/whoosh.mp3" data-start="2.5" data-duration="0.57" data-track-index="14" data-volume="0.42"></audio>
+      <audio id="sfx-pen1" src="system/sfx/whoosh-short.mp3" data-start="3.3" data-duration="0.57" data-track-index="15" data-volume="0.28"></audio>
+      <audio id="sfx-type" src="system/sfx/typing.mp3" data-start="4.82" data-duration="1.0" data-track-index="16" data-volume="0.3"></audio>
+      <audio id="sfx-c2" src="system/sfx/click.mp3" data-start="6.65" data-duration="0.37" data-track-index="11" data-volume="0.62"></audio>
+      <audio id="sfx-pen2" src="system/sfx/whoosh-short.mp3" data-start="6.75" data-duration="0.57" data-track-index="12" data-volume="0.24"></audio>
+      <audio id="sfx-c3" src="system/sfx/click.mp3" data-start="9.85" data-duration="0.37" data-track-index="13" data-volume="0.62"></audio>
+      <audio id="sfx-pen3" src="system/sfx/whoosh-short.mp3" data-start="9.95" data-duration="0.57" data-track-index="14" data-volume="0.24"></audio>
+      <audio id="sfx-notif" src="system/sfx/notification.mp3" data-start="12.45" data-duration="1.6" data-track-index="15" data-volume="0.4"></audio>
+      <audio id="sfx-pay" src="system/sfx/impact-bass-1.mp3" data-start="14.6" data-duration="1.8" data-track-index="16" data-volume="0.34"></audio>
+      <audio id="sfx-end" src="system/sfx/typing.mp3" data-start="16.75" data-duration="0.5" data-track-index="11" data-volume="0.3"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const clock = BS.clock(tl, 18);
+      const v = BS.vars();
+      const $ = (s) => document.getElementById(s);
+      const T = { hook: 0, s1: 2.6, s2: 5.8, s3: 9.0, res: 12.2, pay: 14.6, end: 16.4, total: 18 };
+      const STEP = 3.2;
+
+      // target boxes in browser-view coordinates (view origin = root 90,704)
+      const VIEW = { x: 90, y: 704 };
+      const BOX = {
+        nav: { x: 14, y: 8, w: 872, h: 86 },
+        headline: { x: 24, y: 118, w: 852, h: 200 },
+        cta: { x: 30, y: 412, w: 556, h: 136 },
+        float: { x: 712, y: 400, w: 160, h: 160 },
+        cards: { x: 26, y: 566, w: 848, h: 200 },
+      };
+      const TARGET_EL = { nav: "sb-nav", headline: "sb-head", cta: "sb-cta", float: "sb-float", cards: "sb-cards" };
+
+      // ---- synthetic site -------------------------------------------------
+      $("tag-text").textContent = v.series || "30 Saniyede Dijital";
+      $("tb-url").textContent = v.siteUrl || "isletmeniz.com";
+      $("sb-name").textContent = v.siteName || "İşletme";
+      $("sb-head-old").textContent = v.siteHeadline || "";
+      $("sb-sub").textContent = v.siteSub || "";
+      $("sb-cta").textContent = v.siteCta || "";
+      BS.list(v.siteCards).slice(0, 3).forEach((c) => {
+        const d = document.createElement("div");
+        d.className = "sb-card";
+        d.innerHTML = "<i></i>";
+        d.appendChild(document.createTextNode(c));
+        $("sb-cards").appendChild(d);
+      });
+
+      // ---- hook (A/B) -----------------------------------------------------
+      const hook = $("tb-hook");
+      BS.rich(hook, BS.pick(v, "hook", "Hook"));
+      BS.reveal(tl, hook, 0.1, "rise", { stagger: 0.07, dur: 0.6 });
+      BS.marks(hook).forEach((p, i) => BS.draw(tl, p, 1.35 + i * 0.15, 0.4));
+      BS.exit(tl, hook, T.s1 - 0.2, "lift", { dur: 0.22 });
+
+      // browser peeks under the hook, then slides into the frame
+      tl.fromTo("#tb-browser", { y: 1000 }, { y: 520, duration: 0.7, ease: "power3.out" }, 1.0);
+      tl.fromTo("#tb-browser", { y: 520 }, { y: 0, duration: 0.7, ease: "power3.inOut", immediateRender: false }, T.s1 - 0.1);
+
+      // ---- cursor -----------------------------------------------------------
+      const cursor = $("tb-cursor");
+      cursor.insertAdjacentHTML("beforeend", BS.cursorSVG);
+      const aim = (k) => ({ x: VIEW.x + BOX[k].x + BOX[k].w * 0.62, y: VIEW.y + BOX[k].y + BOX[k].h * 0.58 });
+      const path = [{ t: 0, x: 1000, y: 1700 }];
+      tl.fromTo(cursor, { opacity: 0 }, { opacity: 1, duration: 0.25 }, T.s1 + 0.4);
+
+      // ---- steps ------------------------------------------------------------
+      let headlineFixed = false;
+      [1, 2, 3].forEach((n) => {
+        const at = T["s" + n];
+        const step = BS.labeled(v["step" + n], "");
+        const target = BOX[v["step" + n + "Target"]] ? v["step" + n + "Target"] : "cta";
+        const fix = v["step" + n + "Mark"] !== "problem";
+        const lab = $("tb-c" + n + "-l");
+        lab.textContent = step.label;
+        if (!fix) lab.classList.add("is-pen");
+        BS.rich($("tb-c" + n + "-t"), step.text);
+
+        tl.set("#tb-c" + n, { opacity: 1 }, at);
+        tl.fromTo(lab, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, at + 0.05);
+        BS.reveal(tl, $("tb-c" + n + "-t"), at + 0.1, "rise", { stagger: 0.05, dur: 0.55 });
+        BS.marks($("tb-c" + n + "-t")).forEach((p, i) => BS.draw(tl, p, at + 0.9 + i * 0.15, 0.35));
+        BS.exit(tl, "#tb-c" + n, at + STEP - 0.22, "lift", { dur: 0.2 });
+
+        const a = aim(target);
+        path.push({ t: at + 0.2, x: a.x, y: a.y, dur: 0.6 });
+        const b = BOX[target];
+        const mark = BS.pen($("tb-marks"), fix ? "box" : "circle", b, { fix: fix, seed: 11 + n * 7 });
+        if (fix) {
+          BS.click(tl, cursor, at + 0.85, { target: "#" + TARGET_EL[target] });
+          BS.draw(tl, mark, at + 0.95, 0.45, "power2.inOut");
+        } else {
+          BS.draw(tl, mark, at + 0.7, 0.55);
+        }
+        let markOut = at + STEP - 0.25;
+
+        // first "problem" on the headline can re-type it with the fix
+        if (!fix && target === "headline" && v.siteHeadlineFix && !headlineFixed) {
+          headlineFixed = true;
+          const fixAt = at + 2.0;
+          markOut = fixAt - 0.2;
+          tl.to("#sb-head-old", { opacity: 0, y: -16, duration: 0.2, ease: "power2.in" }, fixAt);
+          tl.set("#sb-head-old", { display: "none" }, fixAt + 0.2);
+          BS.type(clock, $("sb-head-new"), v.siteHeadlineFix, fixAt + 0.22, 40);
+        }
+        tl.to(mark.parentNode, { opacity: 0, duration: 0.2 }, markOut);
+      });
+      path.push({ t: T.res - 0.1, x: 980, y: 1560, dur: 0.5, ease: "power2.in" });
+      BS.cursorPath(tl, cursor, path);
+      tl.to(cursor, { opacity: 0, duration: 0.2 }, T.res + 0.25);
+
+      // ---- result: a notification lands ------------------------------------
+      $("tb-notif-app").textContent = v.resultApp || "Bildirim";
+      $("tb-notif-title").textContent = v.resultTitle || "";
+      $("tb-notif-body").textContent = v.resultBody || "";
+      tl.set("#tb-notif", { opacity: 1 }, T.res + 0.2);
+      BS.drop(tl, "#tb-notif", T.res + 0.22, { from: -180, dur: 0.55 });
+      tl.to("#tb-browser", { scale: 0.94, y: 30, duration: 0.6, ease: "power2.inOut" }, T.res + 0.1);
+
+      // ---- payoff -------------------------------------------------------------
+      tl.set("#tb-pay", { opacity: 1 }, T.pay);
+      tl.set("#tb-stage", { opacity: 0 }, T.pay);
+      BS.rich($("tb-pa"), v.payoffA || "");
+      const pb = $("tb-pb");
+      const caret = $("tb-caret");
+      BS.rich(pb, v.payoffB || "");
+      pb.appendChild(caret);
+      BS.reveal(tl, $("tb-pa"), T.pay + 0.06, "rise", { stagger: 0.05 });
+      BS.reveal(tl, pb, T.pay + 0.4, "tilt", { stagger: 0.08 });
+      BS.blink(clock, caret, T.pay + 0.95, T.end, { before: 0 });
+      tl.set("#tb-pay", { opacity: 0 }, T.end);
+
+      // ---- end card + chrome --------------------------------------------------
+      BS.endcardInto(tl, clock, $("tb-end"), T.end, { cta: v.cta });
+      BS.chrome(tl, {
+        tag: "#tag",
+        handle: "#handle",
+        ticks: ["tick1", "tick2", "tick3", "tick4"].map($),
+        chapters: [
+          [T.hook, T.s1],
+          [T.s1, T.s2],
+          [T.s2, T.res],
+          [T.res, T.end],
+        ],
+      });
+      BS.theme(tl, "#chrome", T.pay, "ink", "bs-chrome");
+      tl.to("#chrome", { opacity: 0, duration: 0.2 }, T.end - 0.2);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "beta-studio-reels",
+  "private": true,
+  "description": "Beta Studio — Instagram Reels content engine (HyperFrames)",
+  "type": "module",
+  "scripts": {
+    "sync": "node tools/sync-system.mjs",
+    "sync:check": "node tools/sync-system.mjs --check",
+    "check": "node tools/check-all.mjs",
+    "render:all": "node tools/render-all.mjs",
+    "render:draft": "node tools/render-all.mjs --quality draft",
+    "ab": "node tools/render-all.mjs --ab",
+    "template": "node tools/template.mjs",
+    "covers": "node tools/export-covers.mjs",
+    "music": "python3 tools/make-music.py",
+    "music:cuts": "python3 tools/cut-music.py",
+    "previews": "node tools/make-previews.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

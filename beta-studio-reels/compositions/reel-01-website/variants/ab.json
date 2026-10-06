@@ -1,0 +1,12 @@
+{
+  "rows": [
+    {
+      "name": "reel-01-website-A",
+      "hookVariant": "A"
+    },
+    {
+      "name": "reel-01-website-B",
+      "hookVariant": "B"
+    }
+  ]
+}

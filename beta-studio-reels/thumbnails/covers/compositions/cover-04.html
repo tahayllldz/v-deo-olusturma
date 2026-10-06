@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- Cover 04 — static thumbnail (theme paper). Title markup: *serif* ~pen mark~ | line break. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #cv4-root {
+          position: absolute;
+          inset: 0;
+        }
+        #cv4-title .bs-serif {
+          color: var(--accent-text);
+        }
+      </style>
+      <div id="cv4-root" class="bs-scene bs-theme-paper" data-composition-id="cover-04" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div class="bs-tag cv-tag"><span class="bs-tag__dot"></span>Önce / Sonra · 04</div>
+        <h1 id="cv4-title" class="bs-hook cv-title">Aynı ürün.|*A* mı,|B mi?</h1>
+        <div id="cv4-art" class="cv-art">
+      <div style="position:absolute;left:0;top:10px;display:flex;gap:30px">
+        <div style="width:440px;height:380px;border-radius:30px;background:#f4efdc;box-shadow:var(--bs-shadow-lift);position:relative;overflow:hidden"><div style="height:70px;background:#2e5e1f"></div><div style="position:absolute;left:0;right:0;top:110px;text-align:center;font-family:var(--bs-font-serif);font-style:italic;font-size:54px;color:#2e5e1f">Hoşgeldiniz!</div><span style="position:absolute;right:20px;bottom:20px;padding:10px 24px;border-radius:14px;background:var(--bs-redpen);color:var(--bs-paper);font-family:var(--bs-font-mono);font-weight:700;font-size:56px">A</span></div>
+        <div style="width:440px;height:380px;border-radius:30px;background:#fbfaf7;box-shadow:var(--bs-shadow-lift);position:relative;overflow:hidden"><div style="position:absolute;left:34px;top:60px;width:240px;font-family:var(--bs-font-display);font-weight:800;font-size:46px;line-height:0.98;letter-spacing:-0.03em">Soğuk sıkım, ada usulü.</div><div style="position:absolute;left:34px;top:220px;padding:14px 26px;border-radius:999px;background:var(--bs-signal);color:var(--bs-paper);font-family:var(--bs-font-display);font-weight:700;font-size:28px">Sipariş ver →</div><span style="position:absolute;right:20px;bottom:20px;padding:10px 24px;border-radius:14px;background:var(--bs-signal);color:var(--bs-paper);font-family:var(--bs-font-mono);font-weight:700;font-size:56px">B</span></div>
+      </div>
+        </div>
+        <div class="cv-brand">
+          <div class="bs-lockup" lang="en"><div class="bs-lockup__beta">BETA<span class="bs-caret"></span></div></div>
+          <div class="bs-label" lang="en">@betastudio.cy</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const title = document.getElementById("cv4-title");
+          BS.rich(title, title.textContent);
+          BS.split(title);
+          BS.marks(title).forEach((p) => BS.draw(tl, p, 0, 0.01));
+          const brand = window.BS_BRAND || {};
+          if (brand.logo) {
+            const box = document.querySelector("#cv4-root .bs-lockup");
+            box.innerHTML = '<img class="bs-brand-logo" style="width:300px" src="' + brand.logo + '" alt="Beta Studio" />';
+          }
+          window.__timelines["cover-04"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

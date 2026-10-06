@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE D — Data story (counter → contrast → stage pipeline)          17.0 s · 1080×1920
+  Use for: funnel / conversion explainers, "Dijital Gerçekler", KPI breakdowns.
+  Reference reel: compositions/reel-02-social (funnel)
+
+  A new video = a new content file. Nothing in this HTML needs editing:
+    npx hyperframes render --variables-file content/example.json --output out.mp4
+  (or from beta-studio-reels/:  npm run template -- d content/my-video.json)
+
+  NUMBERS: only real numbers you can source, or a clearly labelled example
+  ("örnek hesap"). Never present an invented number as a statistic.
+
+  Timeline (change data-duration + the T constants below together):
+    hook 0–2.6 · metric 2.6–6.4 · contrast 6.4–9.8 · pipeline 9.8–13.6
+    payoff 13.6–15.4 · end card 15.4–17.0
+  Text markup in every string:  *serif voice*  _accent_  ~red-pen underline~  ^red text^  | line break
+  Cards use "Label::value". Stages use "a||b||c||d" with matching "n||n||n||n" values.
+-->
+<html lang="tr" data-resolution="portrait" data-composition-variables="[
+    {&quot;id&quot;: &quot;series&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Seri etiketi&quot;, &quot;default&quot;: &quot;Dijital Gerçekler · 07&quot;},
+    {&quot;id&quot;: &quot;hookVariant&quot;, &quot;type&quot;: &quot;enum&quot;, &quot;label&quot;: &quot;Hook varyantı&quot;, &quot;default&quot;: &quot;A&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;A&quot;, &quot;label&quot;: &quot;A — problem önce&quot;}, {&quot;value&quot;: &quot;B&quot;, &quot;label&quot;: &quot;B — tartışmalı&quot;}]},
+    {&quot;id&quot;: &quot;hookA&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Hook A&quot;, &quot;default&quot;: &quot;100 kişi|sitenize girdi.|*Kaçı* yazdı?&quot;},
+    {&quot;id&quot;: &quot;hookB&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Hook B&quot;, &quot;default&quot;: &quot;Trafik|sorununuz yok.|~Kayıp~ var.&quot;},
+    {&quot;id&quot;: &quot;metricLabel&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Sayaç etiketi (örnekse belirtin)&quot;, &quot;default&quot;: &quot;Ziyaretçi · örnek hesap&quot;},
+    {&quot;id&quot;: &quot;metricFrom&quot;, &quot;type&quot;: &quot;number&quot;, &quot;label&quot;: &quot;Sayaç başlangıç&quot;, &quot;default&quot;: 0},
+    {&quot;id&quot;: &quot;metricTo&quot;, &quot;type&quot;: &quot;number&quot;, &quot;label&quot;: &quot;Sayaç bitiş&quot;, &quot;default&quot;: 100},
+    {&quot;id&quot;: &quot;metricDecimals&quot;, &quot;type&quot;: &quot;number&quot;, &quot;label&quot;: &quot;Ondalık basamak&quot;, &quot;default&quot;: 0, &quot;min&quot;: 0, &quot;max&quot;: 2},
+    {&quot;id&quot;: &quot;metricPrefix&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Ön ek (örn. ₺)&quot;, &quot;default&quot;: &quot;&quot;},
+    {&quot;id&quot;: &quot;metricSuffix&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Son ek (örn. %)&quot;, &quot;default&quot;: &quot;&quot;},
+    {&quot;id&quot;: &quot;metricLine&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Sayaç cümlesi&quot;, &quot;default&quot;: &quot;Bu ay sitenize|gelen kişi.&quot;},
+    {&quot;id&quot;: &quot;contrastLine&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Karşıtlık başlığı&quot;, &quot;default&quot;: &quot;Peki kaçı|*harekete* geçti?&quot;},
+    {&quot;id&quot;: &quot;contrastA&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Kart A (Etiket::sayı)&quot;, &quot;default&quot;: &quot;Mesaj atan::3&quot;},
+    {&quot;id&quot;: &quot;contrastB&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Kart B — kırmızı kalem (Etiket::sayı)&quot;, &quot;default&quot;: &quot;Sessizce çıkan::97&quot;},
+    {&quot;id&quot;: &quot;pipelineLine&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Huni başlığı&quot;, &quot;default&quot;: &quot;Kayıp *nerede?*&quot;},
+    {&quot;id&quot;: &quot;stages&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Aşamalar (a||b||c||d)&quot;, &quot;default&quot;: &quot;Ziyaret||Mesaj||Teklif||Müşteri&quot;},
+    {&quot;id&quot;: &quot;stageValues&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Aşama sayıları (n||n||n||n)&quot;, &quot;default&quot;: &quot;100||3||2||1&quot;},
+    {&quot;id&quot;: &quot;fixLine&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Çözüm (ETİKET::metin)&quot;, &quot;default&quot;: &quot;Çözüm::İlk mesajı *kolaylaştırın.*&quot;},
+    {&quot;id&quot;: &quot;payoffA&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Payoff (sessiz satır)&quot;, &quot;default&quot;: &quot;Daha çok trafik değil,&quot;},
+    {&quot;id&quot;: &quot;payoffB&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;Payoff (güçlü satır)&quot;, &quot;default&quot;: &quot;*daha az* kayıp.&quot;},
+    {&quot;id&quot;: &quot;cta&quot;, &quot;type&quot;: &quot;string&quot;, &quot;label&quot;: &quot;CTA&quot;, &quot;default&quot;: &quot;Kendi hunisini merak edenler: *kaydedin.*&quot;}
+  ]">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <title>Template D — Data story</title>
+    <link rel="stylesheet" href="system/fonts.css">
+    <link rel="stylesheet" href="system/beta.css">
+    <script src="system/gsap.min.js"></script>
+    <script src="system/beta.js"></script>
+    <script src="system/brand.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #2b2db8;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      .td-layer {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+      }
+      .td-glow {
+        position: absolute;
+        left: -120px;
+        top: 520px;
+        width: 1200px;
+        height: 1000px;
+        border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(139, 92, 246, 0.26), rgba(76, 107, 255, 0.1) 55%, rgba(10, 12, 22, 0) 100%);
+      }
+      #td-hook {
+        position: absolute;
+        left: 72px;
+        top: 330px;
+        width: 920px;
+        font-size: 132px;
+      }
+      /* ---------- metric ---------- */
+      #td-m-label {
+        position: absolute;
+        left: 72px;
+        top: 520px;
+        color: var(--fg-muted);
+      }
+      #td-m-value {
+        position: absolute;
+        left: 60px;
+        top: 630px;
+        width: 870px;
+        font-family: var(--bs-font-mono);
+        font-weight: 700;
+        font-size: 300px;
+        line-height: 1;
+        letter-spacing: -0.06em;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      #td-m-bar {
+        position: absolute;
+        left: 72px;
+        top: 970px;
+        width: 858px;
+      }
+      #td-m-line {
+        position: absolute;
+        left: 72px;
+        top: 1040px;
+        width: 858px;
+      }
+      /* ---------- contrast ---------- */
+      .td-head {
+        position: absolute;
+        left: 72px;
+        top: 296px;
+        width: 900px;
+        margin: 0;
+        font-size: 84px;
+      }
+      .td-card {
+        position: absolute;
+        left: 72px;
+        width: 858px;
+        box-sizing: border-box;
+      }
+      #td-card-a {
+        top: 640px;
+      }
+      #td-card-b {
+        top: 920px;
+      }
+      .td-card .bs-metric__value {
+        font-size: 150px;
+      }
+      .td-card.is-pen .bs-metric__value {
+        color: var(--pen);
+      }
+      /* ---------- pipeline ---------- */
+      .td-rows {
+        position: absolute;
+        left: 72px;
+        top: 620px;
+        width: 858px;
+        display: flex;
+        flex-direction: column;
+        gap: 52px;
+      }
+      .td-row {
+        height: 110px;
+      }
+      .td-row__top {
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 16px;
+      }
+      .td-row__name {
+        font-family: var(--bs-font-display);
+        font-weight: 700;
+        font-size: 48px;
+        letter-spacing: -0.02em;
+      }
+      .td-row__val {
+        font-family: var(--bs-font-mono);
+        font-weight: 700;
+        font-size: 48px;
+        font-variant-numeric: tabular-nums;
+      }
+      .td-row .bs-progress {
+        height: 34px;
+        border-radius: 17px;
+      }
+      .td-row .bs-progress > i {
+        border-radius: 17px;
+      }
+      .td-row.is-leak .td-row__val,
+      .td-row.is-leak .td-row__name {
+        color: var(--pen);
+      }
+      .td-row.is-leak .bs-progress > i {
+        background: var(--pen);
+      }
+      #td-fix {
+        position: absolute;
+        left: 72px;
+        top: 1250px;
+        width: 858px;
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+      #td-fix .bs-check {
+        width: 72px;
+        height: 72px;
+        font-size: 40px;
+      }
+      #td-fix-text {
+        font-size: 60px;
+        line-height: 1.05;
+      }
+      #td-fix-label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--accent-text);
+      }
+      #td-marks {
+        position: absolute;
+        inset: 0;
+      }
+      #td-pa {
+        position: absolute;
+        left: 72px;
+        top: 620px;
+        width: 900px;
+        font-size: 92px;
+        color: var(--fg-muted);
+      }
+      #td-pb {
+        position: absolute;
+        left: 72px;
+        top: 740px;
+        width: 990px;
+        font-size: 132px;
+      }
+      .bs-serif {
+        color: var(--accent-text);
+      }
+      .bs-theme-signal .bs-serif {
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17" data-width="1080" data-height="1920">
+      <div id="td-l0" class="td-layer bs-scene bs-theme-signal" style="opacity: 1">
+        <div class="bs-dots"></div>
+        <div class="td-glow" data-layout-ignore></div>
+        <h1 id="td-hook" class="bs-hook">Hook</h1>
+        <div id="td-metric" style="opacity: 0">
+          <span id="td-m-label" class="bs-label">Label</span>
+          <div id="td-m-value">0</div>
+          <span id="td-m-bar" class="bs-progress"><i id="td-m-fill"></i></span>
+          <p id="td-m-line" class="bs-support">Line</p>
+        </div>
+        <div id="td-contrast" style="opacity: 0">
+          <h2 id="td-c-head" class="bs-headline td-head">Contrast</h2>
+          <div id="td-card-a" class="td-card bs-metric"><span id="td-a-label" class="bs-metric__label">A</span><span id="td-a-value" class="bs-metric__value">0</span></div>
+          <div id="td-card-b" class="td-card bs-metric is-pen"><span id="td-b-label" class="bs-metric__label">B</span><span id="td-b-value" class="bs-metric__value">0</span></div>
+        </div>
+      </div>
+
+      <div id="td-l1" class="td-layer bs-scene bs-theme-paper">
+        <div class="bs-dots"></div>
+        <h2 id="td-p-head" class="bs-headline td-head">Pipeline</h2>
+        <div id="td-rows" class="td-rows"></div>
+        <div id="td-fix">
+          <span class="bs-check">✓</span>
+          <div><span id="td-fix-label" class="bs-label">Çözüm</span><div id="td-fix-text" class="bs-headline">Fix</div></div>
+        </div>
+        <div id="td-marks" data-layout-ignore></div>
+      </div>
+
+      <div id="td-l2" class="td-layer bs-scene bs-theme-ink">
+        <div class="bs-dots"></div>
+        <div class="td-glow" data-layout-ignore></div>
+        <h2 id="td-pa" class="bs-headline">Payoff A</h2>
+        <h2 id="td-pb" class="bs-hook">Payoff B<span id="td-caret" class="bs-caret"></span></h2>
+      </div>
+      <div id="td-end"></div>
+
+      <div id="chrome" class="bs-chrome bs-theme-signal">
+        <div id="tag" class="bs-tag"><span class="bs-tag__dot"></span><span id="tag-text">Seri</span></div>
+        <div class="bs-ticks"><span class="bs-tick"><i id="tick1"></i></span><span class="bs-tick"><i id="tick2"></i></span><span class="bs-tick"><i id="tick3"></i></span><span class="bs-tick"><i id="tick4"></i></span></div>
+        <div id="handle" class="bs-handle">@betastudio.cy</div>
+      </div>
+
+      <audio id="a-music" src="system/music/cuts/template-d-data.mp3" data-start="0" data-duration="17" data-track-index="10" data-volume="0.9"></audio>
+      <audio id="sfx-h1" src="system/sfx/impact-bass-1.mp3" data-start="0.1" data-duration="1.4" data-track-index="11" data-volume="0.34"></audio>
+      <audio id="sfx-swap" src="system/sfx/whoosh.mp3" data-start="2.5" data-duration="0.57" data-track-index="12" data-volume="0.38"></audio>
+      <audio id="sfx-count" src="system/sfx/typing.mp3" data-start="2.85" data-duration="1.5" data-track-index="13" data-volume="0.26"></audio>
+      <audio id="sfx-ca" src="system/sfx/pop.mp3" data-start="6.7" data-duration="0.72" data-track-index="14" data-volume="0.38"></audio>
+      <audio id="sfx-cb" src="system/sfx/pop.mp3" data-start="7.5" data-duration="0.72" data-track-index="15" data-volume="0.38"></audio>
+      <audio id="sfx-err" src="system/sfx/error.mp3" data-start="8.6" data-duration="1.2" data-track-index="16" data-volume="0.26"></audio>
+      <audio id="sfx-cut" src="system/sfx/whoosh-short.mp3" data-start="9.75" data-duration="0.57" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-r1" src="system/sfx/click-soft.mp3" data-start="10.3" data-duration="0.37" data-track-index="12" data-volume="0.42"></audio>
+      <audio id="sfx-r2" src="system/sfx/click-soft.mp3" data-start="10.55" data-duration="0.37" data-track-index="13" data-volume="0.42"></audio>
+      <audio id="sfx-r3" src="system/sfx/click-soft.mp3" data-start="10.8" data-duration="0.37" data-track-index="14" data-volume="0.42"></audio>
+      <audio id="sfx-r4" src="system/sfx/click-soft.mp3" data-start="11.05" data-duration="0.37" data-track-index="15" data-volume="0.42"></audio>
+      <audio id="sfx-pen" src="system/sfx/whoosh-short.mp3" data-start="11.6" data-duration="0.57" data-track-index="16" data-volume="0.28"></audio>
+      <audio id="sfx-fix" src="system/sfx/ping.mp3" data-start="12.3" data-duration="1.3" data-track-index="11" data-volume="0.34"></audio>
+      <audio id="sfx-pay" src="system/sfx/impact-bass-2.mp3" data-start="13.6" data-duration="1.8" data-track-index="12" data-volume="0.34"></audio>
+      <audio id="sfx-end" src="system/sfx/typing.mp3" data-start="15.75" data-duration="0.5" data-track-index="13" data-volume="0.3"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const clock = BS.clock(tl, 17);
+      const v = BS.vars();
+      const $ = (s) => document.getElementById(s);
+      const T = { hook: 0, metric: 2.6, contrast: 6.4, pipe: 9.8, pay: 13.6, end: 15.4, total: 17 };
+      // numbers: plain digits, "," or "." as decimal mark, no thousands separators
+      const num = (x, d) => {
+        const n = parseFloat(String(x == null ? "" : x).replace(",", "."));
+        return isFinite(n) ? n : d;
+      };
+      const card = (s) => {
+        const p = String(s || "").split("::");
+        return { label: (p[0] || "").trim(), value: num(p[1], 0) };
+      };
+      const fmtOpts = { decimals: num(v.metricDecimals, 0), prefix: v.metricPrefix || "", suffix: v.metricSuffix || "" };
+
+      $("tag-text").textContent = v.series || "Dijital Gerçekler";
+
+      // ---- hook (A/B) ------------------------------------------------------------
+      const hook = $("td-hook");
+      BS.rich(hook, BS.pick(v, "hook", "Hook"));
+      BS.reveal(tl, hook, 0.1, "slam", { stagger: 0.06, from: 1.4 });
+      BS.marks(hook).forEach((p, i) => BS.draw(tl, p, 1.4 + i * 0.15, 0.4));
+      BS.exit(tl, hook, T.metric - 0.2, "lift", { dur: 0.22 });
+
+      // ---- metric: one number counts up -----------------------------------------
+      $("td-m-label").textContent = v.metricLabel || "";
+      BS.rich($("td-m-line"), v.metricLine || "");
+      tl.set("#td-metric", { opacity: 1 }, T.metric);
+      tl.fromTo("#td-m-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, T.metric + 0.05);
+      BS.pop(tl, "#td-m-value", T.metric + 0.1, { from: 0.85, dur: 0.4, ease: "power3.out" });
+      BS.count(clock, $("td-m-value"), Object.assign({ from: num(v.metricFrom, 0), to: num(v.metricTo, 100), start: T.metric + 0.2, dur: 1.6, ease: "power2.out" }, fmtOpts));
+      tl.fromTo("#td-m-fill", { scaleX: 0 }, { scaleX: 1, duration: 1.6, ease: "power2.out" }, T.metric + 0.2);
+      BS.reveal(tl, $("td-m-line"), T.metric + 1.2, "rise", { stagger: 0.05, dur: 0.5 });
+      BS.marks($("td-m-line")).forEach((p, i) => BS.draw(tl, p, T.metric + 1.9 + i * 0.15, 0.35));
+      BS.exit(tl, "#td-metric", T.contrast - 0.22, "lift", { dur: 0.2 });
+
+      // ---- contrast: two cards ------------------------------------------------------
+      const A = card(v.contrastA);
+      const B = card(v.contrastB);
+      $("td-a-label").textContent = A.label;
+      $("td-b-label").textContent = B.label;
+      BS.rich($("td-c-head"), v.contrastLine || "");
+      tl.set("#td-contrast", { opacity: 1 }, T.contrast);
+      BS.reveal(tl, $("td-c-head"), T.contrast + 0.05, "rise", { stagger: 0.05, dur: 0.55 });
+      BS.slide(tl, "#td-card-a", T.contrast + 0.3, { dir: "up", dist: 80, dur: 0.5 });
+      BS.count(clock, $("td-a-value"), Object.assign({}, fmtOpts, { from: 0, to: A.value, start: T.contrast + 0.4, dur: 0.7 }));
+      BS.slide(tl, "#td-card-b", T.contrast + 1.1, { dir: "up", dist: 80, dur: 0.5 });
+      BS.count(clock, $("td-b-value"), Object.assign({}, fmtOpts, { from: 0, to: B.value, start: T.contrast + 1.2, dur: 1.0 }));
+      BS.marks($("td-c-head")).forEach((p, i) => BS.draw(tl, p, T.contrast + 2.2 + i * 0.15, 0.35));
+      // circle just the number: mono digits are 0.6em wide (150px value → 90px/char)
+      const bLen = Array.from(BS.fmt(B.value, fmtOpts)).length;
+      const bBox = { x: 52, y: 990, w: 90 * bLen + 110, h: 176 };
+      const bMark = BS.pen($("td-l0"), "circle", bBox, { seed: 23 });
+      BS.draw(tl, bMark, T.contrast + 2.2, 0.5);
+
+      // ---- pipeline: where the people go ---------------------------------------------
+      tl.set("#td-l1", { opacity: 1 }, T.pipe);
+      tl.set("#td-l0", { opacity: 0 }, T.pipe);
+      BS.rich($("td-p-head"), v.pipelineLine || "");
+      BS.reveal(tl, $("td-p-head"), T.pipe + 0.05, "rise", { stagger: 0.05, dur: 0.55 });
+      const names = BS.list(v.stages).slice(0, 4);
+      const vals = BS.list(v.stageValues).map((x) => num(x, 0));
+      const max = Math.max.apply(null, vals.concat([1]));
+      let leak = -1;
+      let worst = 1;
+      names.forEach((n, i) => {
+        if (i > 0 && vals[i - 1] > 0) {
+          const r = (vals[i] || 0) / vals[i - 1];
+          if (r < worst) {
+            worst = r;
+            leak = i;
+          }
+        }
+      });
+      names.forEach((n, i) => {
+        const row = document.createElement("div");
+        row.className = "td-row" + (i === leak ? " is-leak" : "");
+        row.innerHTML = '<div class="td-row__top"><span class="td-row__name"></span><span class="td-row__val"></span></div><span class="bs-progress"><i></i></span>';
+        row.querySelector(".td-row__name").textContent = n;
+        $("td-rows").appendChild(row);
+        const at = T.pipe + 0.5 + i * 0.25;
+        BS.slide(tl, row, at, { dir: "left", dist: 60, dur: 0.4 });
+        const fill = row.querySelector(".bs-progress > i");
+        tl.fromTo(fill, { scaleX: 0 }, { scaleX: Math.max(0.02, (vals[i] || 0) / max), duration: 0.6, ease: "power3.out" }, at + 0.1);
+        BS.count(clock, row.querySelector(".td-row__val"), Object.assign({}, fmtOpts, { from: 0, to: vals[i] || 0, start: at + 0.1, dur: 0.6 }));
+      });
+      if (leak > 0) {
+        // red pen circles the stage that loses the most people
+        // circle the leaking stage's number (right-aligned, 48px mono → 29px/char)
+        const y = 620 + leak * 162 - 14; // row pitch = 110 height + 52 gap
+        const len = Array.from(BS.fmt(vals[leak] || 0, fmtOpts)).length;
+        const w = 29 * len + 120;
+        const mark = BS.pen($("td-marks"), "circle", { x: 930 - w + 46, y: y, w: w, h: 92 }, { seed: 41 });
+        BS.draw(tl, mark, T.pipe + 1.8, 0.5);
+      }
+      const fx = BS.labeled(v.fixLine, "Çözüm");
+      $("td-fix-label").textContent = fx.label;
+      BS.rich($("td-fix-text"), fx.text);
+      BS.pop(tl, "#td-fix .bs-check", T.pipe + 2.5, { from: 0.4, dur: 0.4 });
+      tl.fromTo("#td-fix-label", { opacity: 0 }, { opacity: 1, duration: 0.3 }, T.pipe + 2.55);
+      BS.reveal(tl, $("td-fix-text"), T.pipe + 2.6, "rise", { stagger: 0.05, dur: 0.5 });
+
+      // ---- payoff ------------------------------------------------------------------------
+      tl.set("#td-l2", { opacity: 1 }, T.pay);
+      tl.set("#td-l1", { opacity: 0 }, T.pay);
+      BS.rich($("td-pa"), v.payoffA || "");
+      const pb = $("td-pb");
+      const caret = $("td-caret");
+      BS.rich(pb, v.payoffB || "");
+      pb.appendChild(caret);
+      BS.reveal(tl, $("td-pa"), T.pay + 0.06, "rise", { stagger: 0.05 });
+      BS.reveal(tl, pb, T.pay + 0.4, "tilt", { stagger: 0.08 });
+      BS.blink(clock, caret, T.pay + 0.95, T.end, { before: 0 });
+      tl.set("#td-l2", { opacity: 0 }, T.end);
+
+      // ---- end card + chrome -----------------------------------------------------------
+      BS.endcardInto(tl, clock, $("td-end"), T.end, { cta: v.cta });
+      BS.chrome(tl, {
+        tag: "#tag",
+        handle: "#handle",
+        ticks: ["tick1", "tick2", "tick3", "tick4"].map($),
+        chapters: [
+          [T.hook, T.metric],
+          [T.metric, T.pipe],
+          [T.pipe, T.pay],
+          [T.pay, T.end],
+        ],
+      });
+      BS.theme(tl, "#chrome", T.pipe, "paper", "bs-chrome");
+      BS.theme(tl, "#chrome", T.pay, "ink", "bs-chrome");
+      tl.to("#chrome", { opacity: 0, duration: 0.2 }, T.end - 0.2);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

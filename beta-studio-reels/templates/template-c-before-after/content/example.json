@@ -1,0 +1,22 @@
+{
+  "series": "Önce/Sonra · 03",
+  "hookVariant": "A",
+  "hookA": "Bu siteden|sipariş|~verir miydiniz?~",
+  "hookB": "Siteniz hâlâ|*2009* gibi mi?",
+  "beforeSrc": "system/assets/demo/before.png",
+  "afterSrc": "system/assets/demo/after.png",
+  "frame": "browser",
+  "frameUrl": "isletmeniz.com",
+  "imageFit": "cover",
+  "beforeLabel": "Önce",
+  "afterLabel": "Sonra",
+  "beforeLine": "Bilgi çok,|*yön* yok.",
+  "problems": "Sekiz menü, tek yön yok||“Fiyat için arayınız”||Sipariş linki en altta",
+  "afterLine": "Tek mesaj,|tek *buton.*",
+  "fixes": "Ne sattığı tek cümlede||Tek buton: Sipariş ver||Güven: ödeme + teslimat",
+  "note": "Temsili örnek · kurgusal marka",
+  "compareLine": "Aynı ürün,|*iki farklı* ilk izlenim.",
+  "payoffA": "Ürün aynı kaldı,",
+  "payoffB": "*vitrin* değişti.",
+  "cta": "Sitenizin önce/sonrası için *kaydedin.*"
+}

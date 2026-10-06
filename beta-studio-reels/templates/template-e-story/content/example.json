@@ -1,0 +1,16 @@
+{
+  "series": "KKTC İşletme Doktoru · 04",
+  "hookVariant": "A",
+  "hookA": "“Bize de|uygulama|~lazım mı?~”",
+  "hookB": "Uygulama|yaptırmadan önce|*bunu* dinleyin.",
+  "videoSrc": "system/assets/demo/talking-head-placeholder.mp4",
+  "videoPosition": "50% 35%",
+  "placeholderNote": "Video alanı · kendi çekiminiz",
+  "speakerName": "Konuşmacı Adı",
+  "speakerRole": "Beta Studio",
+  "captions": "2.8|En sık duyduğumuz soru:||5.0|“Bize de *uygulama* lazım mı?”||7.6|Biz önce başka bir şey sorarız:||10.0|Müşteriniz *nerede* takılıyor?||12.6|Çoğu zaman cevap:|telefonla randevu.||14.6|Yani çözüm uygulama değil,|bir *randevu linki.*",
+  "callout": "10.0|Beta kuralı::Önce *problem.*",
+  "payoffA": "Uygulama değil,",
+  "payoffB": "*çözüm* yaptırın.",
+  "cta": "Sizin darboğazınız ne? *Yorumlara* yazın."
+}

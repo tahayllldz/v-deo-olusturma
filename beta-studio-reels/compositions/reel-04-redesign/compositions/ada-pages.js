@@ -30,9 +30,9 @@
     '<div class="ghost-link">Ürünleri gör</div>' +
     '<div class="stage">' + bottle(132, 120, "#36531f", 1.15) + "</div>" +
     '<div class="trust"><span>✓ Kapıda ödeme</span><span>✓ Hızlı teslimat</span><span>✓ İade garantisi</span></div>' +
-    '<div class="prod" style="left:60px">' + bottle(82, 22, "#36531f", 0.62) + "<b>Sızma</b><span>Detaylar →</span></div>" +
-    '<div class="prod" style="left:350px">' + bottle(82, 22, "#7a8a2a", 0.62) + "<b>Erken hasat</b><span>Detaylar →</span></div>" +
-    '<div class="prod" style="left:640px">' + bottle(82, 22, "#2b2db8", 0.62) + "<b>Hediye kutusu</b><span>Detaylar →</span></div>";
+    '<div class="prod" style="left:60px">' + bottle(82, -84, "#36531f", 0.62) + "<b>Sızma</b><span>Detaylar →</span></div>" +
+    '<div class="prod" style="left:350px">' + bottle(82, -84, "#7a8a2a", 0.62) + "<b>Erken hasat</b><span>Detaylar →</span></div>" +
+    '<div class="prod" style="left:640px">' + bottle(82, -84, "#2b2db8", 0.62) + "<b>Hediye kutusu</b><span>Detaylar →</span></div>";
 
   /* mode: "layered" — full-size page stacked under/over its twin (wipe);
              "crop"    — page seen through a panning/zooming window or as a

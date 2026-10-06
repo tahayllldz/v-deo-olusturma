@@ -51,12 +51,24 @@
        BS.vars(window.__hyperframes)   // from a sub-composition script
        BS.vars()                       // from the root composition          */
   BS.vars = function (scopedHf) {
+    var out = {};
     try {
       var hf = scopedHf || global.__hyperframes;
-      return (hf && hf.getVariables && hf.getVariables()) || {};
+      out = (hf && hf.getVariables && hf.getVariables()) || {};
     } catch (e) {
-      return {};
+      out = {};
     }
+    // Root fallback: when the runtime has not exposed getVariables yet (or a plain
+    // browser opens the file), use the declared defaults so content never renders blank.
+    if (!scopedHf && !Object.keys(out).length) {
+      try {
+        var decl = JSON.parse(document.documentElement.getAttribute("data-composition-variables") || "[]");
+        decl.forEach(function (d) {
+          if (d && d.id != null) out[d.id] = d["default"];
+        });
+      } catch (e) {}
+    }
+    return out;
   };
   /* A/B hook: returns vars[prefix + "A"|"B"] according to vars.hookVariant */
   BS.pick = function (vars, prefix, fallback) {
@@ -111,6 +123,9 @@
               } else {
                 var w = document.createElement("span");
                 w.className = "w";
+                // the mask is padded for descenders/diacritics, so inside an inline
+                // wrapper (.bs-mark, serif) it pokes a few px past its parent on purpose.
+                if (node !== el) w.setAttribute("data-layout-allow-overflow", "");
                 var wi = document.createElement("span");
                 wi.className = "wi";
                 // display type is set with tight leading (lines' glyph boxes touch) and
@@ -153,6 +168,7 @@
   BS.reveal = function (tl, el, at, style, opts) {
     opts = opts || {};
     var parts = BS.split(el);
+    if (!parts.words.length) return at; // empty text: nothing to animate
     var n = parts.words.length || 1;
     var stagger = opts.stagger != null ? opts.stagger : Math.min(0.085, 0.5 / n);
     style = style || "rise";
@@ -494,6 +510,17 @@
         [w * 0.92, h * 0.12],
       ];
     },
+    /* straight rectangle — the cobalt ruler around a fixed UI element */
+    box: function (w, h) {
+      return [
+        [w * 0.5, 4],
+        [w - 4, 4],
+        [w - 4, h - 4],
+        [4, h - 4],
+        [4, 4],
+        [w * 0.5, 4],
+      ];
+    },
     bracket: function (w, h) {
       return [
         [w, 4],
@@ -588,6 +615,63 @@
     var node = typeof el === "string" ? document.querySelector(el) : el;
     var keep = base != null ? base : (node.getAttribute("class") || "").replace(/\s*bs-theme-\w+/g, "").trim();
     tl.set(node, { attr: { class: (keep ? keep + " " : "") + "bs-theme-" + theme } }, at);
+  };
+
+  /* ----------------------------------------------------------- end card
+     Inline end card for templates (root-variable driven). Builds into an
+     untimed full-frame container and reveals it at `at` on the logo's navy
+     stage. Uses the official logo (system/brand.js) when present.          */
+  BS.endcardInto = function (tl, clock, container, at, opts) {
+    opts = opts || {};
+    container.classList.add("bs-scene", "bs-theme-" + (opts.theme || "ink"));
+    container.style.opacity = "0";
+    container.innerHTML =
+      '<div class="bs-dots"></div>' +
+      '<div class="bs-ec-glow" data-layout-ignore style="position:absolute;left:50%;top:900px;width:1100px;height:760px;margin:-380px 0 0 -550px;border-radius:50%;background:radial-gradient(closest-side,rgba(139,92,246,.34),rgba(76,107,255,.16) 45%,rgba(224,95,196,0) 100%)"></div>' +
+      '<div class="bs-endcard" style="gap:40px;padding-bottom:300px">' +
+      '<div class="bs-endcard__cta bs-ec-cta" style="max-width:860px;margin-bottom:36px"></div>' +
+      '<div class="bs-ec-brand" style="display:flex;justify-content:center;min-height:260px;align-items:center">' +
+      '<div class="bs-lockup" lang="en"><div class="bs-lockup__beta"><span class="bs-ec-beta">BETA</span><span class="bs-caret bs-ec-caret"></span></div><div class="bs-lockup__studio bs-ec-studio">STUDIO</div></div></div>' +
+      '<div class="bs-endcard__line bs-ec-tag" lang="en">Digital Growth &amp; Technology Studio</div>' +
+      '<div class="bs-ec-handle" style="font-family:var(--bs-font-mono);font-weight:700;font-size:30px;color:var(--accent-text)">@betastudio.cy</div></div>';
+    var q = function (c) {
+      return container.querySelector(c);
+    };
+    var cta = q(".bs-ec-cta");
+    if (opts.cta) BS.rich(cta, opts.cta);
+    else cta.style.display = "none";
+    tl.set(container, { opacity: 1 }, at);
+    if (opts.cta) BS.reveal(tl, cta, at + 0.08, "rise", { stagger: 0.035, dur: 0.5 });
+    tl.fromTo(q(".bs-ec-glow"), { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.9, ease: "power2.out" }, at + 0.25);
+    var brand = global.BS_BRAND || {};
+    if (brand.logo) {
+      var box = q(".bs-ec-brand");
+      box.innerHTML = '<img class="bs-brand-logo" src="' + brand.logo + '" alt="Beta Studio" style="-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 72%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 72%,transparent 100%)" />';
+      tl.fromTo(box.firstChild, { opacity: 0, scale: 0.92, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power3.out" }, at + 0.35);
+    } else {
+      BS.type(clock, q(".bs-ec-beta"), "BETA", at + 0.35, 14);
+      BS.blink(clock, q(".bs-ec-caret"), at + 0.35, at + 30, { before: 1, after: 1 });
+      var chars = BS.splitChars(q(".bs-ec-studio"));
+      var mid = (chars.length - 1) / 2;
+      tl.fromTo(chars, { opacity: 0, x: function (i) { return (i - mid) * 26; } }, { opacity: 1, x: 0, duration: 0.6, ease: "expo.out" }, at + 0.6);
+    }
+    BS.fade(tl, q(".bs-ec-tag"), at + 0.75, { dur: 0.35 });
+    BS.fade(tl, q(".bs-ec-handle"), at + 0.85, { dur: 0.35 });
+  };
+
+  /* "LABEL::Headline" → { label, text } (template content strings) */
+  BS.labeled = function (s, fallbackLabel) {
+    var parts = String(s || "").split("::");
+    return parts.length > 1 ? { label: parts[0].trim(), text: parts.slice(1).join("::").trim() } : { label: fallbackLabel || "", text: parts[0].trim() };
+  };
+  /* "a||b||c" → ["a","b","c"] */
+  BS.list = function (s) {
+    return String(s || "")
+      .split("||")
+      .map(function (x) {
+        return x.trim();
+      })
+      .filter(Boolean);
   };
 
   global.BS = BS;

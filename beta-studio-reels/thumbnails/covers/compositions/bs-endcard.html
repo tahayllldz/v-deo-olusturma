@@ -1,0 +1,134 @@
+<!doctype html>
+<!--
+  bs-endcard — Beta Studio shared end card (reusable sub-composition block)
+
+  Source of truth: components/blocks/bs-endcard.html → synced into every project
+  as compositions/bs-endcard.html by `npm run sync`. Edit HERE.
+
+  Logo: put the OFFICIAL logo at beta-studio-reels/assets/logo.png (or .svg) and
+  run `npm run sync`. system/brand.js then points here and the card shows it.
+  Without the file the card shows a typographic stand-in (never a redrawn mark).
+  The host page must load system/brand.js (all Beta Studio roots do).
+
+  Mount (≤ 2 s, hard cut in, holds to the end):
+    <div id="el-end" data-composition-id="bs-endcard" data-composition-src="compositions/bs-endcard.html"
+         data-start="16.3" data-duration="1.7" data-track-index="1" data-width="1080" data-height="1920"
+         data-variable-values='{"cta":"Kaydedin.","theme":"ink"}'></div>
+
+  Variables (per instance):
+    cta    string  soft call to action above the logo ("" hides it). Supports *serif* markup.
+    theme  enum    ink (default — the logo's own stage) | signal | paper
+  Envelope: CTA 0.08 → glow + logo 0.35 → tagline 0.75 → handle 0.85 → hold.
+-->
+<html
+  lang="tr"
+  data-composition-id="bs-endcard"
+  data-composition-variables='[
+    {"id":"cta","type":"string","label":"CTA","default":"Kaydedin, sonra lazım olacak."},
+    {"id":"theme","type":"enum","label":"Tema","default":"ink","options":[{"value":"ink","label":"Mürekkep (logo zemini)"},{"value":"signal","label":"Sinyal"},{"value":"paper","label":"Kâğıt"}]}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #bs-endcard-root {
+          position: absolute;
+          inset: 0;
+        }
+        #bs-end-glow {
+          position: absolute;
+          left: 50%;
+          top: 900px;
+          width: 1100px;
+          height: 760px;
+          margin: -380px 0 0 -550px;
+          border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(139, 92, 246, 0.34), rgba(76, 107, 255, 0.16) 45%, rgba(224, 95, 196, 0) 100%);
+          pointer-events: none;
+        }
+        #bs-endcard-root .bs-endcard {
+          gap: 40px;
+          padding-bottom: 300px;
+        }
+        #bs-end-cta {
+          max-width: 860px;
+          margin-bottom: 36px;
+        }
+        #bs-end-brand {
+          display: flex;
+          justify-content: center;
+          min-height: 260px;
+          align-items: center;
+        }
+        #bs-end-brand .bs-brand-logo {
+          -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 72%, transparent 100%);
+          mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 72%, transparent 100%);
+        }
+        #bs-end-handle {
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 30px;
+          color: var(--accent-text);
+        }
+      </style>
+      <div id="bs-endcard-root" class="bs-scene bs-theme-ink" data-composition-id="bs-endcard" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="bs-end-glow" data-layout-ignore></div>
+        <div class="bs-endcard">
+          <div id="bs-end-cta" class="bs-endcard__cta">Kaydedin, sonra lazım olacak.</div>
+          <div id="bs-end-brand">
+            <div id="bs-end-lockup" class="bs-lockup" lang="en">
+              <div class="bs-lockup__beta"><span id="bs-end-beta">BETA</span><span id="bs-end-caret" class="bs-caret"></span></div>
+              <div id="bs-end-studio" class="bs-lockup__studio">STUDIO</div>
+            </div>
+          </div>
+          <div id="bs-end-tagline" class="bs-endcard__line" lang="en">Digital Growth &amp; Technology Studio</div>
+          <div id="bs-end-handle">@betastudio.cy</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const v = BS.vars(window.__hyperframes);
+          const root = document.getElementById("bs-endcard-root");
+          root.className = "bs-scene bs-theme-" + (["paper", "ink", "signal"].indexOf(v.theme) >= 0 ? v.theme : "ink");
+          const cta = document.getElementById("bs-end-cta");
+          if (typeof v.cta === "string") BS.rich(cta, v.cta);
+          const hasCta = !!cta.textContent.trim();
+          if (!hasCta) cta.style.display = "none";
+
+          const tl = gsap.timeline({ paused: true });
+          const clock = BS.clock(tl, 3);
+          if (hasCta) BS.reveal(tl, cta, 0.08, "rise", { stagger: 0.035, dur: 0.5 });
+          tl.fromTo("#bs-end-glow", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.9, ease: "power2.out" }, 0.25);
+
+          const brand = window.BS_BRAND || {};
+          if (brand.logo) {
+            // official logo file
+            const box = document.getElementById("bs-end-brand");
+            box.innerHTML = "";
+            const img = document.createElement("img");
+            img.className = "bs-brand-logo";
+            img.src = brand.logo;
+            img.alt = "Beta Studio";
+            box.appendChild(img);
+            tl.fromTo(img, { opacity: 0, scale: 0.92, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power3.out" }, 0.35);
+          } else {
+            // typographic stand-in: BETA types on, caret holds (the brand signature)
+            BS.type(clock, document.getElementById("bs-end-beta"), "BETA", 0.35, 14);
+            BS.blink(clock, document.getElementById("bs-end-caret"), 0.35, 3, { before: 1, after: 1 });
+            // tracking "tightens" as a per-glyph x spread (transforms only — no letterSpacing tween)
+            const chars = BS.splitChars(document.getElementById("bs-end-studio"));
+            const mid = (chars.length - 1) / 2;
+            tl.fromTo(chars, { opacity: 0, x: (i) => (i - mid) * 26 }, { opacity: 1, x: 0, duration: 0.6, ease: "expo.out" }, 0.6);
+          }
+          BS.fade(tl, "#bs-end-tagline", 0.75, { dur: 0.35 });
+          BS.fade(tl, "#bs-end-handle", 0.85, { dur: 0.35 });
+          window.__timelines["bs-endcard"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

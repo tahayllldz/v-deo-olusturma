@@ -1,0 +1,23 @@
+{
+  "series": "Dijital Gerçekler · 07",
+  "hookVariant": "A",
+  "hookA": "100 kişi|sitenize girdi.|*Kaçı* yazdı?",
+  "hookB": "Trafik|sorununuz yok.|~Kayıp~ var.",
+  "metricLabel": "Ziyaretçi · örnek hesap",
+  "metricFrom": 0,
+  "metricTo": 100,
+  "metricDecimals": 0,
+  "metricPrefix": "",
+  "metricSuffix": "",
+  "metricLine": "Bu ay sitenize|gelen kişi.",
+  "contrastLine": "Peki kaçı|*harekete* geçti?",
+  "contrastA": "Mesaj atan::3",
+  "contrastB": "Sessizce çıkan::97",
+  "pipelineLine": "Kayıp *nerede?*",
+  "stages": "Ziyaret||Mesaj||Teklif||Müşteri",
+  "stageValues": "100||3||2||1",
+  "fixLine": "Çözüm::İlk mesajı *kolaylaştırın.*",
+  "payoffA": "Daha çok trafik değil,",
+  "payoffB": "*daha az* kayıp.",
+  "cta": "Kendi hunisini merak edenler: *kaydedin.*"
+}

@@ -1,0 +1,14 @@
+{
+  "theme": "signal",
+  "flipMiddle": true,
+  "series": "AI ile 30 Saniye · 07",
+  "hookVariant": "A",
+  "hookA": "AI ajansları|öldürecek mi?",
+  "hookB": "AI ajansları|~öldürmeyecek.~",
+  "beat1": "Kısa cevap::Hayır. Ama kötü|ajansları *zorlayacak.*",
+  "beat2": "AI hızlandırır::Tekrar eden işi,|taslağı, analizi.",
+  "beat3": "İnsanda kalır::Strateji, fikir|ve *sorumluluk.*",
+  "payoffA": "Araç değişir,",
+  "payoffB": "*düşünce* kalır.",
+  "cta": "Sizce? *Yorumlara* yazın."
+}

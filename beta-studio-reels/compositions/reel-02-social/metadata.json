@@ -1,0 +1,66 @@
+{
+  "title": "Takipçiniz çok olabilir. Ama müşteriniz?",
+  "hook": "Takipçiniz çok olabilir. Ama müşteriniz?",
+  "category": "B — Business Psychology",
+  "duration": "18.333",
+  "cta": "Sizde hangi basamak eksik? Yorumlara yazın.",
+  "targetAudience": "Instagram'ı aktif kullanan ama satış alamayan işletme sahipleri; sosyal medya yöneticileri.",
+  "goal": "followers",
+  "hypothesis": "Gösteriş metriklerini sorgulayan iddia, paylaşım ve yorum üretir; huni görseli kaydetme getirir.",
+  "series": "Dijital Gerçekler · 02",
+  "template": "D — Data / Infographic",
+  "format": "1080x1920 · 9:16 · 30 fps · MP4 (H.264 + AAC)",
+  "hookVariants": {
+    "A": {
+      "type": "problem-first",
+      "text": "Takipçiniz çok olabilir. Ama müşteriniz?"
+    },
+    "B": {
+      "type": "controversial",
+      "text": "Takipçi sayınız geliriniz değil."
+    }
+  },
+  "primaryKpi": "shares",
+  "kpis": [
+    "3-second hold",
+    "average watch time",
+    "completion rate",
+    "rewatch rate",
+    "saves",
+    "shares",
+    "comments",
+    "profile visits",
+    "follows",
+    "DM starts"
+  ],
+  "music": "bed-pulse-108",
+  "sfx": "Pixabay Content License (sound-effects/CREDITS.md)",
+  "voiceover": null,
+  "files": {
+    "script": "scripts/reel-02-social.md",
+    "render": "renders/reel-02-social.mp4",
+    "thumbnail": "thumbnails/reel-02-social.png",
+    "abRenders": [
+      "renders/ab/reel-02-social-A.mp4",
+      "renders/ab/reel-02-social-B.mp4"
+    ]
+  },
+  "disclaimer": "Tüm UI, isimler ve sayılar sentetik/temsilîdir; gerçek müşteri verisi veya istatistik değildir.",
+  "results": {
+    "publishedAt": null,
+    "variant": null,
+    "views": null,
+    "hold3s": null,
+    "avgWatchTime": null,
+    "completionRate": null,
+    "rewatchRate": null,
+    "saves": null,
+    "shares": null,
+    "comments": null,
+    "profileVisits": null,
+    "follows": null,
+    "dmStarts": null,
+    "hypothesisConfirmed": null,
+    "notes": ""
+  }
+}

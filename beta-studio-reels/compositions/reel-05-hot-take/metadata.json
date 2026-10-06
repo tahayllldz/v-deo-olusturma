@@ -1,0 +1,66 @@
+{
+  "title": "Her işletmenin mobil uygulamaya ihtiyacı yok",
+  "hook": "Her işletmenin mobil uygulamaya ihtiyacı yok.",
+  "category": "E — Hot Take",
+  "duration": "17.609",
+  "cta": "Uygulama yaptırmadan önce kaydedin.",
+  "targetAudience": "'Bize de uygulama lazım' diyen KOBİ sahipleri ve girişimciler.",
+  "goal": "followers",
+  "hypothesis": "Bir yazılım şirketinin 'almayın' demesi ters köşe yaratır; güven + tartışma ile erişim ve profil ziyareti artar.",
+  "series": "Dijital Gerçekler · 05",
+  "template": "A — Kinetic typography",
+  "format": "1080x1920 · 9:16 · 30 fps · MP4 (H.264 + AAC)",
+  "hookVariants": {
+    "A": {
+      "type": "problem-first",
+      "text": "Her işletmenin mobil uygulamaya ihtiyacı yok."
+    },
+    "B": {
+      "type": "controversial",
+      "text": "Uygulama yaptırmayın. (Henüz.)"
+    }
+  },
+  "primaryKpi": "shares",
+  "kpis": [
+    "3-second hold",
+    "average watch time",
+    "completion rate",
+    "rewatch rate",
+    "saves",
+    "shares",
+    "comments",
+    "profile visits",
+    "follows",
+    "DM starts"
+  ],
+  "music": "bed-night-92 (offset 5.217 s)",
+  "sfx": "Pixabay Content License (sound-effects/CREDITS.md)",
+  "voiceover": null,
+  "files": {
+    "script": "scripts/reel-05-hot-take.md",
+    "render": "renders/reel-05-hot-take.mp4",
+    "thumbnail": "thumbnails/reel-05-hot-take.png",
+    "abRenders": [
+      "renders/ab/reel-05-hot-take-A.mp4",
+      "renders/ab/reel-05-hot-take-B.mp4"
+    ]
+  },
+  "disclaimer": "Tüm UI, isimler ve sayılar sentetik/temsilîdir; gerçek müşteri verisi veya istatistik değildir.",
+  "results": {
+    "publishedAt": null,
+    "variant": null,
+    "views": null,
+    "hold3s": null,
+    "avgWatchTime": null,
+    "completionRate": null,
+    "rewatchRate": null,
+    "saves": null,
+    "shares": null,
+    "comments": null,
+    "profileVisits": null,
+    "follows": null,
+    "dmStarts": null,
+    "hypothesisConfirmed": null,
+    "notes": ""
+  }
+}

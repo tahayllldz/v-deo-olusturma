@@ -1,0 +1,87 @@
+<!doctype html>
+<!--
+  Beta Studio — Reels covers (thumbnails). One static cover per second:
+    t 0–1 cover-01 · 1–2 cover-02 · 2–3 cover-03 · 3–4 cover-04 · 4–5 cover-05
+  Export: npm run covers  (snapshots at 0.5, 1.5, … → thumbnails/reel-0N-*.png)
+  Instagram shows covers 9:16 in the Reels tab and crops them to 3:4 (1080×1440,
+  y 240–1680) in the profile grid — every title and mark stays inside that box.
+-->
+<html lang="tr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Beta Studio — Reels covers</title>
+    <link rel="stylesheet" href="system/fonts.css" />
+    <link rel="stylesheet" href="system/beta.css" />
+    <script src="system/gsap.min.js"></script>
+    <script src="system/beta.js"></script>
+    <script src="system/brand.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0a0c16;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      #root > [data-composition-src] {
+        position: absolute;
+        inset: 0;
+      }
+      /* shared cover layout (3:4 grid-safe: y 240–1680) */
+      .cv-tag {
+        top: 300px !important;
+      }
+      .cv-title {
+        position: absolute;
+        left: 72px;
+        top: 420px;
+        width: 950px;
+        font-size: 168px;
+        line-height: 0.92;
+      }
+      .cv-art {
+        position: absolute;
+        left: 72px;
+        right: 72px;
+        top: 1120px;
+        height: 400px;
+      }
+      .cv-brand {
+        position: absolute;
+        left: 72px;
+        right: 72px;
+        top: 1560px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .cv-brand .bs-lockup__beta {
+        font-size: 46px;
+        letter-spacing: 0.2em;
+      }
+      .cv-brand .bs-label {
+        font-size: 26px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920">
+      <div id="c1" data-composition-id="cover-01" data-composition-src="compositions/cover-01.html" data-start="0" data-duration="1" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="c2" data-composition-id="cover-02" data-composition-src="compositions/cover-02.html" data-start="1" data-duration="1" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="c3" data-composition-id="cover-03" data-composition-src="compositions/cover-03.html" data-start="2" data-duration="1" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="c4" data-composition-id="cover-04" data-composition-src="compositions/cover-04.html" data-start="3" data-duration="1" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="c5" data-composition-id="cover-05" data-composition-src="compositions/cover-05.html" data-start="4" data-duration="1" data-track-index="1" data-width="1080" data-height="1920"></div>
+    </div>
+    <script>
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- Cover 05 — static thumbnail (theme ink). Title markup: *serif* ~pen mark~ | line break. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #cv5-root {
+          position: absolute;
+          inset: 0;
+        }
+        #cv5-title .bs-serif {
+          color: var(--accent-text);
+        }
+      </style>
+      <div id="cv5-root" class="bs-scene bs-theme-ink" data-composition-id="cover-05" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div class="bs-tag cv-tag"><span class="bs-tag__dot"></span>Dijital Gerçekler · 05</div>
+        <h1 id="cv5-title" class="bs-hook cv-title">Uygulama|yaptırmayın.|*(Henüz.)*</h1>
+        <div id="cv5-art" class="cv-art">
+      <div style="position:absolute;left:300px;top:20px;width:330px;height:330px;border-radius:80px;background:var(--bs-signal);display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:70px;box-sizing:border-box"><i style="display:block;border-radius:24px;background:var(--bs-paper)"></i><i style="display:block;border-radius:24px;background:var(--bs-paper)"></i><i style="display:block;border-radius:24px;background:var(--bs-paper)"></i><i style="display:block;border-radius:24px;background:rgba(242,240,235,.45)"></i></div>
+        </div>
+        <div class="cv-brand">
+          <div class="bs-lockup" lang="en"><div class="bs-lockup__beta">BETA<span class="bs-caret"></span></div></div>
+          <div class="bs-label" lang="en">@betastudio.cy</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const title = document.getElementById("cv5-title");
+          BS.rich(title, title.textContent);
+          BS.split(title);
+          BS.marks(title).forEach((p) => BS.draw(tl, p, 0, 0.01));
+          const x = BS.pen(document.getElementById("cv5-art"), "cross", { x: 270, y: -10, w: 390, h: 390 }, { seed: 5 });
+          x.parentNode.style.strokeWidth = "16";
+          BS.draw(tl, x, 0, 0.01);
+          const brand = window.BS_BRAND || {};
+          if (brand.logo) {
+            const box = document.querySelector("#cv5-root .bs-lockup");
+            box.innerHTML = '<img class="bs-brand-logo" style="width:300px" src="' + brand.logo + '" alt="Beta Studio" />';
+          }
+          window.__timelines["cover-05"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

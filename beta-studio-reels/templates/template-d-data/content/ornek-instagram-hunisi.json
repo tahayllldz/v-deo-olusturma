@@ -1,0 +1,23 @@
+{
+  "series": "Dijital Gerçekler · 08",
+  "hookVariant": "A",
+  "hookA": "Profilinize|200 kişi baktı.|*Kaçı* aldı?",
+  "hookB": "Beğeni|~satış~|değildir.",
+  "metricLabel": "Profil ziyareti · örnek hesap",
+  "metricFrom": 0,
+  "metricTo": 200,
+  "metricDecimals": 0,
+  "metricPrefix": "",
+  "metricSuffix": "",
+  "metricLine": "Bu hafta profilinizi|açan kişi.",
+  "contrastLine": "Linke|*kaçı* tıkladı?",
+  "contrastA": "Linke tıklayan::40",
+  "contrastB": "Profilden çıkan::160",
+  "pipelineLine": "Satış *nerede* kaçıyor?",
+  "stages": "Profil ziyareti||Link tıklama||Mesaj||Satış",
+  "stageValues": "200||40||12||4",
+  "fixLine": "Çözüm::Biyografide *tek* net link.",
+  "payoffA": "Daha çok beğeni değil,",
+  "payoffB": "*net* bir yol.",
+  "cta": "Kendi profilinizi bu gözle inceleyin, *kaydedin.*"
+}
