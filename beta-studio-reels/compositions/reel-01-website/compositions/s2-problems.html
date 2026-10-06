@@ -1,0 +1,397 @@
+<!doctype html>
+<!-- Reel 01 · s2-problems (2.70–10.20, local 0–7.5)
+     01 slow (skeleton + spinner) · 02 confusing (clutter + popup) · 03 no CTA
+     (visitor wanders, "?" marks) → closes the tab → "…ve sekme kapandı." -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r1p-root {
+          position: absolute;
+          inset: 0;
+        }
+        .r1p-head {
+          position: absolute;
+          left: 72px;
+          top: 300px;
+          width: 860px;
+        }
+        .r1p-head .bs-label {
+          color: var(--pen);
+          margin-bottom: 14px;
+          font-size: 30px;
+        }
+        .r1p-head .bs-headline {
+          font-size: 88px;
+        }
+        .r1p-head .bs-support {
+          margin-top: 18px;
+          font-size: 48px;
+        }
+        #r1p-h2,
+        #r1p-h3 {
+          opacity: 0;
+        }
+        #r1p-final {
+          position: absolute;
+          left: 72px;
+          top: 760px;
+          width: 860px;
+          color: var(--pen);
+        }
+        #r1p-browser {
+          position: absolute;
+          left: 110px;
+          top: 560px;
+          width: 860px;
+          transform-origin: 50% 0%;
+        }
+        #r1p-view {
+          height: 836px;
+          background: var(--bs-sheet);
+        }
+        #r1p-close {
+          border-radius: 50%;
+        }
+        /* --- slow (same skeleton as s1) --- */
+        .r1-loadbar {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 8px;
+          background: var(--bs-paper-3);
+        }
+        .r1-loadbar > i {
+          position: absolute;
+          inset: 0;
+          display: block;
+          background: #575a6b;
+          transform-origin: left center;
+        }
+        .r1-sk {
+          position: absolute;
+          border-radius: 14px;
+          background: #ebe8e1;
+        }
+        .r1-spin {
+          position: absolute;
+          left: 375px;
+          top: 520px;
+          width: 110px;
+          height: 110px;
+          border-radius: 50%;
+          border: 10px solid var(--bs-paper-3);
+          border-top-color: var(--bs-ink);
+        }
+        .r1-loading {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 660px;
+          text-align: center;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 30px;
+          color: var(--bs-muted);
+        }
+        /* --- the cluttered site: bad on purpose, but still WCAG-readable --- */
+        #r1p-mess {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          background: #f7f5ef;
+          color: #2a2a2a;
+        }
+        .r1m-marquee {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 58px;
+          overflow: hidden;
+          background: #ffe14d;
+        }
+        #r1m-marquee-text {
+          position: absolute;
+          left: 0;
+          top: 12px;
+          white-space: nowrap;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 28px;
+          color: #9e1c12;
+        }
+        .r1m-nav {
+          position: absolute;
+          left: 18px;
+          right: 18px;
+          top: 74px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px 16px;
+          font-family: var(--bs-font-serif);
+          font-size: 25px;
+          color: #1d3f8f;
+          text-decoration: underline;
+        }
+        .r1m-hello {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 168px;
+          text-align: center;
+          font-family: var(--bs-font-serif);
+          font-style: italic;
+          font-size: 76px;
+          color: #1d6b2a;
+        }
+        .r1m-img {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 3px dashed #8f8a80;
+          background: #e2ded5;
+          font-family: var(--bs-font-mono);
+          font-size: 22px;
+          color: #4a4740;
+        }
+        .r1m-p {
+          position: absolute;
+          font-family: var(--bs-font-display);
+          font-size: 21px;
+          line-height: 1.25;
+          color: #3b3b3b;
+        }
+        .r1m-badge {
+          position: absolute;
+          padding: 6px 14px;
+          background: #d6221a;
+          color: #ffffff;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 26px;
+        }
+        .r1m-counter {
+          position: absolute;
+          left: 30px;
+          top: 760px;
+          font-family: var(--bs-font-mono);
+          font-size: 22px;
+          color: #3b3b3b;
+        }
+        .r1m-link {
+          position: absolute;
+          right: 30px;
+          top: 760px;
+          font-family: var(--bs-font-display);
+          font-size: 21px;
+          color: #1d3f8f;
+          text-decoration: underline;
+        }
+        #r1m-shade {
+          position: absolute;
+          inset: 0;
+          background: rgba(10, 12, 22, 0.42);
+          opacity: 0;
+        }
+        #r1m-popup {
+          position: absolute;
+          left: 120px;
+          top: 230px;
+          width: 620px;
+          padding: 40px 40px 44px;
+          background: #ffffff;
+          box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6);
+          opacity: 0;
+          text-align: center;
+        }
+        #r1m-popup b {
+          display: block;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 40px;
+          line-height: 1.05;
+          color: #9e1c12;
+        }
+        #r1m-popup .in {
+          margin: 26px auto 18px;
+          height: 56px;
+          border: 2px solid #b8b3a8;
+        }
+        #r1m-popup .btn {
+          display: inline-block;
+          padding: 12px 30px;
+          background: #9a958b;
+          color: #ffffff;
+          font-family: var(--bs-font-display);
+          font-weight: 700;
+          font-size: 26px;
+        }
+        #r1m-popup .x {
+          position: absolute;
+          right: 12px;
+          top: 6px;
+          font-size: 22px;
+          color: #6a665e;
+        }
+        .r1p-q {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 112px;
+          height: 112px;
+          border-radius: 50%;
+          background: var(--bs-redpen);
+          box-shadow: 0 16px 30px -12px rgba(201, 51, 29, 0.6);
+          font-family: var(--bs-font-serif);
+          font-style: italic;
+          font-size: 92px;
+          line-height: 1;
+          color: var(--bs-paper);
+          opacity: 0;
+        }
+      </style>
+      <div id="r1p-root" class="bs-scene bs-theme-paper" data-composition-id="r1-problems" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+
+        <!-- headline zone: three problems swap in place -->
+        <div id="r1p-h1" class="r1p-head">
+          <div class="bs-label">01 / 03 · Yavaş</div>
+          <h2 class="bs-headline">Yavaş açılıyor.</h2>
+          <p class="bs-support">Ziyaretçi <strong>beklemez.</strong></p>
+        </div>
+        <div id="r1p-h2" class="r1p-head">
+          <div class="bs-label">02 / 03 · Karmaşık</div>
+          <h2 class="bs-headline">Ne sattığınız anlaşılmıyor.</h2>
+        </div>
+        <div id="r1p-h3" class="r1p-head">
+          <div class="bs-label">03 / 03 · Net aksiyon yok</div>
+          <h2 class="bs-headline">Ne yapılacağı belli değil.</h2>
+        </div>
+
+        <div id="r1p-browser" class="bs-browser">
+          <div class="bs-browser__bar">
+            <div class="bs-browser__dots"><i></i><i></i><i></i></div>
+            <div class="bs-browser__url">isletmeniz.com</div>
+            <div id="r1p-close" class="bs-browser__close">×</div>
+          </div>
+          <div id="r1p-view" class="bs-browser__view">
+            <div id="r1p-skel">
+              <div class="r1-loadbar"><i id="r1p-load"></i></div>
+              <div class="r1-sk" style="left: 40px; top: 40px; width: 200px; height: 34px"></div>
+              <div class="r1-sk" style="left: 560px; top: 44px; width: 260px; height: 26px"></div>
+              <div class="r1-sk" style="left: 40px; top: 110px; width: 780px; height: 330px"></div>
+              <div id="r1p-spin" class="r1-spin"></div>
+              <div class="r1-loading">yükleniyor… <span id="r1p-sec">2,4 sn</span></div>
+            </div>
+            <div id="r1p-mess">
+              <div class="r1m-marquee"><div id="r1m-marquee-text">★ KAMPANYA ★ YAZ İNDİRİMİ ★ HEMEN ARAYIN ★ ÜCRETSİZ KARGO ★ KAMPANYA ★ YAZ İNDİRİMİ ★ HEMEN ARAYIN ★</div></div>
+              <div id="r1m-nav" class="r1m-nav">
+                <span>Anasayfa</span><span>Hakkımızda</span><span>Ürünler</span><span>Hizmetler</span><span>Galeri</span><span>Blog</span><span>Kampanyalar</span><span>Referanslar</span><span>S.S.S.</span><span>Bayilik</span><span>İletişim</span>
+              </div>
+              <div class="r1m-hello">HOŞGELDİNİZ!!!</div>
+              <div class="r1m-img" style="left: 30px; top: 280px; width: 250px; height: 200px">resim1.jpg</div>
+              <div class="r1m-img" style="left: 300px; top: 280px; width: 250px; height: 200px">resim2.jpg</div>
+              <div class="r1m-img" style="left: 570px; top: 280px; width: 260px; height: 200px">banner_son.gif</div>
+              <div class="r1m-badge" style="left: 470px; top: 262px" data-layout-allow-overlap>YENİ!</div>
+              <div class="r1m-p" style="left: 30px; top: 500px; width: 380px">Firmamız 1998 yılından beri sektörde kaliteli hizmet anlayışıyla faaliyet göstermekte olup müşteri memnuniyetini ön planda tutmaktadır.</div>
+              <div class="r1m-p" style="left: 440px; top: 500px; width: 390px">Ürünlerimiz hakkında detaylı bilgi almak için lütfen ilgili sayfaları ziyaret ediniz. Kampanya koşulları için mağazamıza danışınız.</div>
+              <div class="r1m-p" style="left: 30px; top: 640px; width: 800px">Sitemizi en iyi görüntülemek için 1024x768 çözünürlük önerilir.</div>
+              <div class="r1m-counter">Ziyaretçi: 004213</div>
+              <div id="r1m-link" class="r1m-link">iletişim için tıklayınız</div>
+              <div id="r1m-shade"></div>
+              <div id="r1m-popup">
+                <span class="x">✕</span>
+                <b data-layout-allow-overlap>BÜLTENİMİZE ABONE OLUN!</b>
+                <div class="in"></div>
+                <span class="btn">ABONE OL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="r1p-q1" class="r1p-q" data-layout-allow-overlap style="left: 640px; top: 860px">?</div>
+        <div id="r1p-q2" class="r1p-q" data-layout-allow-overlap style="left: 210px; top: 1060px">?</div>
+        <div id="r1p-q3" class="r1p-q" data-layout-allow-overlap style="left: 760px; top: 1250px">?</div>
+
+        <div id="r1p-cursor" class="bs-cursor">
+          <svg viewBox="0 0 72 72" aria-hidden="true"><path d="M12 6 L12 58 L25.5 45.5 L35 66 L44.5 61.5 L35 41.5 L53 41.5 Z" fill="#0A0C16" stroke="#F2F0EB" stroke-width="4.5" stroke-linejoin="round" /></svg>
+          <span class="bs-ripple" data-layout-ignore></span>
+          <span id="r1p-clabel" class="bs-cursor__label" data-layout-allow-overflow data-layout-allow-overlap>Ziyaretçi</span>
+        </div>
+
+        <h2 id="r1p-final" class="bs-hook">…ve sekme kapandı.</h2>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const clock = BS.clock(tl, 7.5);
+          const $ = (s) => document.getElementById(s);
+          const scene = $("r1p-root");
+          const view = $("r1p-view");
+
+          // ---------- 01 · slow (0.0 – 2.4) ----------
+          tl.fromTo("#r1p-h1 .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.08);
+          BS.reveal(tl, document.querySelector("#r1p-h1 .bs-headline"), 0.12, "rise");
+          BS.reveal(tl, document.querySelector("#r1p-h1 .bs-support"), 0.75, "blur", { dur: 0.45 });
+          tl.fromTo("#r1p-spin", { rotation: 0 }, { rotation: 900, duration: 2.4, ease: "none" }, 0);
+          tl.fromTo("#r1p-load", { scaleX: 0.12 }, { scaleX: 0.3, duration: 2.4, ease: "power1.out" }, 0);
+          BS.count(clock, $("r1p-sec"), { from: 2.4, to: 4.8, start: 0, dur: 2.4, ease: "none", decimals: 1, suffix: " sn" });
+          const spinMark = BS.pen(view, "circle", { x: 300, y: 490, w: 260, h: 230 }, { seed: 11 });
+          BS.draw(tl, spinMark, 1.0, 0.55);
+          BS.exit(tl, "#r1p-h1", 2.3, "lift", { dur: 0.22 });
+
+          // ---------- 02 · confusing (2.4 – 4.8) ----------
+          tl.set(spinMark.parentNode, { opacity: 0 }, 2.4);
+          tl.set("#r1p-skel", { opacity: 0 }, 2.4);
+          tl.set("#r1p-mess", { opacity: 1 }, 2.4);
+          tl.fromTo("#r1m-marquee-text", { x: 0 }, { x: -900, duration: 5.1, ease: "none" }, 2.4);
+          tl.set("#r1p-h2", { opacity: 1 }, 2.42);
+          tl.fromTo("#r1p-h2 .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.45);
+          BS.reveal(tl, document.querySelector("#r1p-h2 .bs-headline"), 2.5, "rise");
+          BS.draw(tl, BS.pen(view, "scribble", { x: 14, y: 70, w: 830, h: 80 }, { seed: 4, thin: true }), 2.95, 0.5, "none");
+          tl.fromTo("#r1m-shade", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 3.25);
+          BS.pop(tl, "#r1m-popup", 3.25, { from: 0.7, dur: 0.35, ease: "back.out(1.8)" });
+          BS.draw(tl, BS.pen(view, "circle", { x: 90, y: 200, w: 690, h: 330 }, { seed: 21 }), 3.7, 0.5);
+          BS.exit(tl, "#r1p-h2", 4.7, "lift", { dur: 0.22 });
+
+          // ---------- 03 · no clear action (4.8 – 6.6) ----------
+          tl.to(["#r1m-shade", "#r1m-popup"], { opacity: 0, duration: 0.18, ease: "power1.in" }, 4.8);
+          tl.to(BS.$$("svg.bs-pen", view), { opacity: 0, duration: 0.18 }, 4.8);
+          tl.set("#r1p-h3", { opacity: 1 }, 4.82);
+          tl.fromTo("#r1p-h3 .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.85);
+          BS.reveal(tl, document.querySelector("#r1p-h3 .bs-headline"), 4.9, "rise");
+          const cursor = $("r1p-cursor");
+          tl.fromTo(cursor, { opacity: 0 }, { opacity: 1, duration: 0.12 }, 4.86);
+          // near the right edge the label flips to the cursor's left
+          tl.set("#r1p-clabel", { attr: { class: "bs-cursor__label bs-cursor__label--left" } }, 6.35);
+          BS.cursorPath(tl, cursor, [
+            { t: 4.8, x: 1010, y: 1500 },
+            { t: 4.9, x: 600, y: 900, dur: 0.42, ease: "power2.out" },
+            { t: 5.42, x: 230, y: 1100, dur: 0.38, ease: "power2.inOut" },
+            { t: 5.9, x: 700, y: 1290, dur: 0.38, ease: "power2.inOut" },
+            { t: 6.35, x: 907, y: 596, dur: 0.38, ease: "power3.inOut" },
+          ]);
+          BS.pop(tl, "#r1p-q1", 5.3, { from: 0.3, ease: "back.out(2.6)", dur: 0.3 });
+          BS.pop(tl, "#r1p-q2", 5.78, { from: 0.3, ease: "back.out(2.6)", dur: 0.3 });
+          BS.pop(tl, "#r1p-q3", 6.24, { from: 0.3, ease: "back.out(2.6)", dur: 0.3 });
+          tl.fromTo("#r1p-close", { backgroundColor: "rgba(201,51,29,0)" }, { backgroundColor: "rgba(201,51,29,0.2)", duration: 0.12 }, 6.66);
+          BS.click(tl, cursor, 6.75);
+
+          // ---------- the tab closes (6.85 – 7.5) ----------
+          tl.to("#r1p-h3", { opacity: 0, duration: 0.15, ease: "power1.in" }, 6.85);
+          tl.to(["#r1p-q1", "#r1p-q2", "#r1p-q3", "#r1p-cursor"], { opacity: 0, duration: 0.15 }, 6.85);
+          tl.fromTo("#r1p-browser", { scale: 1, opacity: 1 }, { scale: 0.9, opacity: 0, duration: 0.2, ease: "power2.in", immediateRender: false }, 6.85);
+          BS.reveal(tl, $("r1p-final"), 7.0, "slam", { stagger: 0.07, from: 1.3 });
+          window.__timelines["r1-problems"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

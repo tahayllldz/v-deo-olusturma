@@ -1,0 +1,212 @@
+<!doctype html>
+<!-- Reel 02 · s3-funnel (8.889–14.444, local 0–5.555)
+     İçerik → Güven → Talep → Müşteri. Leads (dots) pour in at the top; some
+     leave at every stage (they turn red-pen and slide out); the ones that make
+     it to the bottom tick the SATIŞ counter up. Every dot is a pure function
+     of time (seeded) → seek-safe. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r2f-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r2f-head {
+          position: absolute;
+          left: 72px;
+          top: 300px;
+          width: 880px;
+        }
+        #r2f-head .bs-label {
+          margin-bottom: 12px;
+        }
+        #r2f-head .bs-headline {
+          font-size: 84px;
+        }
+        .r2f-band {
+          position: absolute;
+          height: 160px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: var(--bs-ink);
+        }
+        .r2f-band b {
+          display: block;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 56px;
+          line-height: 1;
+          letter-spacing: -0.025em;
+        }
+        .r2f-band span {
+          display: block;
+          margin-top: 8px;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 26px;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: #3c3f55;
+        }
+        #r2f-b4 span {
+          color: #d9dbff;
+        }
+        .r2f-dot {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 18px;
+          height: 18px;
+          margin: -9px 0 0 -9px;
+          border-radius: 50%;
+          background: var(--bs-ink);
+          z-index: 6;
+        }
+        #r2f-sale {
+          position: absolute;
+          left: 300px;
+          top: 1262px;
+          width: 440px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 22px 34px;
+          border-radius: 28px;
+          background: #d4eedd;
+          color: #0b5c33;
+        }
+        #r2f-sale .bs-metric__label {
+          color: #0b5c33;
+        }
+        #r2f-sale .bs-metric__value {
+          font-size: 96px;
+          color: #0b5c33;
+        }
+      </style>
+      <div id="r2f-root" class="bs-scene bs-theme-paper" data-composition-id="r2-funnel" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r2f-head">
+          <div class="bs-label bs-label--accent">Doğru akış</div>
+          <h2 class="bs-headline">Müşteri böyle gelir:</h2>
+        </div>
+        <div id="r2f-b1" class="r2f-band"><b>İçerik</b><span>dikkat çeker</span></div>
+        <div id="r2f-b2" class="r2f-band"><b>Güven</b><span>neden siz?</span></div>
+        <div id="r2f-b3" class="r2f-band"><b>Talep</b><span>DM · form · arama</span></div>
+        <div id="r2f-b4" class="r2f-band"><b style="color: var(--bs-paper)">Müşteri</b><span>satış</span></div>
+        <div id="r2f-sale"><span class="bs-metric__label">Satış</span><span id="r2f-count" class="bs-metric__value">0</span></div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const clock = BS.clock(tl, 5.555);
+          const root = document.getElementById("r2f-root");
+
+          // ---- funnel geometry (authored constants, no measuring) ----------
+          const CX = 520;
+          const BANDS = [
+            { id: "r2f-b1", top: 520, wT: 880, wB: 770, bg: "#E6E3DC", at: 0.22 },
+            { id: "r2f-b2", top: 700, wT: 750, wB: 640, bg: "#E0E1FB", at: 0.78 },
+            { id: "r2f-b3", top: 880, wT: 620, wB: 510, bg: "#C3C6FA", at: 1.33 },
+            { id: "r2f-b4", top: 1060, wT: 490, wB: 380, bg: "#4045E6", at: 1.89 },
+          ];
+          BANDS.forEach((b) => {
+            const el = document.getElementById(b.id);
+            const inset = (b.wT - b.wB) / 2;
+            el.style.left = CX - b.wT / 2 + "px";
+            el.style.top = b.top + "px";
+            el.style.width = b.wT + "px";
+            el.style.background = b.bg;
+            el.style.clipPath = `polygon(0 0, 100% 0, calc(100% - ${inset}px) 100%, ${inset}px 100%)`;
+            tl.fromTo(el, { opacity: 0, y: -26 }, { opacity: 1, y: 0, duration: 0.42, ease: "back.out(1.6)" }, b.at);
+          });
+          tl.fromTo("#r2f-head .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.05);
+          BS.reveal(tl, document.querySelector("#r2f-head .bs-headline"), 0.08, "rise");
+          BS.pop(tl, "#r2f-sale", 2.2, { from: 0.7, dur: 0.4 });
+
+          // ---- leads: 36 seeded dots ---------------------------------------
+          // survive[i] = how many bands the dot passes (1..4): 12 / 10 / 7 / 7
+          const N = 36;
+          const rnd = BS.rand(108);
+          const survive = [];
+          for (let i = 0; i < N; i++) survive.push(i % 36 < 12 ? 1 : i % 36 < 22 ? 2 : i % 36 < 29 ? 3 : 4);
+          // shuffle deterministically so leavers and buyers are interleaved
+          for (let i = N - 1; i > 0; i--) {
+            const j = Math.floor(rnd() * (i + 1));
+            [survive[i], survive[j]] = [survive[j], survive[i]];
+          }
+          const Y0 = 480;
+          const Y_END = [680, 860, 1040, 1225]; // bottom of each band
+          const SPEED = 640; // px/s
+          const halfW = (y) => 440 - ((y - 520) / (1220 - 520)) * 250;
+          const dots = [];
+          for (let i = 0; i < N; i++) {
+            const d = document.createElement("div");
+            d.className = "r2f-dot";
+            d.setAttribute("data-layout-ignore", "");
+            root.appendChild(d);
+            // leads travel along the funnel's sides so the stage labels stay readable
+            const side = i % 2 ? 1 : -1;
+            dots.push({ el: d, t0: 2.3 + i * 0.052, u: side * (0.5 + rnd() * 0.32), s: survive[i] });
+          }
+          const ink = "#0A0C16",
+            pen = "#C9331D",
+            ok = "#0F7542";
+          let lastSales = -1;
+          const countEl = document.getElementById("r2f-count");
+          clock.on((t) => {
+            let sales = 0;
+            for (const d of dots) {
+              const yExit = Y_END[d.s - 1];
+              const tExit = d.t0 + (yExit - Y0) / SPEED;
+              let x, y, o, c;
+              if (t < d.t0) {
+                o = 0;
+                x = CX;
+                y = Y0;
+                c = ink;
+              } else if (t < tExit) {
+                y = Y0 + (t - d.t0) * SPEED;
+                x = CX + d.u * Math.max(120, halfW(y)) * 0.86;
+                o = Math.min(1, (t - d.t0) / 0.12);
+                c = d.s === 4 && y > 1060 ? ok : ink;
+              } else if (d.s < 4) {
+                // leaves the funnel: turns red pen, slides out sideways, fades
+                const k = t - tExit;
+                y = yExit + k * 120;
+                x = CX + d.u * Math.max(120, halfW(yExit)) * 0.86 + Math.sign(d.u || 1) * k * 520;
+                o = Math.max(0, 1 - k / 0.45);
+                c = pen;
+              } else {
+                // arrives at SATIŞ
+                const k = t - tExit;
+                y = yExit + k * 160;
+                x = CX + d.u * 120 * 0.86 * Math.max(0, 1 - k * 4);
+                o = Math.max(0, 1 - k / 0.18);
+                c = ok;
+                sales++;
+              }
+              d.el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+              d.el.style.opacity = o.toFixed(3);
+              d.el.style.background = c;
+            }
+            if (sales !== lastSales) {
+              countEl.textContent = String(sales);
+              lastSales = sales;
+            }
+          });
+          // a small bump on the card whenever it can (scale pulse at the first sale)
+          const firstSale = Math.min(...dots.filter((d) => d.s === 4).map((d) => d.t0 + (Y_END[3] - Y0) / SPEED));
+          tl.fromTo("#r2f-sale", { scale: 1 }, { scale: 1.06, duration: 0.14, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, firstSale);
+          window.__timelines["r2-funnel"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

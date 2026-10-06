@@ -1,0 +1,229 @@
+<!doctype html>
+<!-- Reel 04 · s2-details (5.4–12.6, local 0–7.2) — four differences, 1.8 s each.
+     Top window = A (red pen marks the problem), bottom window = B (cobalt marks
+     the decision). A camera inside each window pans/zooms to the same idea. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r4d-root {
+          position: absolute;
+          inset: 0;
+        }
+        .r4d-head {
+          position: absolute;
+          left: 72px;
+          top: 300px;
+          width: 880px;
+          opacity: 0;
+        }
+        .r4d-head .bs-label {
+          margin-bottom: 10px;
+        }
+        .r4d-head .bs-headline {
+          font-size: 80px;
+        }
+        .r4d-win {
+          position: absolute;
+          left: 60px;
+          width: 960px;
+          height: 470px;
+          border-radius: 28px;
+          overflow: hidden;
+          box-shadow: var(--bs-shadow-lift);
+        }
+        #r4d-wa {
+          top: 520px;
+          background: #f4efdc;
+        }
+        #r4d-wb {
+          top: 1010px;
+          background: #fbfaf7;
+        }
+        .r4d-cam {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 960px;
+          height: 1020px;
+          transform-origin: 0 0;
+        }
+        .r4d-marks {
+          position: absolute;
+          inset: 0;
+          z-index: 4;
+        }
+        .r4-chip {
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          z-index: 6;
+          padding: 8px 18px;
+          border-radius: 12px;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 30px;
+          color: var(--bs-paper);
+        }
+        .r4-chip--a {
+          background: var(--bs-redpen);
+        }
+        .r4-chip--b {
+          background: var(--bs-signal);
+        }
+        .r4d-q {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 76px;
+          height: 76px;
+          border-radius: 50%;
+          background: var(--bs-redpen);
+          color: var(--bs-paper);
+          font-family: var(--bs-font-serif);
+          font-style: italic;
+          font-size: 60px;
+          opacity: 0;
+          z-index: 5;
+        }
+        .r4d-n {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: var(--bs-signal);
+          color: var(--bs-paper);
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 32px;
+          opacity: 0;
+          z-index: 5;
+        }
+      </style>
+      <div id="r4d-root" class="bs-scene bs-theme-paper" data-composition-id="r4-details" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+
+        <div id="r4d-h1" class="r4d-head"><div class="bs-label bs-label--accent">01 / 04 · Tipografi</div><h2 class="bs-headline">Tek aile, net boyutlar.</h2></div>
+        <div id="r4d-h2" class="r4d-head"><div class="bs-label bs-label--accent">02 / 04 · Boşluk</div><h2 class="bs-headline">Nefes alan tasarım.</h2></div>
+        <div id="r4d-h3" class="r4d-head"><div class="bs-label bs-label--accent">03 / 04 · Hiyerarşi</div><h2 class="bs-headline">Göz önce neye bakacak?</h2></div>
+        <div id="r4d-h4" class="r4d-head"><div class="bs-label bs-label--accent">04 / 04 · CTA</div><h2 class="bs-headline">Tek, net bir buton.</h2></div>
+
+        <div id="r4d-wa" class="r4d-win">
+          <div id="r4d-ca" class="r4d-cam"></div>
+          <div id="r4d-ma" class="r4d-marks" data-layout-ignore></div>
+          <span class="r4-chip r4-chip--a" data-layout-allow-overlap>A</span>
+          <div id="r4d-q1" class="r4d-q" style="left: 286px; top: 70px" data-layout-allow-overlap>?</div>
+          <div id="r4d-q2" class="r4d-q" style="left: 600px; top: 190px" data-layout-allow-overlap>?</div>
+          <div id="r4d-q3" class="r4d-q" style="left: 400px; top: 330px" data-layout-allow-overlap>?</div>
+        </div>
+        <div id="r4d-wb" class="r4d-win">
+          <div id="r4d-cb" class="r4d-cam"></div>
+          <div id="r4d-mb" class="r4d-marks" data-layout-ignore></div>
+          <span class="r4-chip r4-chip--b" data-layout-allow-overlap>B</span>
+          <div id="r4d-n1" class="r4d-n" style="left: 214px; top: 66px" data-layout-allow-overlap>1</div>
+          <div id="r4d-n2" class="r4d-n" style="left: 214px; top: 150px" data-layout-allow-overlap>2</div>
+          <div id="r4d-n3" class="r4d-n" style="left: 214px; top: 214px" data-layout-allow-overlap>3</div>
+        </div>
+
+        <div id="r4d-cursor" class="bs-cursor">
+          <svg viewBox="0 0 72 72" aria-hidden="true"><path d="M12 6 L12 58 L25.5 45.5 L35 66 L44.5 61.5 L35 41.5 L53 41.5 Z" fill="#0A0C16" stroke="#F2F0EB" stroke-width="4.5" stroke-linejoin="round" /></svg>
+          <span class="bs-ripple" data-layout-ignore></span>
+          <span class="bs-cursor__label bs-cursor__label--accent" data-layout-allow-overflow data-layout-allow-overlap>Müşteri</span>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const $ = (s) => document.getElementById(s);
+          AdaPages.build($("r4d-ca"), "A", "crop");
+          AdaPages.build($("r4d-cb"), "B", "crop");
+          const ma = $("r4d-ma"),
+            mb = $("r4d-mb");
+
+          // camera poses per difference: [x, y, scale] (page → window, origin 0 0)
+          const camA = [
+            [0, -110, 1],
+            [0, -560, 1],
+            [259, 0, 0.46],
+            [-1232, -1892, 2.2],
+          ];
+          const camB = [
+            [0, -140, 1],
+            [0, -600, 1],
+            [259, 0, 0.46],
+            [-30, -630, 1.5],
+          ];
+          const D = 1.8;
+          let prevA = null,
+            prevB = null;
+          for (let k = 0; k < 4; k++) {
+            const t0 = k * D;
+            const a = { x: camA[k][0], y: camA[k][1], scale: camA[k][2] };
+            const b = { x: camB[k][0], y: camB[k][1], scale: camB[k][2] };
+            if (!prevA) {
+              tl.set("#r4d-ca", a, 0);
+              tl.set("#r4d-cb", b, 0);
+            } else {
+              tl.fromTo("#r4d-ca", prevA, Object.assign({ duration: 0.45, ease: "power3.inOut", immediateRender: false }, a), t0);
+              tl.fromTo("#r4d-cb", prevB, Object.assign({ duration: 0.45, ease: "power3.inOut", immediateRender: false }, b), t0 + 0.06);
+            }
+            prevA = a;
+            prevB = b;
+            // headline swap
+            const h = "#r4d-h" + (k + 1);
+            tl.set(h, { opacity: 1 }, t0 + 0.02);
+            tl.fromTo(h + " .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, t0 + 0.04);
+            BS.reveal(tl, document.querySelector(h + " .bs-headline"), t0 + 0.08, "rise", { dur: 0.5 });
+            if (k < 3) BS.exit(tl, h, t0 + D - 0.12, "lift", { dur: 0.12 });
+          }
+          // windows arrive
+          BS.slide(tl, "#r4d-wa", 0.02, { dir: "left", dist: 160, dur: 0.45, ease: "expo.out" });
+          BS.slide(tl, "#r4d-wb", 0.08, { dir: "right", dist: 160, dur: 0.45, ease: "expo.out" });
+
+          // marks: red pen on A, cobalt on B — drawn, then cleared before the next pan
+          const mark = (box, kind, k, isB, delay, opts) => {
+            const p = BS.pen(isB ? mb : ma, kind, box, Object.assign({ fix: isB }, opts || {}));
+            const t0 = k * D;
+            BS.draw(tl, p, t0 + delay, 0.4);
+            if (k < 3) tl.to(p.parentNode, { opacity: 0, duration: 0.12 }, t0 + D - 0.14);
+            return p;
+          };
+          // 01 typography
+          mark({ x: 220, y: 22, w: 520, h: 130 }, "circle", 0, false, 0.45, { seed: 31 });
+          mark({ x: 90, y: 214, w: 780, h: 34 }, "underline", 0, false, 0.75, { seed: 32 });
+          mark({ x: 26, y: 40, w: 34, h: 200 }, "bracket", 0, true, 0.7, { thin: true });
+          mark({ x: 60, y: 206, w: 440, h: 30 }, "underline", 0, true, 0.95, { thin: true, seed: 34 });
+          // 02 spacing
+          mark({ x: 6, y: 150, w: 330, h: 190 }, "circle", 1, false, 0.45, { seed: 35 });
+          mark({ x: 40, y: 104, w: 300, h: 300 }, "circle", 1, true, 0.75, { seed: 36 });
+          mark({ x: 60, y: 82, w: 840, h: 26 }, "underline", 1, true, 0.95, { thin: true, seed: 37 });
+          // 03 hierarchy: everything shouts (A) vs a clear 1-2-3 path (B)
+          [1, 2, 3].forEach((i) => {
+            BS.pop(tl, "#r4d-q" + i, 2 * D + 0.4 + i * 0.14, { from: 0.3, dur: 0.3, ease: "back.out(2.4)" });
+            tl.to("#r4d-q" + i, { opacity: 0, duration: 0.12 }, 3 * D - 0.14);
+            BS.pop(tl, "#r4d-n" + i, 2 * D + 0.75 + i * 0.16, { from: 0.3, dur: 0.3, ease: "back.out(2.4)" });
+            tl.to("#r4d-n" + i, { opacity: 0, duration: 0.12 }, 3 * D - 0.14);
+          });
+          // 04 CTA: the tiny link vs one clear button (a customer clicks it)
+          mark({ x: 290, y: 60, w: 560, h: 110 }, "circle", 3, false, 0.45, { seed: 38 });
+          mark({ x: 36, y: 50, w: 460, h: 170 }, "circle", 3, true, 0.7, { seed: 39 });
+          const cursor = $("r4d-cursor");
+          tl.fromTo(cursor, { opacity: 0 }, { opacity: 1, duration: 0.12 }, 3 * D + 0.25);
+          BS.cursorPath(tl, cursor, [
+            { t: 3 * D + 0.25, x: 980, y: 1500 },
+            { t: 3 * D + 0.3, x: 310, y: 1140, dur: 0.6, ease: "power3.out" },
+          ]);
+          BS.click(tl, cursor, 3 * D + 1.05);
+          window.__timelines["r4-details"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

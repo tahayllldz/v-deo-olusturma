@@ -1,0 +1,178 @@
+<!doctype html>
+<!-- Reel 04 · s1-reveal (0.0–5.4)
+     Under the hook: A and B as two small tabs. Then A full-size ("bugünkü site"),
+     and a cobalt divider wipes across to reveal B — same content, new structure. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r4r-root {
+          position: absolute;
+          inset: 0;
+        }
+        .r4-mini {
+          position: absolute;
+          top: 1010px;
+          width: 440px;
+          height: 467px;
+          border-radius: 22px;
+          overflow: hidden;
+          box-shadow: var(--bs-shadow-lift);
+        }
+        .r4-mini .ada-page {
+          transform: scale(0.4584);
+        }
+        .r4-chip {
+          position: absolute;
+          top: 16px;
+          left: 16px;
+          z-index: 5;
+          padding: 8px 18px;
+          border-radius: 12px;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 30px;
+          color: var(--bs-paper);
+        }
+        .r4-chip--a {
+          background: var(--bs-redpen);
+        }
+        .r4-chip--b {
+          background: var(--bs-signal);
+        }
+        .r4r-head {
+          position: absolute;
+          left: 72px;
+          top: 300px;
+          width: 880px;
+          opacity: 0;
+        }
+        .r4r-head .bs-label {
+          margin-bottom: 10px;
+        }
+        .r4r-head .bs-headline {
+          font-size: 76px;
+        }
+        #r4r-ha .bs-label {
+          color: var(--bs-redpen);
+        }
+        #r4r-win {
+          position: absolute;
+          left: 60px;
+          top: 470px;
+          width: 960px;
+          border-radius: 30px;
+          overflow: hidden;
+          background: var(--bs-sheet);
+          box-shadow: var(--bs-shadow-lift);
+          opacity: 0;
+        }
+        #r4r-win .bs-browser__bar {
+          height: 70px;
+        }
+        #r4r-view {
+          position: relative;
+          height: 1010px;
+          overflow: hidden;
+        }
+        #r4r-after {
+          position: absolute;
+          inset: 0;
+        }
+        #r4r-divider {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 8px;
+          margin-left: -4px;
+          background: var(--bs-signal);
+          z-index: 6;
+          opacity: 0;
+        }
+        #r4r-knob {
+          position: absolute;
+          left: 50%;
+          top: 470px;
+          width: 84px;
+          height: 84px;
+          margin-left: -42px;
+          border-radius: 50%;
+          background: var(--bs-signal);
+          color: var(--bs-paper);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 34px;
+        }
+      </style>
+      <div id="r4r-root" class="bs-scene bs-theme-paper" data-composition-id="r4-reveal" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+
+        <div id="r4r-miniA" class="r4-mini" style="left: 72px"><span class="r4-chip r4-chip--a" data-layout-allow-overlap>A</span></div>
+        <div id="r4r-miniB" class="r4-mini" style="left: 568px"><span class="r4-chip r4-chip--b" data-layout-allow-overlap>B</span></div>
+
+        <div id="r4r-ha" class="r4r-head">
+          <div class="bs-label">A · bugün</div>
+          <h2 class="bs-headline">Bugünkü site.</h2>
+        </div>
+        <div id="r4r-hb" class="r4r-head">
+          <div class="bs-label bs-label--accent">B · <span lang="en">Beta Studio</span> dokunuşu</div>
+          <h2 class="bs-headline">Aynı içerik, yeni kurgu.</h2>
+        </div>
+
+        <div id="r4r-win">
+          <div class="bs-browser__bar">
+            <div class="bs-browser__dots"><i></i><i></i><i></i></div>
+            <div class="bs-browser__url">isletmeniz.com</div>
+            <div class="bs-browser__close">×</div>
+          </div>
+          <div id="r4r-view">
+            <div id="r4r-before"></div>
+            <div id="r4r-after"></div>
+            <div id="r4r-divider" data-layout-ignore><span id="r4r-knob">⇆</span></div>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const $ = (s) => document.getElementById(s);
+          AdaPages.build($("r4r-miniA"), "A", "crop");
+          AdaPages.build($("r4r-miniB"), "B", "crop");
+          AdaPages.build($("r4r-before"), "A", "layered");
+          AdaPages.build($("r4r-after"), "B", "layered");
+
+          // under the hook: A and B rise as two tabs
+          BS.slide(tl, "#r4r-miniA", 0.4, { dir: "up", dist: 260, dur: 0.8, ease: "expo.out" });
+          BS.slide(tl, "#r4r-miniB", 0.55, { dir: "up", dist: 260, dur: 0.8, ease: "expo.out" });
+          tl.to("#r4r-miniA", { x: -560, opacity: 0, duration: 0.3, ease: "power2.in" }, 2.42);
+          tl.to("#r4r-miniB", { x: 560, opacity: 0, duration: 0.3, ease: "power2.in" }, 2.42);
+
+          // A full size
+          tl.fromTo("#r4r-win", { opacity: 0, y: 120, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" }, 2.62);
+          tl.set("#r4r-ha", { opacity: 1 }, 2.7);
+          tl.fromTo("#r4r-ha .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.72);
+          BS.reveal(tl, document.querySelector("#r4r-ha .bs-headline"), 2.78, "rise");
+          BS.exit(tl, "#r4r-ha", 3.82, "lift", { dur: 0.2 });
+
+          // the divider wipes right → left: B takes over (lands on the beat at 4.8)
+          tl.fromTo("#r4r-after", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.95, ease: "power3.inOut" }, 3.85);
+          tl.fromTo("#r4r-divider", { x: 960, opacity: 1 }, { x: 0, opacity: 1, duration: 0.95, ease: "power3.inOut" }, 3.85);
+          tl.to("#r4r-divider", { opacity: 0, duration: 0.2 }, 4.8);
+          tl.set("#r4r-before", { opacity: 0 }, 4.82);
+          tl.set("#r4r-hb", { opacity: 1 }, 4.0);
+          tl.fromTo("#r4r-hb .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.02);
+          BS.reveal(tl, document.querySelector("#r4r-hb .bs-headline"), 4.1, "rise");
+          tl.fromTo("#r4r-win", { scale: 1 }, { scale: 1.02, duration: 0.6, ease: "sine.out", immediateRender: false }, 4.8);
+          window.__timelines["r4-reveal"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

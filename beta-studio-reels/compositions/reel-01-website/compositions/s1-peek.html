@@ -1,0 +1,121 @@
+<!doctype html>
+<!-- Reel 01 · s1-peek (0.00–2.70) — the site is still loading under the hook;
+     the visitor's cursor drifts to the tab's ×. Ends on the exact pose s2 starts from. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r1k-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r1k-browser {
+          position: absolute;
+          left: 110px;
+          top: 1110px;
+          width: 860px;
+        }
+        #r1k-view {
+          height: 836px;
+          background: var(--bs-sheet);
+        }
+        .r1-loadbar {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 8px;
+          background: var(--bs-paper-3);
+        }
+        .r1-loadbar > i {
+          position: absolute;
+          inset: 0;
+          display: block;
+          background: #575a6b;
+          transform-origin: left center;
+        }
+        .r1-sk {
+          position: absolute;
+          border-radius: 14px;
+          background: #ebe8e1;
+        }
+        .r1-spin {
+          position: absolute;
+          left: 375px;
+          top: 520px;
+          width: 110px;
+          height: 110px;
+          border-radius: 50%;
+          border: 10px solid var(--bs-paper-3);
+          border-top-color: var(--bs-ink);
+        }
+        .r1-loading {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 660px;
+          text-align: center;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 30px;
+          color: var(--bs-muted);
+        }
+        #r1k-close {
+          border-radius: 50%;
+        }
+      </style>
+      <div id="r1k-root" class="bs-scene bs-theme-paper" data-composition-id="r1-peek" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r1k-browser" class="bs-browser">
+          <div class="bs-browser__bar">
+            <div class="bs-browser__dots"><i></i><i></i><i></i></div>
+            <div class="bs-browser__url">isletmeniz.com</div>
+            <div id="r1k-close" class="bs-browser__close">×</div>
+          </div>
+          <div id="r1k-view" class="bs-browser__view">
+            <div class="r1-loadbar"><i id="r1k-load"></i></div>
+            <div class="r1-sk" style="left: 40px; top: 40px; width: 200px; height: 34px"></div>
+            <div class="r1-sk" style="left: 560px; top: 44px; width: 260px; height: 26px"></div>
+            <div class="r1-sk" style="left: 40px; top: 110px; width: 780px; height: 330px"></div>
+            <div id="r1k-spin" class="r1-spin"></div>
+            <div class="r1-loading">yükleniyor… <span id="r1k-sec">0,0 sn</span></div>
+          </div>
+        </div>
+        <div id="r1k-cursor" class="bs-cursor">
+          <svg viewBox="0 0 72 72" aria-hidden="true"><path d="M12 6 L12 58 L25.5 45.5 L35 66 L44.5 61.5 L35 41.5 L53 41.5 Z" fill="#0A0C16" stroke="#F2F0EB" stroke-width="4.5" stroke-linejoin="round" /></svg>
+          <span class="bs-ripple" data-layout-ignore></span>
+          <span class="bs-cursor__label bs-cursor__label--left" data-layout-allow-overflow data-layout-allow-overlap>Ziyaretçi</span>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const clock = BS.clock(tl, 2.7);
+
+          // browser rises into the lower third while the hook plays
+          tl.fromTo("#r1k-browser", { y: 380, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, 0.3);
+          // slow site: spinner + crawling bar + elapsed seconds
+          tl.fromTo("#r1k-spin", { rotation: 0 }, { rotation: 760, duration: 2.7, ease: "none" }, 0);
+          tl.fromTo("#r1k-load", { scaleX: 0.02 }, { scaleX: 0.12, duration: 2.4, ease: "power1.out" }, 0.3);
+          BS.count(clock, document.getElementById("r1k-sec"), { from: 0, to: 2.4, start: 0.3, dur: 2.4, ease: "none", decimals: 1, suffix: " sn" });
+
+          // visitor cursor drifts toward the tab's ×  (tip = element + (12, 6))
+          BS.cursorPath(tl, document.getElementById("r1k-cursor"), [
+            { t: 0, x: 1010, y: 1760 },
+            { t: 0.8, x: 640, y: 1360, dur: 0.75, ease: "power2.out" },
+            { t: 1.75, x: 907, y: 1146, dur: 0.5, ease: "power3.inOut" },
+          ]);
+          tl.fromTo("#r1k-close", { backgroundColor: "rgba(201,51,29,0)" }, { backgroundColor: "rgba(201,51,29,0.16)", duration: 0.2, ease: "power1.out" }, 2.2);
+          tl.to("#r1k-cursor", { opacity: 0, duration: 0.2, ease: "power1.in" }, 2.38);
+
+          // hand-off: browser glides to the exact pose s2-problems starts from (top 560)
+          tl.fromTo("#r1k-browser", { y: 0 }, { y: -550, duration: 0.32, ease: "power3.inOut", immediateRender: false }, 2.38);
+          window.__timelines["r1-peek"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

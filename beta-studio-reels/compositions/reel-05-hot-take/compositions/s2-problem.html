@@ -1,0 +1,99 @@
+<!doctype html>
+<!-- Reel 05 · s2-problem (3.913–7.174, local 0–3.261) — hard flip to paper.
+     "Önce problemi bulun." + a fixed question slot that swaps on every beat. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r5p-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r5p-head {
+          position: absolute;
+          left: 72px;
+          top: 320px;
+          width: 900px;
+        }
+        #r5p-head .bs-label {
+          margin-bottom: 14px;
+        }
+        #r5p-h {
+          font-size: 124px;
+        }
+        #r5p-h .bs-serif {
+          color: var(--bs-signal);
+        }
+        #r5p-slot {
+          position: absolute;
+          left: 72px;
+          top: 760px;
+          width: 860px;
+          height: 330px;
+          padding: 40px 44px;
+          box-sizing: border-box;
+          border-radius: 36px;
+          background: var(--bs-sheet);
+          box-shadow: var(--bs-shadow-lift);
+        }
+        #r5p-slot .bs-label {
+          color: var(--bs-muted);
+        }
+        .r5p-q {
+          position: absolute;
+          left: 44px;
+          right: 44px;
+          top: 110px;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 76px;
+          line-height: 1;
+          letter-spacing: -0.03em;
+          color: var(--bs-ink);
+          opacity: 0;
+        }
+        #r5p-arrow {
+          position: absolute;
+          left: 860px;
+          top: 1110px;
+          width: 90px;
+          height: 150px;
+        }
+      </style>
+      <div id="r5p-root" class="bs-scene bs-theme-paper" data-composition-id="r5-problem" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r5p-head">
+          <div class="bs-label bs-label--accent">Uygulamadan önce</div>
+          <h2 id="r5p-h" class="bs-hook">Önce <span class="bs-serif">problemi</span> bulun.</h2>
+        </div>
+        <div id="r5p-slot">
+          <div class="bs-label">Müşteriniz nerede takılıyor?</div>
+          <div id="r5p-q1" class="r5p-q">Sipariş vermek mi zor?</div>
+          <div id="r5p-q2" class="r5p-q">Randevu almak mı karışık?</div>
+          <div id="r5p-q3" class="r5p-q">Bilgiye mi ulaşamıyor?</div>
+          <div id="r5p-q4" class="r5p-q">Yoksa sizi hiç mi bulamıyor?</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#r5p-head .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.04);
+          BS.reveal(tl, document.getElementById("r5p-h"), 0.06, "slam", { from: 1.4, stagger: 0.06 });
+          BS.slide(tl, "#r5p-slot", 0.3, { dir: "up", dist: 140, dur: 0.5, ease: "expo.out" });
+          // token swap on the beat (0.652 s): instant cut + a small settle
+          const beat = 0.652;
+          [1, 2, 3, 4].forEach((i) => {
+            const at = beat * i;
+            tl.set("#r5p-q" + i, { opacity: 1 }, at);
+            tl.fromTo("#r5p-q" + i, { y: 18, scale: 0.97 }, { y: 0, scale: 1, duration: 0.22, ease: "power3.out", immediateRender: false }, at);
+            if (i < 4) tl.set("#r5p-q" + i, { opacity: 0 }, at + beat);
+          });
+          window.__timelines["r5-problem"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

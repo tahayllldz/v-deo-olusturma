@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- Reel 02 · s2-equation (7.222–8.889, local 0–1.667) — hard cut to paper.
+     "Takipçi ≠ Müşteri": the red pen draws the ≠ by hand. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r2e-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r2e-stack {
+          position: absolute;
+          left: 72px;
+          right: 150px;
+          top: 470px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        #r2e-label {
+          margin-bottom: 24px;
+          color: var(--bs-redpen);
+        }
+        #r2e-a,
+        #r2e-b {
+          font-size: 160px;
+        }
+        #r2e-neq {
+          position: relative;
+          width: 300px;
+          height: 230px;
+        }
+        #r2e-b .bs-serif {
+          color: var(--bs-signal);
+        }
+      </style>
+      <div id="r2e-root" class="bs-scene bs-theme-paper" data-composition-id="r2-equation" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r2e-stack">
+          <div id="r2e-label" class="bs-label">Çünkü</div>
+          <div id="r2e-a" class="bs-hook">Takipçi</div>
+          <div id="r2e-neq"></div>
+          <div id="r2e-b" class="bs-hook"><span class="bs-serif">Müşteri</span>.</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const neq = document.getElementById("r2e-neq");
+          // hand-drawn ≠ : two bars, then the slash
+          const bar1 = BS.pen(neq, "underline", { x: 30, y: 54, w: 240, h: 40 }, { seed: 2 });
+          const bar2 = BS.pen(neq, "underline", { x: 30, y: 128, w: 240, h: 40 }, { seed: 6 });
+          const slash = BS.pen(neq, "slash", { x: 90, y: 6, w: 130, h: 218 }, { seed: 3 });
+          bar1.parentNode.style.strokeWidth = bar2.parentNode.style.strokeWidth = slash.parentNode.style.strokeWidth = "14";
+          tl.fromTo("#r2e-label", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.04);
+          BS.reveal(tl, document.getElementById("r2e-a"), 0.06, "slam", { from: 1.5 });
+          BS.draw(tl, bar1, 0.38, 0.16, "power1.inOut");
+          BS.draw(tl, bar2, 0.5, 0.16, "power1.inOut");
+          BS.draw(tl, slash, 0.64, 0.2, "power2.out");
+          BS.reveal(tl, document.getElementById("r2e-b"), 0.82, "rise", { stagger: 0.08 });
+          tl.fromTo("#r2e-stack", { scale: 1 }, { scale: 1.035, duration: 1.6, ease: "sine.out" }, 0.05);
+          window.__timelines["r2-equation"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

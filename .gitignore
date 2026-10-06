@@ -1,0 +1,16 @@
+# synced copies of the shared library (regenerate with: cd beta-studio-reels && npm run sync)
+beta-studio-reels/**/system/
+beta-studio-reels/compositions/*/frame.md
+beta-studio-reels/templates/*/frame.md
+beta-studio-reels/thumbnails/*/frame.md
+beta-studio-reels/components/gallery/frame.md
+beta-studio-reels/compositions/*/compositions/bs-endcard.html
+beta-studio-reels/templates/*/compositions/bs-endcard.html
+# HyperFrames working files
+**/snapshots/
+**/.hyperframes/
+**/.filter-complex-*/
+beta-studio-reels/compositions/*/renders/
+beta-studio-reels/templates/*/renders/
+node_modules/
+.DS_Store

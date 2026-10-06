@@ -1,0 +1,251 @@
+<!doctype html>
+<!-- Reel 03 · s3-after (9.783–15.652, local 0–5.869)
+     Same question at 23:41 → AI answers in 2 s → quick replies → appointment.
+     Right column: the CRM record writes itself; the automation chain lights up. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r3a-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r3a-head {
+          position: absolute;
+          left: 72px;
+          top: 300px;
+          width: 880px;
+        }
+        #r3a-head .bs-label {
+          margin-bottom: 12px;
+        }
+        #r3a-head .bs-headline {
+          font-size: 84px;
+        }
+        #r3a-head .bs-serif {
+          color: var(--accent-text);
+        }
+        #r3a-wrap {
+          position: absolute;
+          left: 72px;
+          top: 560px;
+          width: 472px;
+          height: 958px;
+        }
+        #r3a-phone {
+          transform: scale(0.76);
+          transform-origin: 0 0;
+        }
+        #r3a-screen {
+          background: #ebe5da;
+        }
+        .r3a-chathead {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 200px;
+          padding: 100px 28px 0;
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          background: var(--bs-sheet);
+          font-family: var(--bs-font-display);
+          color: var(--bs-ink);
+        }
+        .r3a-chathead b {
+          display: block;
+          font-weight: 750;
+          font-size: 32px;
+        }
+        .r3a-chathead span.on {
+          font-size: 24px;
+          color: var(--bs-ok);
+        }
+        #r3a-msgs {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 214px;
+          gap: 14px;
+        }
+        #r3a-msgs .bs-bubble {
+          font-size: 32px;
+        }
+        .r3a-ai {
+          display: inline-block;
+          margin-right: 8px;
+          padding: 2px 10px;
+          border-radius: 8px;
+          background: var(--bs-iris);
+          color: #ffffff;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 20px;
+        }
+        #r3a-quick {
+          align-self: flex-end;
+          display: flex;
+          gap: 10px;
+        }
+        .r3a-qr {
+          position: relative;
+          padding: 14px 22px;
+          border-radius: 999px;
+          border: 3px solid var(--bs-signal);
+          background: var(--bs-sheet);
+          color: var(--bs-signal-deep);
+          font-family: var(--bs-font-display);
+          font-weight: 700;
+          font-size: 28px;
+        }
+        #r3a-tap {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 90px;
+          height: 90px;
+          margin: -45px 0 0 -45px;
+          border-radius: 50%;
+          background: rgba(64, 69, 230, 0.35);
+          opacity: 0;
+        }
+        #r3a-col {
+          position: absolute;
+          left: 578px;
+          top: 560px;
+          width: 352px;
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+        }
+        #r3a-crm {
+          padding: 22px;
+          gap: 14px;
+        }
+        #r3a-crm .bs-dash__head {
+          font-size: 22px;
+        }
+        #r3a-crm .bs-dash__row {
+          grid-template-columns: 64px 1fr;
+          gap: 14px;
+          padding: 14px;
+        }
+        #r3a-crm .bs-avatar {
+          width: 64px;
+          height: 64px;
+          font-size: 26px;
+        }
+        .r3a-kv {
+          display: flex;
+          justify-content: space-between;
+          font-family: var(--bs-font-mono);
+          font-size: 22px;
+          color: #3c3f55;
+        }
+        .r3a-kv b {
+          color: var(--bs-ink);
+        }
+        .r3a-step {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 16px 20px;
+          border-radius: 20px;
+          background: var(--panel);
+          color: var(--fg-muted);
+          font-family: var(--bs-font-display);
+          font-weight: 700;
+          font-size: 32px;
+        }
+        .r3a-step .bs-check {
+          width: 44px;
+          height: 44px;
+          font-size: 24px;
+          background: var(--bs-ink-3);
+          color: var(--bs-muted-on-ink);
+        }
+      </style>
+      <div id="r3a-root" class="bs-scene bs-theme-ink" data-composition-id="r3-after" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r3a-head">
+          <div class="bs-label bs-label--accent">Sonra · AI asistan + CRM</div>
+          <h2 class="bs-headline">Aynı soru. <span class="bs-serif">2 saniyede</span> cevap.</h2>
+        </div>
+
+        <div id="r3a-wrap">
+          <div id="r3a-phone" class="bs-device">
+            <div id="r3a-screen" class="bs-device__screen">
+              <div class="bs-device__island"></div>
+              <div class="bs-device__status" style="z-index: 25"><span>23:41</span><span class="bs-device__bars"><i style="height: 10px"></i><i style="height: 16px"></i><i style="height: 22px"></i></span></div>
+              <div class="r3a-chathead"><span class="bs-avatar" style="background: #e0e1fb; color: var(--bs-signal-deep)">AK</span><div><b>Ayşe K.</b><span class="on">çevrimiçi</span></div></div>
+              <div id="r3a-msgs" class="bs-chat">
+                <div id="r3a-m1" class="bs-bubble bs-bubble--in">Merhaba, fiyat ne kadar?<span class="bs-bubble__meta">23:41</span></div>
+                <div id="r3a-typing" class="bs-typing bs-typing--out"><i></i><i></i><i></i></div>
+                <div id="r3a-m2" class="bs-bubble bs-bubble--ai"><span class="r3a-ai">AI</span>Merhaba Ayşe! Fiyat listemiz hazır. Randevu ister misiniz?<span class="bs-bubble__meta">23:41</span></div>
+                <div id="r3a-quick"><span class="r3a-qr">Fiyat listesi</span><span id="r3a-qr2" class="r3a-qr">Randevu al<span id="r3a-tap" data-layout-ignore></span></span></div>
+                <div id="r3a-m4" class="bs-bubble bs-bubble--ai"><span class="r3a-ai">AI</span>Cuma 14:00 uygun mu?<span class="bs-bubble__meta">23:42</span></div>
+                <div id="r3a-m5" class="bs-bubble bs-bubble--in">Evet, uygun.<span class="bs-bubble__meta">23:42</span></div>
+                <div id="r3a-m6" class="bs-bubble bs-bubble--ai"><span class="r3a-ai">AI</span>Randevunuz oluşturuldu ✓ Cuma 14:00<span class="bs-bubble__meta">23:42</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="r3a-col">
+          <div id="r3a-crm" class="bs-dash">
+            <div class="bs-dash__head"><span>CRM · yeni kayıt</span><span>●</span></div>
+            <div class="bs-dash__row"><span class="bs-avatar">AK</span><div><b style="display: block; font-size: 30px; margin-bottom: 6px">Ayşe K.</b><span class="bs-pill bs-pill--ok">Randevu</span></div></div>
+            <div class="r3a-kv"><span>Kaynak</span><b>WhatsApp</b></div>
+            <div class="r3a-kv"><span>Randevu</span><b>Cuma 14:00</b></div>
+            <div class="r3a-kv"><span>Hatırlatma</span><b>Prş 18:00</b></div>
+          </div>
+          <div id="r3a-s1" class="r3a-step"><span class="bs-check">✓</span>Soru</div>
+          <div id="r3a-s2" class="r3a-step"><span class="bs-check">✓</span>AI yanıt</div>
+          <div id="r3a-s3" class="r3a-step"><span class="bs-check">✓</span>CRM kaydı</div>
+          <div id="r3a-s4" class="r3a-step"><span class="bs-check">✓</span>Hatırlatma</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo("#r3a-head .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.04);
+          BS.reveal(tl, document.querySelector("#r3a-head .bs-headline"), 0.1, "rise");
+          BS.slide(tl, "#r3a-wrap", 0.05, { dir: "up", dist: 200, dur: 0.6, ease: "expo.out" });
+          BS.slide(tl, "#r3a-col > .r3a-step", 0.25, { dir: "right", dist: 80, stagger: 0.07, dur: 0.45 });
+
+          // the conversation (SFX: q 10.25, ai 11.2, tap 12.05, ai 12.45, done 13.25 global)
+          BS.bubble(tl, "#r3a-m1", 0.47);
+          BS.pop(tl, "#r3a-typing", 0.85, { from: 0.6, dur: 0.22 });
+          tl.to("#r3a-typing", { opacity: 0, duration: 0.1 }, 1.38);
+          tl.set("#r3a-typing", { display: "none" }, 1.42);
+          BS.bubble(tl, "#r3a-m2", 1.42);
+          BS.pop(tl, "#r3a-quick", 1.75, { from: 0.7, dur: 0.3 });
+          tl.fromTo("#r3a-tap", { scale: 0.2, opacity: 0.9 }, { scale: 1.6, opacity: 0, duration: 0.45, ease: "power2.out" }, 2.27);
+          tl.fromTo("#r3a-qr2", { scale: 1 }, { scale: 0.92, duration: 0.08, ease: "power2.in", yoyo: true, repeat: 1, immediateRender: false }, 2.27);
+          BS.bubble(tl, "#r3a-m4", 2.67);
+          BS.bubble(tl, "#r3a-m5", 3.05);
+          BS.bubble(tl, "#r3a-m6", 3.45);
+
+          // automation chain lights up in step with the conversation
+          const light = (sel, at) => {
+            tl.to(sel, { backgroundColor: "#2b2db8", color: "#F2F0EB", duration: 0.25, ease: "power1.out" }, at);
+            tl.to(sel + " .bs-check", { backgroundColor: "#4cd38a", color: "#0a0c16", duration: 0.25 }, at);
+            tl.fromTo(sel, { scale: 1 }, { scale: 1.05, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, at);
+          };
+          light("#r3a-s1", 0.5);
+          light("#r3a-s2", 1.45);
+          // CRM record writes itself when the appointment lands
+          BS.slide(tl, "#r3a-crm", 3.62, { dir: "right", dist: 140, dur: 0.5, ease: "expo.out" });
+          light("#r3a-s3", 3.7);
+          light("#r3a-s4", 4.25);
+          window.__timelines["r3-after"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

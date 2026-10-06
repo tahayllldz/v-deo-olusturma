@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="tr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Beta Studio — Component Gallery</title>
+    <link rel="stylesheet" href="system/fonts.css" />
+    <link rel="stylesheet" href="system/beta.css" />
+    <script src="system/gsap.min.js"></script>
+    <script src="system/beta.js"></script>
+    <script src="system/brand.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #16130f;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      .g-title {
+        position: absolute;
+        left: 72px;
+        top: 300px;
+      }
+      .g-col {
+        position: absolute;
+        left: 72px;
+        right: 150px;
+        display: flex;
+        flex-direction: column;
+        gap: 34px;
+      }
+      #g1-glyphs {
+        font-size: 40px;
+      }
+      #g2-browser {
+        position: absolute;
+        left: 90px;
+        top: 360px;
+      }
+      #g2-view {
+        height: 760px;
+        background: var(--bs-sheet);
+      }
+      .g-site-hero {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        top: 70px;
+      }
+      .g-site-hero h3 {
+        margin: 0 0 22px;
+        font-family: var(--bs-font-display);
+        font-size: 64px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        color: var(--bs-ink);
+      }
+      .g-site-hero p {
+        margin: 0 0 40px;
+        font-size: 34px;
+        line-height: 1.25;
+        color: #4a4339;
+      }
+      #g2-cta {
+        --accent: var(--bs-signal);
+        --on-accent: var(--bs-paper);
+      }
+      #g2-label {
+        position: absolute;
+        left: 72px;
+        top: 1210px;
+      }
+      #g3-phone {
+        position: absolute;
+        left: 230px;
+        top: 300px;
+        transform-origin: 50% 0%;
+      }
+      #g3-chat {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 150px;
+        background: #ebe5da;
+        bottom: 0;
+      }
+      #g3-notif {
+        position: absolute;
+        left: 110px;
+        top: 1180px;
+        z-index: 30;
+      }
+      #g4 .g-row {
+        display: flex;
+        gap: 24px;
+      }
+      #g4 .bs-metric {
+        flex: 1;
+      }
+      #g4-ba {
+        height: 300px;
+        border-radius: 28px;
+      }
+      #g4-ba .before {
+        background: #d9d0c0;
+        display: flex;
+        align-items: center;
+        padding-left: 40px;
+        font-family: "Courier New", monospace;
+        font-size: 40px;
+        color: #3a332b;
+      }
+      #g4-ba .after {
+        background: var(--bs-signal-deep);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 40px;
+        font-family: var(--bs-font-display);
+        font-weight: 800;
+        font-size: 56px;
+        color: var(--bs-paper);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="gallery" data-start="0" data-duration="14" data-width="1080" data-height="1920">
+      <!-- 1 · Typography: three voices + Turkish glyph test -->
+      <section id="g1" class="clip bs-scene bs-theme-paper" data-start="0" data-duration="3.6" data-track-index="0">
+        <div class="bs-dots"></div>
+        <div class="g-col" style="top: 330px">
+          <div class="bs-label bs-label--accent">01 · HookText / KineticText</div>
+          <h1 id="g1-hook" class="bs-hook">Web siteniz <span class="bs-serif">müşterileri</span> kaçırıyor olabilir.</h1>
+          <p id="g1-support" class="bs-support">Ziyaretçi <strong>3 saniyede</strong> karar verir.</p>
+          <div id="g1-glyphs" class="bs-label">İĞŞÇÖÜ · ığşçöü · 48.900 ₺</div>
+          <div class="bs-hook bs-hook--md" style="font-size: 96px">beta<span id="g1-caret" class="bs-caret"></span></div>
+        </div>
+      </section>
+
+      <!-- 2 · BrowserMockup + Cursor + red pen / cobalt fix -->
+      <section id="g2" class="clip bs-scene bs-theme-paper" data-start="3.6" data-duration="3.6" data-track-index="0">
+        <div class="bs-dots"></div>
+        <div id="g2-browser" class="bs-browser">
+          <div class="bs-browser__bar">
+            <div class="bs-browser__dots"><i></i><i></i><i></i></div>
+            <div class="bs-browser__url">adazeytin.cy</div>
+            <div class="bs-browser__close">×</div>
+          </div>
+          <div id="g2-view" class="bs-browser__view">
+            <div class="g-site-hero">
+              <h3>Soğuk sıkım, ada usulü.</h3>
+              <p>Kuzey Kıbrıs'ın kendi zeytinlerinden, kapınıza.</p>
+              <div id="g2-cta" class="bs-cta">Sipariş ver <span class="bs-cta__arrow">→</span></div>
+            </div>
+          </div>
+        </div>
+        <div id="g2-cursor" class="bs-cursor">
+          <svg viewBox="0 0 72 72" aria-hidden="true"><path d="M12 6 L12 58 L25.5 45.5 L35 66 L44.5 61.5 L35 41.5 L53 41.5 Z" fill="#16130F" stroke="#F3EEE5" stroke-width="4.5" stroke-linejoin="round" /></svg>
+          <span class="bs-ripple" data-layout-ignore></span>
+          <span class="bs-cursor__label" data-layout-allow-overflow>Ziyaretçi</span>
+        </div>
+        <div id="g2-label" class="bs-label bs-label--accent">02 · BrowserMockup · Cursor · Pen</div>
+      </section>
+
+      <!-- 3 · PhoneMockup + ChatBubble + Notification -->
+      <section id="g3" class="clip bs-scene bs-theme-ink" data-start="7.2" data-duration="3.4" data-track-index="0">
+        <div class="bs-dots"></div>
+        <div id="g3-phone" class="bs-device">
+          <div class="bs-device__screen">
+            <div class="bs-device__island"></div>
+            <div class="bs-device__status"><span>23:47</span><span class="bs-device__bars"><i style="height: 10px"></i><i style="height: 16px"></i><i style="height: 22px"></i></span></div>
+            <div id="g3-chat" class="bs-chat">
+              <div id="g3-b1" class="bs-bubble bs-bubble--in">Merhaba, fiyat ne kadar?<span class="bs-bubble__meta">23:47</span></div>
+              <div id="g3-b2" class="bs-bubble bs-bubble--ai">Merhaba! Fiyat listemiz burada ↓<span class="bs-bubble__meta">23:47 · AI</span></div>
+              <div id="g3-typing" class="bs-typing"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+        </div>
+        <div id="g3-notif" class="bs-notif">
+          <div class="bs-notif__icon">B</div>
+          <div>
+            <div class="bs-notif__head"><span>Mesajlar</span><span>şimdi</span></div>
+            <div class="bs-notif__title">Yeni müşteri adayı</div>
+            <div class="bs-notif__body">Ayşe K. randevu istiyor.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 · MetricCard + ProgressBar + CTA + Dashboard + BeforeAfter -->
+      <section id="g4" class="clip bs-scene bs-theme-paper" data-start="10.6" data-duration="2.2" data-track-index="0">
+        <div class="bs-dots"></div>
+        <div class="g-col" style="top: 300px">
+          <div class="g-row">
+            <div class="bs-metric"><span class="bs-metric__label">Takipçi</span><span id="g4-count" class="bs-metric__value">0</span></div>
+            <div class="bs-metric"><span class="bs-metric__label">Satış</span><span class="bs-metric__value bs-pen-text">0</span></div>
+          </div>
+          <div class="bs-progress"><i id="g4-bar"></i></div>
+          <div class="bs-dash">
+            <div class="bs-dash__head"><span>CRM · Yeni talepler</span><span>3</span></div>
+            <div class="bs-dash__row"><span class="bs-avatar">AK</span><span style="font-size: 34px; font-weight: 700">Ayşe K.</span><span class="bs-pill bs-pill--ok">Randevu</span></div>
+          </div>
+          <div id="g4-ba" class="bs-ba">
+            <div class="bs-ba__layer before">eski site</div>
+            <div id="g4-after" class="bs-ba__layer after" data-layout-allow-overlap>yeni site</div>
+            <div id="g4-div" class="bs-ba__divider" data-layout-ignore><span class="bs-ba__knob">⇆</span></div>
+          </div>
+          <div><span id="g4-cta" class="bs-cta">Kaydedin <span class="bs-cta__arrow">↓</span></span></div>
+        </div>
+      </section>
+
+      <!-- 5 · End card -->
+      <section id="g5" class="clip bs-scene bs-theme-paper" data-start="12.8" data-duration="1.2" data-track-index="0">
+        <div class="bs-endcard">
+          <div class="bs-logo"><span id="g5-word">beta studio</span><span id="g5-caret" class="bs-caret"></span></div>
+          <div class="bs-endcard__line">Digital Growth &amp; Technology Studio</div>
+        </div>
+      </section>
+
+      <!-- brand chrome over everything -->
+      <div id="chrome" class="bs-chrome bs-theme-paper">
+        <div id="tag" class="bs-tag"><span class="bs-tag__dot"></span>Component Gallery</div>
+        <div class="bs-ticks"><span class="bs-tick"><i id="t1"></i></span><span class="bs-tick"><i id="t2"></i></span><span class="bs-tick"><i id="t3"></i></span><span class="bs-tick"><i id="t4"></i></span></div>
+        <div id="handle" class="bs-handle">@betastudio.cy</div>
+      </div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const clock = BS.clock(tl, 14);
+
+      BS.chrome(tl, {
+        tag: "#tag",
+        handle: "#handle",
+        ticks: ["#t1", "#t2", "#t3", "#t4"].map((s) => document.querySelector(s)),
+        chapters: [
+          [0, 3.6],
+          [3.6, 7.2],
+          [7.2, 10.6],
+          [10.6, 14],
+        ],
+      });
+
+      // 1 · typography
+      BS.reveal(tl, document.getElementById("g1-hook"), 0.2, "rise");
+      BS.reveal(tl, document.getElementById("g1-support"), 1.2, "blur");
+      BS.fade(tl, "#g1-glyphs", 1.7);
+      BS.blink(clock, document.getElementById("g1-caret"), 0, 3.6, { before: 1 });
+
+      // 2 · browser + cursor + pen
+      BS.slide(tl, "#g2-browser", 3.7, { dir: "up", dist: 220, ease: "expo.out", dur: 0.7 });
+      const view = document.getElementById("g2-view");
+      const circle = BS.pen(view, "circle", { x: 36, y: 300, w: 520, h: 170 }, { seed: 3 });
+      const tick = BS.pen(view, "check", { x: 600, y: 300, w: 120, h: 110 }, { fix: true });
+      BS.cursorPath(tl, document.getElementById("g2-cursor"), [
+        { t: 3.6, x: 1000, y: 1500 },
+        { t: 4.4, x: 330, y: 760, dur: 0.8, ease: "power3.inOut" },
+      ]);
+      BS.click(tl, document.getElementById("g2-cursor"), 5.25, { target: "#g2-cta" });
+      BS.draw(tl, circle, 4.5, 0.55);
+      BS.draw(tl, tick, 5.5, 0.35, "power2.out");
+      BS.fade(tl, "#g2-label", 4.0);
+
+      // chrome follows the scene theme (contrast)
+      BS.theme(tl, "#chrome", 7.2, "ink");
+      BS.theme(tl, "#chrome", 10.6, "paper");
+
+      // 3 · phone + chat + notification
+      BS.slide(tl, "#g3-phone", 7.25, { dir: "up", dist: 260, dur: 0.7, ease: "expo.out" });
+      BS.bubble(tl, "#g3-b1", 7.9);
+      BS.bubble(tl, "#g3-b2", 8.5);
+      BS.pop(tl, "#g3-typing", 9.0, { from: 0.6 });
+      BS.drop(tl, "#g3-notif", 9.3);
+
+      // 4 · metric / progress / dashboard / before-after / cta
+      BS.count(clock, document.getElementById("g4-count"), { from: 1240, to: 48900, start: 10.7, dur: 1.4, ease: "power2.out" });
+      tl.fromTo("#g4-bar", { scaleX: 0 }, { scaleX: 0.72, duration: 1.2, ease: "power2.out" }, 10.7);
+      tl.fromTo("#g4-after", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 50%)", duration: 1, ease: "power3.inOut" }, 10.9);
+      tl.fromTo("#g4-div", { x: 1000 }, { x: 429, duration: 1, ease: "power3.inOut" }, 10.9);
+      BS.pop(tl, "#g4-cta", 11.6);
+
+      // 5 · end card: typed wordmark + caret
+      BS.type(clock, document.getElementById("g5-word"), "beta studio", 12.85, 26);
+      BS.blink(clock, document.getElementById("g5-caret"), 12.8, 14, { before: 1 });
+
+      window.__timelines["gallery"] = tl;
+    </script>
+  </body>
+</html>

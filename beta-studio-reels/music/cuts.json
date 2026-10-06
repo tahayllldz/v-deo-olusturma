@@ -1,0 +1,10 @@
+{
+  "_comment": "Per-reel music cuts: bed trimmed to the reel length with the fade-out baked in. Regenerate with: npm run music:cuts. (Fades are baked into the file because volume-lane automation measured non-linear in hyperframes 0.8.137 — static data-volume is exact.)",
+  "cuts": [
+    { "name": "reel-01-website", "bed": "bed-warm-100", "duration": 18.0, "fadeOutStart": 16.4, "offset": 0 },
+    { "name": "reel-02-social", "bed": "bed-pulse-108", "duration": 18.333, "fadeOutStart": 16.8, "offset": 0 },
+    { "name": "reel-03-ai", "bed": "bed-night-92", "duration": 19.565, "fadeOutStart": 18.0, "offset": 0 },
+    { "name": "reel-04-redesign", "bed": "bed-warm-100", "duration": 18.0, "fadeOutStart": 16.4, "offset": 2.4 },
+    { "name": "reel-05-hot-take", "bed": "bed-night-92", "duration": 17.609, "fadeOutStart": 16.1, "offset": 5.217 }
+  ]
+}

@@ -1,0 +1,358 @@
+<!doctype html>
+<!-- Reel 03 · s1-before (0.000–8.478)
+     Lock screen at 23:47 (notifications stack under the hook) → chat list of the
+     same questions → one chat: answered at 09:12, customer already bought elsewhere. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r3b-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r3b-glow {
+          position: absolute;
+          left: 90px;
+          top: 760px;
+          width: 900px;
+          height: 900px;
+          border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(76, 107, 255, 0.22), rgba(139, 92, 246, 0.08) 60%, rgba(10, 12, 22, 0) 100%);
+        }
+        .r3b-head {
+          position: absolute;
+          left: 72px;
+          top: 300px;
+          width: 880px;
+          opacity: 0;
+        }
+        .r3b-head .bs-label {
+          margin-bottom: 12px;
+          color: var(--bs-redpen-on-ink);
+        }
+        .r3b-head .bs-headline {
+          font-size: 88px;
+        }
+        #r3b-wrap {
+          position: absolute;
+          left: 222px;
+          top: 560px;
+          width: 558px;
+          height: 1134px;
+        }
+        #r3b-phone {
+          transform: scale(0.9);
+          transform-origin: 0 0;
+        }
+        .r3b-layer {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+        }
+        /* lock screen */
+        #r3b-lock {
+          opacity: 1;
+          background: radial-gradient(120% 70% at 50% 0%, #2b2db8 0%, #161a2b 55%, #0a0c16 100%);
+          color: var(--bs-paper);
+        }
+        #r3b-lock .time {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 120px;
+          text-align: center;
+          font-family: var(--bs-font-display);
+          font-weight: 300;
+          font-size: 150px;
+          letter-spacing: -0.04em;
+          font-variant-numeric: tabular-nums;
+        }
+        #r3b-lock .date {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 300px;
+          text-align: center;
+          font-family: var(--bs-font-display);
+          font-size: 32px;
+          color: #c9cbe0;
+        }
+        .r3b-ln {
+          position: absolute;
+          left: 22px;
+          right: 22px;
+          padding: 20px 24px;
+          border-radius: 30px;
+          background: rgba(242, 240, 235, 0.92);
+          color: var(--bs-ink);
+        }
+        .r3b-ln small {
+          display: flex;
+          justify-content: space-between;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 22px;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: #4b4e5e;
+        }
+        .r3b-ln b {
+          display: block;
+          margin-top: 6px;
+          font-family: var(--bs-font-display);
+          font-weight: 750;
+          font-size: 30px;
+        }
+        .r3b-ln span {
+          font-family: var(--bs-font-display);
+          font-size: 30px;
+        }
+        /* chat list */
+        #r3b-list {
+          background: var(--bs-sheet);
+          color: var(--bs-ink);
+        }
+        .r3b-apphead {
+          position: absolute;
+          left: 30px;
+          right: 30px;
+          top: 104px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 46px;
+          letter-spacing: -0.02em;
+        }
+        #r3b-unread {
+          padding: 6px 18px;
+          border-radius: 999px;
+          background: var(--bs-redpen);
+          color: #ffffff;
+          font-family: var(--bs-font-mono);
+          font-size: 26px;
+          font-weight: 700;
+          font-variant-numeric: tabular-nums;
+        }
+        .r3b-row {
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 142px;
+          display: grid;
+          grid-template-columns: 96px 1fr auto;
+          gap: 20px;
+          align-items: center;
+          padding: 0 28px;
+          border-bottom: 2px solid #e6e3dc;
+        }
+        .r3b-row .av {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 96px;
+          height: 96px;
+          border-radius: 50%;
+          background: #e0e1fb;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 34px;
+          color: var(--bs-signal-deep);
+        }
+        .r3b-row b {
+          display: block;
+          font-family: var(--bs-font-display);
+          font-weight: 750;
+          font-size: 32px;
+        }
+        .r3b-row span {
+          font-family: var(--bs-font-display);
+          font-size: 29px;
+          color: #3c3f55;
+        }
+        .r3b-row .meta {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          text-align: right;
+          font-family: var(--bs-font-mono);
+          font-size: 22px;
+          color: #4b4e5e;
+        }
+        .r3b-row .meta span {
+          font-family: var(--bs-font-mono);
+          font-size: 22px;
+          color: #4b4e5e;
+        }
+        .r3b-row .meta i {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 10px;
+          min-width: 40px;
+          height: 40px;
+          padding: 0 10px;
+          border-radius: 20px;
+          background: var(--bs-signal);
+          color: #ffffff;
+          font-style: normal;
+          font-weight: 700;
+        }
+        /* chat */
+        #r3b-chat {
+          background: #ebe5da;
+          color: var(--bs-ink);
+        }
+        .r3b-chathead {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 200px;
+          padding: 100px 28px 0;
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          background: var(--bs-sheet);
+          font-family: var(--bs-font-display);
+        }
+        .r3b-chathead .back {
+          font-family: var(--bs-font-mono);
+          font-size: 44px;
+          color: var(--bs-signal);
+        }
+        .r3b-chathead b {
+          display: block;
+          font-weight: 750;
+          font-size: 32px;
+        }
+        .r3b-chathead span {
+          font-size: 24px;
+          color: #4b4e5e;
+        }
+        #r3b-msgs {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 220px;
+        }
+        #r3b-gap {
+          align-self: center;
+          padding: 8px 22px;
+          border-radius: 14px;
+          background: #d6d2c8;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 24px;
+          color: #3a332b;
+        }
+        #r3b-lostmsg {
+          position: relative;
+        }
+      </style>
+      <div id="r3b-root" class="bs-scene bs-theme-ink" data-composition-id="r3-before" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r3b-glow" data-layout-ignore></div>
+
+        <div id="r3b-h1" class="r3b-head">
+          <div class="bs-label">Önce · her gece</div>
+          <h2 class="bs-headline">Hep aynı sorular.</h2>
+        </div>
+        <div id="r3b-h2" class="r3b-head">
+          <div class="bs-label">Önce · cevap</div>
+          <h2 class="bs-headline">Ertesi sabah 09:12.</h2>
+        </div>
+        <div id="r3b-h3" class="r3b-head">
+          <div class="bs-label">Önce · sonuç</div>
+          <h2 class="bs-headline">Müşteri beklemedi.</h2>
+        </div>
+
+        <div id="r3b-wrap">
+          <div id="r3b-phone" class="bs-device">
+            <div class="bs-device__screen">
+              <div class="bs-device__island"></div>
+
+              <div id="r3b-lock" class="r3b-layer">
+                <div class="bs-device__status" style="color: #f2f0eb"><span></span><span class="bs-device__bars"><i style="height: 10px"></i><i style="height: 16px"></i><i style="height: 22px"></i></span></div>
+                <div class="time">23:47</div>
+                <div class="date">Salı, 7 Ekim</div>
+                <div id="r3b-ln1" class="r3b-ln" style="top: 380px"><small><span>Mesajlar</span><span>şimdi</span></small><b>Ayşe K.</b><span>Merhaba, fiyat ne kadar?</span></div>
+                <div id="r3b-ln2" class="r3b-ln" style="top: 540px"><small><span>Mesajlar</span><span>şimdi</span></small><b>Mehmet</b><span>Bugün açık mısınız?</span></div>
+                <div id="r3b-ln3" class="r3b-ln" style="top: 700px"><small><span>Mesajlar</span><span>şimdi</span></small><b>Elena</b><span>Konum atar mısınız?</span></div>
+                <div id="r3b-ln4" class="r3b-ln" style="top: 860px"><small><span>Mesajlar</span><span>şimdi</span></small><b>Can</b><span>Fiyat?</span></div>
+              </div>
+
+              <div id="r3b-list" class="r3b-layer">
+                <div class="bs-device__status"><span>23:48</span><span class="bs-device__bars"><i style="height: 10px"></i><i style="height: 16px"></i><i style="height: 22px"></i></span></div>
+                <div class="r3b-apphead">Mesajlar <span id="r3b-unread">12</span></div>
+                <div id="r3b-r1" class="r3b-row" style="top: 190px"><span class="av">AK</span><div><b>Ayşe K.</b><span>Merhaba, fiyat ne kadar?</span></div><div class="meta"><span>23:41</span><i>2</i></div></div>
+                <div id="r3b-r2" class="r3b-row" style="top: 332px"><span class="av">M</span><div><b>Mehmet</b><span>Bugün açık mısınız?</span></div><div class="meta"><span>23:43</span><i>1</i></div></div>
+                <div id="r3b-r3" class="r3b-row" style="top: 474px"><span class="av">E</span><div><b>Elena</b><span>Konum atar mısınız?</span></div><div class="meta"><span>23:44</span><i>3</i></div></div>
+                <div id="r3b-r4" class="r3b-row" style="top: 616px"><span class="av">C</span><div><b>Can</b><span>Fiyat?</span></div><div class="meta"><span>23:46</span><i>1</i></div></div>
+                <div id="r3b-r5" class="r3b-row" style="top: 758px"><span class="av">S</span><div><b>Selin</b><span>Randevu var mı?</span></div><div class="meta"><span>23:47</span><i>4</i></div></div>
+              </div>
+
+              <div id="r3b-chat" class="r3b-layer">
+                <div class="bs-device__status"><span>09:12</span><span class="bs-device__bars"><i style="height: 10px"></i><i style="height: 16px"></i><i style="height: 22px"></i></span></div>
+                <div class="r3b-chathead"><span class="back">‹</span><span class="bs-avatar" style="background: #e0e1fb; color: var(--bs-signal-deep)">AK</span><div><b>Ayşe K.</b><span>son görülme 23:52</span></div></div>
+                <div id="r3b-msgs" class="bs-chat">
+                  <div id="r3b-m1" class="bs-bubble bs-bubble--in">Merhaba, fiyat ne kadar?<span class="bs-bubble__meta">23:41</span></div>
+                  <div id="r3b-gap">9 saat 31 dk sonra</div>
+                  <div id="r3b-m2" class="bs-bubble bs-bubble--out">Günaydın! Fiyatlarımız şöyle…<span class="bs-bubble__meta">09:12 ✓✓</span></div>
+                  <div id="r3b-lostmsg" class="bs-bubble bs-bubble--in">Teşekkürler, dün akşam başka yerden aldım.<span class="bs-bubble__meta">09:14</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const clock = BS.clock(tl, 8.478);
+          const $ = (s) => document.getElementById(s);
+
+          // lock screen rises under the hook; notifications pile up (23:47)
+          tl.fromTo("#r3b-wrap", { y: 620, opacity: 0 }, { y: 560, opacity: 1, duration: 0.9, ease: "expo.out" }, 0.3);
+          ["#r3b-ln1", "#r3b-ln2", "#r3b-ln3", "#r3b-ln4"].forEach((s, i) => BS.drop(tl, s, 0.62 + i * 0.46, { from: -80, dur: 0.42 }));
+          tl.fromTo("#r3b-wrap", { y: 560 }, { y: 0, duration: 0.38, ease: "power3.inOut", immediateRender: false }, 2.45);
+          tl.fromTo("#r3b-glow", { scale: 0.8, opacity: 0.4 }, { scale: 1.1, opacity: 1, duration: 8, ease: "sine.inOut" }, 0);
+
+          // chat list: the same questions, the unread count climbs
+          tl.set("#r3b-lock", { opacity: 0 }, 2.75);
+          tl.set("#r3b-list", { opacity: 1 }, 2.75);
+          ["#r3b-r1", "#r3b-r2", "#r3b-r3", "#r3b-r4", "#r3b-r5"].forEach((s, i) => BS.slide(tl, s, 2.95 + i * 0.28, { dir: "right", dist: 90, dur: 0.4, ease: "power3.out" }));
+          BS.count(clock, $("r3b-unread"), { from: 12, to: 42, start: 2.95, dur: 1.9, ease: "power1.in" });
+          tl.set("#r3b-h1", { opacity: 1 }, 2.85);
+          tl.fromTo("#r3b-h1 .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.88);
+          BS.reveal(tl, document.querySelector("#r3b-h1 .bs-headline"), 2.95, "rise");
+          BS.exit(tl, "#r3b-h1", 4.75, "lift", { dur: 0.2 });
+
+          // one chat: answered the next morning…
+          tl.set("#r3b-list", { opacity: 0 }, 4.95);
+          tl.set("#r3b-chat", { opacity: 1 }, 4.95);
+          tl.fromTo("#r3b-chat", { x: 120 }, { x: 0, duration: 0.35, ease: "power3.out" }, 4.95);
+          BS.bubble(tl, "#r3b-m1", 5.15);
+          BS.pop(tl, "#r3b-gap", 5.5, { from: 0.8, dur: 0.3 });
+          BS.bubble(tl, "#r3b-m2", 5.85);
+          tl.set("#r3b-h2", { opacity: 1 }, 4.95);
+          tl.fromTo("#r3b-h2 .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.98);
+          BS.reveal(tl, document.querySelector("#r3b-h2 .bs-headline"), 5.05, "rise");
+          BS.exit(tl, "#r3b-h2", 6.7, "lift", { dur: 0.2 });
+
+          // …and the customer is gone
+          BS.bubble(tl, "#r3b-lostmsg", 6.85);
+          BS.draw(tl, BS.pen($("r3b-lostmsg"), "circle", { x: -26, y: -24, w: 500, h: 190 }, { seed: 14 }), 7.1, 0.5);
+          tl.set("#r3b-h3", { opacity: 1 }, 6.9);
+          tl.fromTo("#r3b-h3 .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 6.92);
+          BS.reveal(tl, document.querySelector("#r3b-h3 .bs-headline"), 7.0, "slam", { from: 1.3 });
+          window.__timelines["r3-before"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

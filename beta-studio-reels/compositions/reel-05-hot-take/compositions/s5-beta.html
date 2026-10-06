@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- Reel 05 · s5-beta (13.696–15.652, local 0–1.956) — the consulting stance. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r5b-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r5b-glow {
+          position: absolute;
+          left: -100px;
+          top: 520px;
+          width: 1200px;
+          height: 900px;
+          border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(139, 92, 246, 0.3), rgba(76, 107, 255, 0.12) 55%, rgba(10, 12, 22, 0) 100%);
+        }
+        #r5b-label {
+          position: absolute;
+          left: 72px;
+          top: 600px;
+          font-size: 32px;
+          color: var(--accent-text);
+        }
+        #r5b-q {
+          position: absolute;
+          left: 72px;
+          top: 660px;
+          width: 940px;
+          margin: 0;
+          font-family: var(--bs-font-serif);
+          font-style: italic;
+          font-weight: 400;
+          font-size: 150px;
+          line-height: 0.95;
+          letter-spacing: -0.02em;
+          color: var(--fg);
+        }
+      </style>
+      <div id="r5b-root" class="bs-scene bs-theme-ink" data-composition-id="r5-beta" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r5b-glow" data-layout-ignore></div>
+        <div id="r5b-label" class="bs-label"><span lang="en">Beta Studio</span>'da ilk soru</div>
+        <h2 id="r5b-q">“Hangi problemi çözüyoruz?”<span id="r5b-caret" class="bs-caret"></span></h2>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const clock = BS.clock(tl, 1.956);
+          tl.fromTo("#r5b-glow", { scale: 0.7, opacity: 0 }, { scale: 1.05, opacity: 1, duration: 1.9, ease: "sine.out" }, 0);
+          tl.fromTo("#r5b-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.05);
+          BS.reveal(tl, document.getElementById("r5b-q"), 0.15, "rise", { stagger: 0.08, dur: 0.7 });
+          BS.blink(clock, document.getElementById("r5b-caret"), 0.9, 1.956, { before: 0 });
+          window.__timelines["r5-beta"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

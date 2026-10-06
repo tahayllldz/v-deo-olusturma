@@ -1,0 +1,152 @@
+<!doctype html>
+<!--
+  REEL 04 — "Aynı işletme. Aynı ürün. Ama biri daha fazla güven veriyor."
+  Series: Önce / Sonra · Template C (before / after) · Theme: paper → ink payoff · 18.0 s
+  Music: bed-warm-100 from bar 2 (offset 2.4 s) — 100 BPM, beat 0.6 s.
+
+    root hook (A/B)                                                  0.0 –  2.7
+    s1-reveal   A today → divider wipes → B (Beta Studio redesign)    0.0 –  5.4
+    s2-details  01 typography · 02 spacing · 03 hierarchy · 04 CTA    5.4 – 12.6
+    s3-close    A | B side by side → "İnsanlar logonuza değil, güvene para verir."  12.6 – 16.2
+    bs-endcard  shared end card (comment CTA: A or B?)               16.2 – 18.0
+
+  "Ada Zeytin" is a fictional brand; both pages are synthetic (compositions/ada-pages.*).
+-->
+<html
+  lang="tr"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"hookVariant","type":"enum","label":"Hook varyantı","default":"A","options":[{"value":"A","label":"A — Problem-first"},{"value":"B","label":"B — Controversial"}]},
+    {"id":"hookA","type":"string","label":"Hook A (problem-first)","default":"Aynı işletme.|Aynı ürün.|Ama biri daha çok|*güven* veriyor."},
+    {"id":"hookB","type":"string","label":"Hook B (controversial)","default":"Ürününüz iyi.|Ama siteniz|~güven~|vermiyor."}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Reel 04 — Aynı işletme, farklı güven</title>
+    <link rel="stylesheet" href="system/fonts.css" />
+    <link rel="stylesheet" href="system/beta.css" />
+    <link rel="stylesheet" href="compositions/ada-pages.css" />
+    <script src="system/gsap.min.js"></script>
+    <script src="system/beta.js"></script>
+    <script src="system/brand.js"></script>
+    <script src="compositions/ada-pages.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #f2f0eb;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--bs-paper);
+      }
+      #root > [data-composition-src] {
+        position: absolute;
+        inset: 0;
+      }
+      #hook {
+        position: absolute;
+        left: 72px;
+        top: 318px;
+        width: 900px;
+        z-index: 5;
+        font-size: 124px;
+      }
+      #hook .bs-serif {
+        color: var(--bs-signal);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18" data-width="1080" data-height="1920">
+      <div id="el-reveal" data-composition-id="r4-reveal" data-composition-src="compositions/s1-reveal.html" data-start="0" data-duration="5.4" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-details" data-composition-id="r4-details" data-composition-src="compositions/s2-details.html" data-start="5.4" data-duration="7.2" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-close" data-composition-id="r4-close" data-composition-src="compositions/s3-close.html" data-start="12.6" data-duration="3.6" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div
+        id="el-end"
+        data-composition-id="bs-endcard"
+        data-composition-src="compositions/bs-endcard.html"
+        data-start="16.2"
+        data-duration="1.8"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+        data-variable-values='{"cta":"Siz hangisinden alırdınız? Yorumlara *A* ya da *B*.","theme":"ink"}'
+      ></div>
+
+      <h1 id="hook" class="clip bs-hook bs-theme-paper" data-start="0" data-duration="2.7" data-track-index="2">Aynı işletme. Aynı ürün. Ama biri daha çok güven veriyor.</h1>
+
+      <div id="chrome" class="bs-chrome bs-theme-paper">
+        <div id="tag" class="bs-tag"><span class="bs-tag__dot"></span>Önce / Sonra · 04</div>
+        <div class="bs-ticks">
+          <span class="bs-tick"><i id="tick1"></i></span><span class="bs-tick"><i id="tick2"></i></span><span class="bs-tick"><i id="tick3"></i></span><span class="bs-tick"><i id="tick4"></i></span>
+        </div>
+        <div id="handle" class="bs-handle">@betastudio.cy</div>
+      </div>
+
+      <!-- music bed (track 10) — per-reel cut with the fade baked in (music/cuts.json) -->
+      <audio id="a-music" src="system/music/cuts/reel-04-redesign.mp3" data-start="0" data-duration="18" data-track-index="10" data-volume="0.9"></audio>
+
+      <!-- SFX (tracks 11+) -->
+      <audio id="sfx-k1" src="system/sfx/key-press.mp3" data-start="0.12" data-duration="0.4" data-track-index="11" data-volume="0.5"></audio>
+      <audio id="sfx-k2" src="system/sfx/key-press.mp3" data-start="0.72" data-duration="0.4" data-track-index="12" data-volume="0.5"></audio>
+      <audio id="sfx-k3" src="system/sfx/key-press.mp3" data-start="1.32" data-duration="0.4" data-track-index="13" data-volume="0.45"></audio>
+      <audio id="sfx-hit" src="system/sfx/impact-bass-2.mp3" data-start="1.0" data-duration="1.6" data-track-index="14" data-volume="0.3"></audio>
+      <audio id="sfx-in" src="system/sfx/whoosh.mp3" data-start="2.45" data-duration="0.57" data-track-index="15" data-volume="0.4"></audio>
+      <audio id="sfx-wipe" src="system/sfx/whoosh-cinematic.mp3" data-start="3.55" data-duration="1.6" data-track-index="16" data-volume="0.3"></audio>
+      <audio id="sfx-wipe-land" src="system/sfx/sparkle.mp3" data-start="4.75" data-duration="1.5" data-track-index="11" data-volume="0.28"></audio>
+      <audio id="sfx-d1" src="system/sfx/whoosh-short.mp3" data-start="5.4" data-duration="0.57" data-track-index="12" data-volume="0.36"></audio>
+      <audio id="sfx-d2" src="system/sfx/whoosh-short.mp3" data-start="7.2" data-duration="0.57" data-track-index="13" data-volume="0.36"></audio>
+      <audio id="sfx-d3" src="system/sfx/whoosh-short.mp3" data-start="9.0" data-duration="0.57" data-track-index="14" data-volume="0.36"></audio>
+      <audio id="sfx-d4" src="system/sfx/whoosh-short.mp3" data-start="10.8" data-duration="0.57" data-track-index="15" data-volume="0.36"></audio>
+      <audio id="sfx-m1" src="system/sfx/pop.mp3" data-start="6.0" data-duration="0.72" data-track-index="16" data-volume="0.3"></audio>
+      <audio id="sfx-m2" src="system/sfx/pop.mp3" data-start="7.8" data-duration="0.72" data-track-index="11" data-volume="0.3"></audio>
+      <audio id="sfx-m3" src="system/sfx/pop.mp3" data-start="9.6" data-duration="0.72" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="sfx-cta" src="system/sfx/click.mp3" data-start="11.85" data-duration="0.37" data-track-index="13" data-volume="0.55"></audio>
+      <audio id="sfx-side" src="system/sfx/whoosh.mp3" data-start="12.6" data-duration="0.57" data-track-index="14" data-volume="0.36"></audio>
+      <audio id="sfx-payoff" src="system/sfx/impact-bass-1.mp3" data-start="13.8" data-duration="1.8" data-track-index="15" data-volume="0.36"></audio>
+      <audio id="sfx-type" src="system/sfx/typing.mp3" data-start="16.55" data-duration="0.5" data-track-index="16" data-volume="0.3"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const vars = BS.vars();
+
+      // ---- hook (A/B): "Aynı …" lines land on the beat, the turn arrives last
+      const hook = document.getElementById("hook");
+      BS.rich(hook, BS.pick(vars, "hook", "Aynı işletme.|Aynı ürün.|Ama biri daha çok|*güven* veriyor."));
+      const parts = BS.split(hook);
+      const lines = BS.$$(".bs-line", hook);
+      (lines.length ? lines : [hook]).forEach((line, i) => {
+        BS.reveal(tl, line, [0.12, 0.72, 1.32, 1.62][i] != null ? [0.12, 0.72, 1.32, 1.62][i] : 1.62 + (i - 3) * 0.3, i < 2 ? "slam" : "rise", { stagger: 0.05, from: 1.3 });
+      });
+      BS.marks(hook).forEach((p, i) => BS.draw(tl, p, 1.85 + i * 0.15, 0.4));
+      tl.to(parts.words, { yPercent: -40, opacity: 0, duration: 0.24, ease: "power2.in", stagger: 0.02 }, 2.42);
+
+      // ---- brand chrome --------------------------------------------------
+      BS.chrome(tl, {
+        tag: "#tag",
+        handle: "#handle",
+        ticks: ["#tick1", "#tick2", "#tick3", "#tick4"].map((s) => document.querySelector(s)),
+        chapters: [
+          [0, 2.7],
+          [2.7, 5.4],
+          [5.4, 12.6],
+          [12.6, 16.2],
+        ],
+      });
+      BS.theme(tl, "#chrome", 13.8, "ink");
+      tl.to("#chrome", { opacity: 0, duration: 0.2, ease: "power1.in" }, 16.0);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

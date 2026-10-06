@@ -1,0 +1,295 @@
+<!doctype html>
+<!-- Reel 02 · s1-profile (0.000–7.222)
+     A synthetic social profile (no real platform branding). Followers and likes
+     climb; the SATIŞ card stays at 0 and gets circled in red pen.
+     All numbers are illustrative mock-UI values. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r2s-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r2s-world {
+          position: absolute;
+          inset: 0;
+          transform-origin: 70% 55%;
+        }
+        #r2s-head {
+          position: absolute;
+          left: 72px;
+          top: 300px;
+          width: 880px;
+        }
+        #r2s-head .bs-label {
+          margin-bottom: 12px;
+        }
+        #r2s-head .bs-headline {
+          font-size: 92px;
+        }
+        #r2s-no {
+          color: #ff8a70;
+        }
+        #r2s-phonewrap {
+          position: absolute;
+          left: 72px;
+          top: 560px;
+          width: 472px;
+          height: 958px;
+        }
+        #r2s-phone {
+          transform: scale(0.76);
+          transform-origin: 0 0;
+        }
+        #r2s-screen {
+          background: var(--bs-sheet);
+        }
+        .p-top {
+          position: absolute;
+          left: 30px;
+          right: 30px;
+          top: 104px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 36px;
+          letter-spacing: -0.01em;
+        }
+        .p-top span {
+          font-family: var(--bs-font-mono);
+          font-size: 34px;
+        }
+        .p-avatar {
+          position: absolute;
+          left: 30px;
+          top: 176px;
+          width: 152px;
+          height: 152px;
+          border-radius: 50%;
+          padding: 7px;
+          background: var(--bs-iris);
+        }
+        .p-avatar b {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          border: 6px solid var(--bs-sheet);
+          background: #e6e3dc;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 48px;
+          color: var(--bs-ink);
+        }
+        .p-stats {
+          position: absolute;
+          left: 206px;
+          right: 26px;
+          top: 206px;
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+        }
+        .p-stats b {
+          display: block;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 40px;
+          font-variant-numeric: tabular-nums;
+          color: var(--bs-ink);
+        }
+        .p-stats span {
+          font-family: var(--bs-font-display);
+          font-size: 25px;
+          color: #4b4e5e;
+        }
+        #r2s-pfol {
+          min-width: 150px;
+        }
+        .p-bio {
+          position: absolute;
+          left: 30px;
+          right: 30px;
+          top: 352px;
+          font-family: var(--bs-font-display);
+          font-size: 27px;
+          line-height: 1.3;
+          color: #33364a;
+        }
+        .p-bio b {
+          display: block;
+          font-size: 30px;
+          color: var(--bs-ink);
+        }
+        .p-btns {
+          position: absolute;
+          left: 30px;
+          right: 30px;
+          top: 476px;
+          display: flex;
+          gap: 12px;
+        }
+        .p-btns span {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 66px;
+          border-radius: 16px;
+          font-family: var(--bs-font-display);
+          font-weight: 700;
+          font-size: 28px;
+          background: #e6e3dc;
+          color: var(--bs-ink);
+        }
+        .p-btns span:first-child {
+          background: var(--bs-signal);
+          color: var(--bs-paper);
+        }
+        .p-grid {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 572px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 4px;
+        }
+        .p-grid i {
+          display: block;
+          height: 192px;
+        }
+        .r2s-heart {
+          position: absolute;
+          width: 70px;
+          height: 64px;
+          opacity: 0;
+          z-index: 8;
+        }
+        .r2s-heart svg {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        #r2s-cards {
+          position: absolute;
+          left: 578px;
+          top: 560px;
+          width: 352px;
+          display: flex;
+          flex-direction: column;
+          gap: 22px;
+        }
+        #r2s-cards .bs-metric {
+          padding: 26px 28px 28px;
+        }
+        #r2s-cards .bs-metric__value {
+          font-size: 74px;
+        }
+        #r2s-sale {
+          position: relative;
+        }
+        #r2s-sale .bs-metric__value {
+          font-size: 150px;
+          color: #ff8a70;
+        }
+      </style>
+      <div id="r2s-root" class="bs-scene bs-theme-signal" data-composition-id="r2-profile" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r2s-world">
+          <div id="r2s-head">
+            <div class="bs-label">Profiliniz · bu ay</div>
+            <h2 class="bs-headline"><span id="r2s-yes">Beğeni var.</span> <span id="r2s-no">Satış yok.</span></h2>
+          </div>
+
+          <div id="r2s-phonewrap">
+            <div id="r2s-phone" class="bs-device">
+              <div id="r2s-screen" class="bs-device__screen">
+                <div class="bs-device__island"></div>
+                <div class="bs-device__status"><span>14:32</span><span class="bs-device__bars"><i style="height: 10px"></i><i style="height: 16px"></i><i style="height: 22px"></i></span></div>
+                <div class="p-top">isletmeniz <span>≡</span></div>
+                <div class="p-avatar"><b>İŞ</b></div>
+                <div class="p-stats">
+                  <div><b>312</b><span>gönderi</span></div>
+                  <div><b id="r2s-pfol">1.240</b><span>takipçi</span></div>
+                  <div><b>180</b><span>takip</span></div>
+                </div>
+                <div class="p-bio"><b>İşletmeniz</b>Kaliteli hizmet, uygun fiyat. Lefkoşa · KKTC</div>
+                <div class="p-btns"><span>Takip et</span><span>Mesaj</span></div>
+                <div class="p-grid">
+                  <i style="background: #c9c4f5"></i><i style="background: #f3c7b5"></i><i style="background: #d6d2c8"></i>
+                  <i style="background: #4045e6"></i><i style="background: #e6e3dc"></i><i style="background: #e05fc4"></i>
+                  <i style="background: #f7d9c4"></i><i style="background: #8b5cf6"></i><i style="background: #c4c0b6"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="r2s-cards">
+            <div class="bs-metric"><span class="bs-metric__label">Takipçi</span><span id="r2s-fol" class="bs-metric__value">1.240</span></div>
+            <div class="bs-metric"><span class="bs-metric__label">Beğeni</span><span id="r2s-like" class="bs-metric__value">2.140</span></div>
+            <div id="r2s-sale" class="bs-metric"><span class="bs-metric__label">Satış</span><span class="bs-metric__value">0</span></div>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const clock = BS.clock(tl, 7.222);
+          const $ = (s) => document.getElementById(s);
+
+          // the phone peeks under the hook, then takes its seat (beat 2.5 → 2.85)
+          tl.fromTo("#r2s-phonewrap", { y: 700, opacity: 0 }, { y: 560, opacity: 1, duration: 0.9, ease: "expo.out" }, 0.35);
+          tl.fromTo("#r2s-phonewrap", { y: 560 }, { y: 0, duration: 0.35, ease: "power3.inOut", immediateRender: false }, 2.5);
+          BS.slide(tl, "#r2s-cards > .bs-metric", 2.78, { dir: "right", dist: 120, stagger: 0.09, ease: "expo.out", dur: 0.6 });
+
+          // counters climb (illustrative values, tr-TR formatting)
+          const count = { start: 2.9, dur: 2.5, ease: "power2.inOut" };
+          BS.count(clock, $("r2s-pfol"), Object.assign({ from: 1240, to: 48900 }, count));
+          BS.count(clock, $("r2s-fol"), Object.assign({ from: 1240, to: 48900 }, count));
+          BS.count(clock, $("r2s-like"), Object.assign({ from: 2140, to: 31700 }, count));
+
+          // likes rain from the grid (seeded positions)
+          const scene = $("r2s-world");
+          const rnd = BS.rand(42);
+          const heartSVG = '<svg viewBox="0 0 70 64" aria-hidden="true"><path d="M35 60 C14 44 3 33 3 19 C3 9 11 3 20 3 C27 3 32 7 35 12 C38 7 43 3 50 3 C59 3 67 9 67 19 C67 33 56 44 35 60 Z" fill="#E05FC4"/></svg>';
+          for (let i = 0; i < 9; i++) {
+            const h = document.createElement("div");
+            h.className = "r2s-heart";
+            h.setAttribute("data-layout-ignore", "");
+            h.innerHTML = heartSVG;
+            const x = 110 + rnd() * 330;
+            const y = 1040 + rnd() * 380;
+            h.style.left = x + "px";
+            h.style.top = y + "px";
+            scene.appendChild(h);
+            const at = 3.0 + i * 0.26;
+            tl.fromTo(h, { opacity: 0, scale: 0.4, y: 0 }, { opacity: 1, scale: 1, y: -60, duration: 0.3, ease: "back.out(2)" }, at);
+            tl.to(h, { opacity: 0, y: -170, duration: 0.6, ease: "power1.in" }, at + 0.3);
+          }
+
+          // headline: "Beğeni var." … "Satış yok."
+          tl.fromTo("#r2s-head .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.8);
+          BS.reveal(tl, $("r2s-yes"), 3.33, "rise", { stagger: 0.06 });
+          BS.reveal(tl, $("r2s-no"), 5.0, "slam", { stagger: 0.07, from: 1.4 });
+
+          // SATIŞ stays at zero: red pen circle + a small refusal shake
+          BS.draw(tl, BS.pen($("r2s-sale"), "circle", { x: -14, y: 40, w: 230, h: 200 }, { seed: 9 }), 5.28, 0.5);
+          tl.to("#r2s-sale", { keyframes: { x: [0, -12, 10, -7, 4, 0] }, duration: 0.45, ease: "none" }, 5.75);
+
+          // slow push toward the zero (ambient camera)
+          tl.fromTo("#r2s-world", { scale: 1 }, { scale: 1.06, duration: 4.4, ease: "sine.inOut" }, 2.82);
+          window.__timelines["r2-profile"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

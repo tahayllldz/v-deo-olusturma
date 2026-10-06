@@ -1,0 +1,130 @@
+<!doctype html>
+<!-- Reel 04 · s3-close (12.6–16.2, local 0–3.6)
+     A | B side by side ("Aynı ürün. Farklı güven.") → hard cut to the navy stage:
+     "İnsanlar logonuza değil, güvene para verir." -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r4c-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r4c-side {
+          position: absolute;
+          inset: 0;
+        }
+        #r4c-head {
+          position: absolute;
+          left: 72px;
+          top: 300px;
+          width: 880px;
+        }
+        #r4c-head .bs-headline {
+          font-size: 84px;
+        }
+        #r4c-head .bs-serif {
+          color: var(--bs-signal);
+        }
+        .r4-mini {
+          position: absolute;
+          top: 560px;
+          width: 440px;
+          height: 467px;
+          border-radius: 22px;
+          overflow: hidden;
+          box-shadow: var(--bs-shadow-lift);
+        }
+        .r4-mini .ada-page {
+          transform: scale(0.4584);
+        }
+        .r4-chip {
+          position: absolute;
+          top: 16px;
+          left: 16px;
+          z-index: 5;
+          padding: 8px 18px;
+          border-radius: 12px;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 30px;
+          color: var(--bs-paper);
+        }
+        .r4-chip--a {
+          background: var(--bs-redpen);
+        }
+        .r4-chip--b {
+          background: var(--bs-signal);
+        }
+        #r4c-pay {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+        }
+        #r4c-glow {
+          position: absolute;
+          left: -120px;
+          top: 520px;
+          width: 1100px;
+          height: 900px;
+          border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(139, 92, 246, 0.26), rgba(76, 107, 255, 0.1) 55%, rgba(10, 12, 22, 0) 100%);
+        }
+        #r4c-a {
+          position: absolute;
+          left: 72px;
+          top: 620px;
+          width: 900px;
+          font-size: 88px;
+          color: var(--fg-muted);
+        }
+        #r4c-b {
+          position: absolute;
+          left: 72px;
+          top: 740px;
+          width: 990px;
+          font-size: 124px;
+        }
+        #r4c-b .bs-serif {
+          color: var(--accent-text);
+        }
+      </style>
+      <div id="r4c-root" class="bs-scene bs-theme-paper" data-composition-id="r4-close" data-width="1080" data-height="1920">
+        <div id="r4c-side">
+          <div class="bs-dots"></div>
+          <div id="r4c-head"><h2 class="bs-headline">Aynı ürün. <span class="bs-serif">Farklı güven.</span></h2></div>
+          <div id="r4c-miniA" class="r4-mini" style="left: 72px"><span class="r4-chip r4-chip--a" data-layout-allow-overlap>A</span></div>
+          <div id="r4c-miniB" class="r4-mini" style="left: 568px"><span class="r4-chip r4-chip--b" data-layout-allow-overlap>B</span></div>
+        </div>
+        <div id="r4c-pay" class="bs-scene bs-theme-ink">
+          <div class="bs-dots"></div>
+          <div id="r4c-glow" data-layout-ignore></div>
+          <h2 id="r4c-a" class="bs-headline">İnsanlar logonuza değil,</h2>
+          <h2 id="r4c-b" class="bs-hook"><span class="bs-serif">güvene</span> para verir.<span id="r4c-caret" class="bs-caret"></span></h2>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const clock = BS.clock(tl, 3.6);
+          AdaPages.build(document.getElementById("r4c-miniA"), "A", "crop");
+          AdaPages.build(document.getElementById("r4c-miniB"), "B", "crop");
+          BS.slide(tl, "#r4c-miniA", 0.02, { dir: "left", dist: 200, dur: 0.5, ease: "expo.out" });
+          BS.slide(tl, "#r4c-miniB", 0.08, { dir: "right", dist: 200, dur: 0.5, ease: "expo.out" });
+          BS.reveal(tl, document.querySelector("#r4c-head .bs-headline"), 0.1, "rise", { stagger: 0.06 });
+          // hard cut to the navy stage on the beat (13.8 global)
+          tl.set("#r4c-pay", { opacity: 1 }, 1.2);
+          tl.set("#r4c-side", { opacity: 0 }, 1.2);
+          tl.fromTo("#r4c-glow", { scale: 0.7, opacity: 0 }, { scale: 1.05, opacity: 1, duration: 2.4, ease: "sine.out" }, 1.2);
+          BS.reveal(tl, document.getElementById("r4c-a"), 1.26, "rise", { stagger: 0.05 });
+          BS.reveal(tl, document.getElementById("r4c-b"), 1.65, "tilt", { stagger: 0.08 });
+          BS.blink(clock, document.getElementById("r4c-caret"), 2.2, 3.6, { before: 0 });
+          window.__timelines["r4-close"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

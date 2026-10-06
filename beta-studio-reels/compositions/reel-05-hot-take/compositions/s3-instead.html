@@ -1,0 +1,91 @@
+<!doctype html>
+<!-- Reel 05 · s3-instead (7.174–10.435, local 0–3.261) — simpler answers, one per beat. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r5s-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r5s-head {
+          position: absolute;
+          left: 72px;
+          top: 320px;
+          width: 900px;
+        }
+        #r5s-head .bs-label {
+          margin-bottom: 14px;
+        }
+        #r5s-h {
+          font-size: 124px;
+        }
+        .r5s-card {
+          position: absolute;
+          left: 72px;
+          width: 860px;
+          height: 170px;
+          display: grid;
+          grid-template-columns: 84px 1fr;
+          gap: 28px;
+          align-items: center;
+          padding: 0 40px;
+          box-sizing: border-box;
+          border-radius: 32px;
+          background: var(--bs-sheet);
+          box-shadow: var(--bs-shadow-lift);
+        }
+        .r5s-card .bs-check {
+          width: 84px;
+          height: 84px;
+          font-size: 44px;
+        }
+        .r5s-card b {
+          display: block;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 58px;
+          line-height: 1;
+          letter-spacing: -0.025em;
+          color: var(--bs-ink);
+        }
+        .r5s-card div > span {
+          display: block;
+          margin-top: 10px;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 26px;
+          letter-spacing: 0.03em;
+          color: var(--bs-muted);
+        }
+      </style>
+      <div id="r5s-root" class="bs-scene bs-theme-paper" data-composition-id="r5-instead" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r5s-head">
+          <div class="bs-label bs-label--accent">Çoğu zaman çözüm</div>
+          <h2 id="r5s-h" class="bs-hook">Daha basit.</h2>
+        </div>
+        <div id="r5s-c1" class="r5s-card" style="top: 620px"><span class="bs-check">✓</span><div><b>Hızlı bir web sitesi</b><span>bilgiye 3 saniyede ulaşılır</span></div></div>
+        <div id="r5s-c2" class="r5s-card" style="top: 820px"><span class="bs-check">✓</span><div><b>WhatsApp otomasyonu</b><span>sık sorulara anında cevap</span></div></div>
+        <div id="r5s-c3" class="r5s-card" style="top: 1020px"><span class="bs-check">✓</span><div><b>Online randevu</b><span>7/24, telefon trafiği olmadan</span></div></div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#r5s-head .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.04);
+          BS.reveal(tl, document.getElementById("r5s-h"), 0.06, "rise", { stagger: 0.08 });
+          const beat = 0.652;
+          [1, 2, 3].forEach((i) => {
+            tl.fromTo("#r5s-c" + i, { opacity: 0, x: 120, rotation: 2 }, { opacity: 1, x: 0, rotation: 0, duration: 0.42, ease: "back.out(1.5)" }, beat * i);
+            tl.fromTo("#r5s-c" + i + " .bs-check", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2.6)" }, beat * i + 0.16);
+          });
+          tl.fromTo(["#r5s-c1", "#r5s-c2", "#r5s-c3"], { y: 0 }, { y: -16, duration: 1.2, ease: "sine.inOut", immediateRender: false }, 2.0);
+          window.__timelines["r5-instead"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

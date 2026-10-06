@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- Reel 05 · s1-confess (2.609–3.913, local 0–1.304) — the self-aware beat. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r5c-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r5c-label {
+          position: absolute;
+          left: 72px;
+          top: 600px;
+          color: var(--pen);
+        }
+        #r5c-a {
+          position: absolute;
+          left: 72px;
+          top: 650px;
+          width: 900px;
+          font-size: 92px;
+          color: var(--fg-muted);
+        }
+        #r5c-b {
+          position: absolute;
+          left: 72px;
+          top: 760px;
+          width: 940px;
+          font-size: 118px;
+        }
+        #r5c-b .bs-serif {
+          color: var(--accent-text);
+        }
+      </style>
+      <div id="r5c-root" class="bs-scene bs-theme-ink" data-composition-id="r5-confess" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r5c-label" class="bs-label">Evet, biliyoruz</div>
+        <h2 id="r5c-a" class="bs-headline">Bunu bir</h2>
+        <h2 id="r5c-b" class="bs-hook"><span class="bs-serif">yazılım şirketi</span> söylüyor.</h2>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#r5c-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.04);
+          BS.reveal(tl, document.getElementById("r5c-a"), 0.06, "rise", { stagger: 0.05 });
+          BS.reveal(tl, document.getElementById("r5c-b"), 0.3, "rise", { stagger: 0.07 });
+          tl.fromTo(["#r5c-a", "#r5c-b"], { x: 0 }, { x: -14, duration: 1.2, ease: "none" }, 0.1);
+          window.__timelines["r5-confess"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

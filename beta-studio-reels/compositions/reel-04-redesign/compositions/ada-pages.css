@@ -1,0 +1,344 @@
+/* Reel 04 — synthetic "Ada Zeytin" pages (fictional brand), 960 × 1020 design px.
+   A = the dated site, B = the Beta Studio redesign. Same business, same products.
+   Built by compositions/ada-pages.js (AdaPages.build). Loaded by the root page. */
+
+.ada-page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 960px;
+  height: 1020px;
+  overflow: hidden;
+  transform-origin: 0 0;
+}
+
+/* ---------------- A · the dated site ---------------- */
+.ada-a {
+  background: #f4efdc;
+  color: #262626;
+  font-family: var(--bs-font-display);
+}
+.ada-a .top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 120px;
+  background: #2e5e1f;
+  color: #ffffff;
+}
+.ada-a .brand {
+  position: absolute;
+  left: 24px;
+  top: 14px;
+  font-family: var(--bs-font-serif);
+  font-size: 46px;
+  letter-spacing: 0.04em;
+}
+.ada-a .est {
+  position: absolute;
+  left: 30px;
+  top: 70px;
+  font-family: var(--bs-font-mono);
+  font-size: 20px;
+}
+.ada-a .nav {
+  position: absolute;
+  right: 18px;
+  top: 30px;
+  width: 560px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px 14px;
+  font-family: var(--bs-font-serif);
+  font-size: 23px;
+  text-decoration: underline;
+}
+.ada-a .hello {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 150px;
+  text-align: center;
+  font-family: var(--bs-font-serif);
+  font-style: italic;
+  font-size: 70px;
+  color: #2e5e1f;
+}
+.ada-a .shout {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  top: 250px;
+  text-align: center;
+  font-family: var(--bs-font-display);
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 1.15;
+  color: #a1160c;
+  text-transform: uppercase;
+}
+.ada-a .scroll {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 352px;
+  text-align: center;
+  font-family: var(--bs-font-mono);
+  font-size: 21px;
+  color: #3a3a3a;
+}
+.ada-a .img {
+  position: absolute;
+  left: 330px;
+  top: 396px;
+  width: 300px;
+  height: 150px;
+  border: 3px dashed #8a8473;
+  background: #e5dcc0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--bs-font-mono);
+  font-size: 22px;
+  color: #4a463b;
+}
+.ada-a .card {
+  position: absolute;
+  top: 580px;
+  width: 300px;
+  height: 290px;
+  border: 3px solid #262626;
+  background: #ffffff;
+}
+.ada-a .card i {
+  display: block;
+  height: 150px;
+  background: #d9cfae;
+  border-bottom: 3px solid #262626;
+}
+.ada-a .card b {
+  display: block;
+  font-family: var(--bs-font-serif);
+  font-size: 30px;
+  line-height: 1;
+  margin-top: 4px;
+}
+.ada-a .card span {
+  display: block;
+  font-family: var(--bs-font-display);
+  font-weight: 800;
+  font-size: 22px;
+  color: #a1160c;
+}
+.ada-a .card small {
+  display: block;
+  font-family: var(--bs-font-mono);
+  font-size: 18px;
+  color: #3a3a3a;
+}
+.ada-a .link {
+  position: absolute;
+  right: 26px;
+  top: 900px;
+  font-family: var(--bs-font-display);
+  font-size: 21px;
+  color: #1d3f8f;
+  text-decoration: underline;
+}
+.ada-a .foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  background: #2e5e1f;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--bs-font-mono);
+  font-size: 18px;
+}
+
+/* ---------------- B · the redesign ---------------- */
+.ada-b {
+  background: #fbfaf7;
+  color: var(--bs-ink);
+  font-family: var(--bs-font-display);
+}
+.ada-b .nav {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ada-b .logo {
+  font-weight: 800;
+  font-size: 36px;
+  letter-spacing: -0.03em;
+}
+.ada-b .links {
+  font-weight: 500;
+  font-size: 25px;
+  color: #575a6b;
+}
+.ada-b .eyebrow {
+  position: absolute;
+  left: 60px;
+  top: 150px;
+  font-family: var(--bs-font-mono);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: #4b6b2a;
+}
+.ada-b .h1 {
+  position: absolute;
+  left: 60px;
+  top: 190px;
+  width: 470px;
+  margin: 0;
+  font-weight: 800;
+  font-size: 74px;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+.ada-b .p {
+  position: absolute;
+  left: 60px;
+  top: 360px;
+  width: 440px;
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.3;
+  color: #3c3f4e;
+}
+.ada-b .cta {
+  position: absolute;
+  left: 60px;
+  top: 470px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 38px;
+  border-radius: 999px;
+  background: var(--bs-signal);
+  color: var(--bs-paper);
+  font-weight: 700;
+  font-size: 34px;
+}
+.ada-b .ghost-link {
+  position: absolute;
+  left: 380px;
+  top: 494px;
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--bs-ink);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.ada-b .stage {
+  position: absolute;
+  left: 560px;
+  top: 130px;
+  width: 360px;
+  height: 420px;
+  border-radius: 40px;
+  background: #e3e8cc;
+}
+.ada-b .trust {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  top: 600px;
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 0;
+  border-top: 2px solid #e6e3dc;
+  border-bottom: 2px solid #e6e3dc;
+  font-family: var(--bs-font-mono);
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: 0.02em;
+  color: #2d3a1c;
+}
+.ada-b .prod {
+  position: absolute;
+  top: 716px;
+  width: 260px;
+  height: 270px;
+  border-radius: 28px;
+  background: #f1eee6;
+}
+.ada-b .prod b {
+  position: absolute;
+  left: 24px;
+  bottom: 50px;
+  font-weight: 750;
+  font-size: 28px;
+}
+.ada-b .prod span {
+  position: absolute;
+  left: 24px;
+  bottom: 18px;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--bs-signal-deep);
+}
+
+/* bottle illustration (pure CSS) */
+.ada-bottle {
+  position: absolute;
+  width: 96px;
+  height: 250px;
+}
+.ada-bottle .neck {
+  position: absolute;
+  left: 34px;
+  top: 22px;
+  width: 28px;
+  height: 56px;
+  border-radius: 8px 8px 0 0;
+  background: var(--glass, #36531f);
+}
+.ada-bottle .cap {
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 36px;
+  height: 26px;
+  border-radius: 6px;
+  background: #0a0c16;
+}
+.ada-bottle .body {
+  position: absolute;
+  left: 0;
+  top: 70px;
+  width: 96px;
+  height: 180px;
+  border-radius: 34px 34px 20px 20px;
+  background: var(--glass, #36531f);
+}
+.ada-bottle .label {
+  position: absolute;
+  left: 12px;
+  top: 128px;
+  width: 72px;
+  height: 64px;
+  border-radius: 8px;
+  background: #f2f0eb;
+}
+.ada-bottle .shine {
+  position: absolute;
+  left: 14px;
+  top: 86px;
+  width: 8px;
+  height: 120px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.28);
+}

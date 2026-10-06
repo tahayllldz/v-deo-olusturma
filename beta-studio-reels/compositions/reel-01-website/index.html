@@ -1,0 +1,161 @@
+<!doctype html>
+<!--
+  REEL 01 — "Web siteniz müşterileri kaçırıyor olabilir."
+  Series: Bunu Yapma · Template B (UI demo) · Theme: paper → ink payoff · 18.0 s
+  Music: bed-warm-100 (100 BPM, beat 0.6 s) — cuts sit on the beat grid.
+
+  Structure (root = thin orchestrator):
+    root hook text (A/B variables)  0.00 – 2.70
+    s1-peek    browser rises, visitor cursor eyes the ×      0.00 – 2.70
+    s2-problems  01 slow · 02 confusing · 03 no CTA → tab closed  2.70 – 10.20
+    s3-fix     Beta Studio approach, CTA click → lead        10.20 – 14.40
+    s4-payoff  "Güzel site değil, çalışan site."              14.40 – 16.20
+    bs-endcard  shared end card                               16.20 – 18.00
+
+  A/B hook: render with --variables '{"hookVariant":"B"}' (see variants/ab.json).
+-->
+<html
+  lang="tr"
+  data-resolution="portrait"
+  data-composition-variables='[
+    {"id":"hookVariant","type":"enum","label":"Hook varyantı","default":"A","options":[{"value":"A","label":"A — Problem-first"},{"value":"B","label":"B — Controversial"}]},
+    {"id":"hookA","type":"string","label":"Hook A (problem-first)","default":"Web siteniz|müşterileri|~kaçırıyor~|olabilir."},
+    {"id":"hookB","type":"string","label":"Hook B (controversial)","default":"Siteniz güzel|olabilir.|Ama işe|~yaramıyor~|olabilir."}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Reel 01 — Web siteniz müşteri kaçırıyor olabilir</title>
+    <link rel="stylesheet" href="system/fonts.css" />
+    <link rel="stylesheet" href="system/beta.css" />
+    <script src="system/gsap.min.js"></script>
+    <script src="system/beta.js"></script>
+    <script src="system/brand.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #f3eee5;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--bs-paper);
+      }
+      #root > [data-composition-src] {
+        position: absolute;
+        inset: 0;
+      }
+      #hook {
+        position: absolute;
+        left: 72px;
+        top: 318px;
+        width: 880px;
+        z-index: 5;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18" data-width="1080" data-height="1920">
+      <!-- scenes (track 1) -->
+      <div id="el-peek" data-composition-id="r1-peek" data-composition-src="compositions/s1-peek.html" data-start="0" data-duration="2.7" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-problems" data-composition-id="r1-problems" data-composition-src="compositions/s2-problems.html" data-start="2.7" data-duration="7.5" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-fix" data-composition-id="r1-fix" data-composition-src="compositions/s3-fix.html" data-start="10.2" data-duration="4.2" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="el-payoff" data-composition-id="r1-payoff" data-composition-src="compositions/s4-payoff.html" data-start="14.4" data-duration="1.8" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div
+        id="el-end"
+        data-composition-id="bs-endcard"
+        data-composition-src="compositions/bs-endcard.html"
+        data-start="16.2"
+        data-duration="1.8"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+        data-variable-values='{"cta":"Kaydedin. Sitenizi bu *3 maddeyle* test edin.","theme":"ink"}'
+      ></div>
+
+      <!-- hook (track 2) — root level so CLI variables reach it -->
+      <h1 id="hook" class="clip bs-hook bs-theme-paper" data-start="0" data-duration="2.7" data-track-index="2">Web siteniz müşterileri kaçırıyor olabilir.</h1>
+
+      <!-- brand chrome (untimed overlay) -->
+      <div id="chrome" class="bs-chrome bs-theme-paper">
+        <div id="tag" class="bs-tag"><span class="bs-tag__dot"></span>Bunu Yapma · 01</div>
+        <div class="bs-ticks">
+          <span class="bs-tick"><i id="tick1"></i></span><span class="bs-tick"><i id="tick2"></i></span><span class="bs-tick"><i id="tick3"></i></span><span class="bs-tick"><i id="tick4"></i></span>
+        </div>
+        <div id="handle" class="bs-handle">@betastudio.cy</div>
+      </div>
+
+      <!-- music bed (track 10) — per-reel cut with the fade baked in (music/cuts.json) -->
+      <audio id="a-music" src="system/music/cuts/reel-01-website.mp3" data-start="0" data-duration="18" data-track-index="10" data-volume="0.9"></audio>
+
+      <!-- SFX (tracks 11+) — each synced to an on-screen action, sitting under the bed -->
+      <audio id="sfx-k1" src="system/sfx/key-press.mp3" data-start="0.12" data-duration="0.4" data-track-index="11" data-volume="0.55"></audio>
+      <audio id="sfx-k2" src="system/sfx/key-press.mp3" data-start="0.42" data-duration="0.4" data-track-index="12" data-volume="0.46"></audio>
+      <audio id="sfx-k3" src="system/sfx/key-press.mp3" data-start="0.72" data-duration="0.4" data-track-index="13" data-volume="0.55"></audio>
+      <audio id="sfx-k4" src="system/sfx/key-press.mp3" data-start="1.02" data-duration="0.4" data-track-index="14" data-volume="0.46"></audio>
+      <audio id="sfx-pen1" src="system/sfx/whoosh-short.mp3" data-start="1.3" data-duration="0.57" data-track-index="15" data-volume="0.29"></audio>
+      <audio id="sfx-swipe" src="system/sfx/whoosh.mp3" data-start="2.36" data-duration="0.57" data-track-index="16" data-volume="0.46"></audio>
+      <audio id="sfx-p1" src="system/sfx/pop.mp3" data-start="2.78" data-duration="0.72" data-track-index="11" data-volume="0.43"></audio>
+      <audio id="sfx-pen2" src="system/sfx/whoosh-short.mp3" data-start="3.7" data-duration="0.57" data-track-index="12" data-volume="0.23"></audio>
+      <audio id="sfx-glitch" src="system/sfx/glitch-3.mp3" data-start="5.1" data-duration="1.2" data-track-index="13" data-volume="0.32"></audio>
+      <audio id="sfx-p2" src="system/sfx/pop.mp3" data-start="5.15" data-duration="0.72" data-track-index="14" data-volume="0.43"></audio>
+      <audio id="sfx-popup" src="system/sfx/pop.mp3" data-start="5.95" data-duration="0.72" data-track-index="15" data-volume="0.49"></audio>
+      <audio id="sfx-p3" src="system/sfx/pop.mp3" data-start="7.55" data-duration="0.72" data-track-index="16" data-volume="0.43"></audio>
+      <audio id="sfx-q1" src="system/sfx/click-soft.mp3" data-start="8.0" data-duration="0.37" data-track-index="11" data-volume="0.43"></audio>
+      <audio id="sfx-q2" src="system/sfx/click-soft.mp3" data-start="8.48" data-duration="0.37" data-track-index="12" data-volume="0.43"></audio>
+      <audio id="sfx-q3" src="system/sfx/click-soft.mp3" data-start="8.94" data-duration="0.37" data-track-index="13" data-volume="0.43"></audio>
+      <audio id="sfx-close" src="system/sfx/click.mp3" data-start="9.45" data-duration="0.37" data-track-index="14" data-volume="0.72"></audio>
+      <audio id="sfx-gone" src="system/sfx/error.mp3" data-start="9.55" data-duration="1.2" data-track-index="15" data-volume="0.29"></audio>
+      <audio id="sfx-slam" src="system/sfx/whoosh-short.mp3" data-start="9.66" data-duration="0.57" data-track-index="16" data-volume="0.41"></audio>
+      <audio id="sfx-rebuild" src="system/sfx/whoosh.mp3" data-start="10.2" data-duration="0.57" data-track-index="11" data-volume="0.43"></audio>
+      <audio id="sfx-c1" src="system/sfx/pop.mp3" data-start="10.8" data-duration="0.72" data-track-index="12" data-volume="0.41"></audio>
+      <audio id="sfx-c2" src="system/sfx/pop.mp3" data-start="11.4" data-duration="0.72" data-track-index="13" data-volume="0.41"></audio>
+      <audio id="sfx-c3" src="system/sfx/pop.mp3" data-start="12.0" data-duration="0.72" data-track-index="14" data-volume="0.41"></audio>
+      <audio id="sfx-cta" src="system/sfx/click.mp3" data-start="12.8" data-duration="0.37" data-track-index="15" data-volume="0.72"></audio>
+      <audio id="sfx-notif" src="system/sfx/notification.mp3" data-start="13.15" data-duration="1.4" data-track-index="16" data-volume="0.51"></audio>
+      <audio id="sfx-payoff" src="system/sfx/impact-bass-1.mp3" data-start="14.4" data-duration="1.6" data-track-index="11" data-volume="0.43"></audio>
+      <audio id="sfx-type" src="system/sfx/typing.mp3" data-start="16.55" data-duration="0.5" data-track-index="12" data-volume="0.32"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const vars = BS.vars();
+
+      // ---- hook (A/B) ----------------------------------------------------
+      const hook = document.getElementById("hook");
+      BS.rich(hook, BS.pick(vars, "hook", "Web siteniz|müşterileri|~kaçırıyor~|olabilir."));
+      const parts = BS.split(hook);
+      // words slam in on a 0.3 s rhythm (half-beats of the 100 BPM bed)
+      const lines = BS.$$(".bs-line", hook);
+      (lines.length ? lines : [hook]).forEach((line, i) => {
+        tl.fromTo(BS.$$(".w", line), { scale: 1.45, opacity: 0, transformOrigin: "0% 80%" }, { scale: 1, opacity: 1, duration: 0.34, ease: "power4.out", stagger: 0.05 }, 0.12 + i * 0.3);
+      });
+      BS.marks(hook).forEach((p, i) => BS.draw(tl, p, 1.3 + i * 0.15, 0.45));
+      tl.to(parts.words, { yPercent: -40, opacity: 0, duration: 0.26, ease: "power2.in", stagger: 0.025 }, 2.38);
+
+      // ---- brand chrome --------------------------------------------------
+      BS.chrome(tl, {
+        tag: "#tag",
+        handle: "#handle",
+        ticks: ["#tick1", "#tick2", "#tick3", "#tick4"].map((s) => document.querySelector(s)),
+        chapters: [
+          [0, 2.7],
+          [2.7, 10.2],
+          [10.2, 14.4],
+          [14.4, 16.2],
+        ],
+      });
+      BS.theme(tl, "#chrome", 14.4, "ink");
+      tl.to("#chrome", { opacity: 0, duration: 0.2, ease: "power1.in" }, 16.0);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

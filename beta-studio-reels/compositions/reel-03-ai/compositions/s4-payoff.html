@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- Reel 03 · s4-payoff (15.652–17.609, local 0–1.957)
+     "Siz uyurken de cevap veren bir işletme." — 23:47 ghosts behind. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r3y-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r3y-ghost {
+          left: -40px;
+          top: 1060px;
+          font-family: var(--bs-font-mono);
+          font-size: 360px;
+          letter-spacing: -0.04em;
+          color: var(--bs-signal-on-ink);
+          opacity: 0.08;
+        }
+        #r3y-a {
+          position: absolute;
+          left: 72px;
+          top: 600px;
+          width: 880px;
+          font-size: 92px;
+          color: var(--fg-muted);
+        }
+        #r3y-b {
+          position: absolute;
+          left: 72px;
+          top: 720px;
+          width: 960px;
+          font-size: 136px;
+        }
+        #r3y-b .bs-serif {
+          color: var(--accent-text);
+        }
+      </style>
+      <div id="r3y-root" class="bs-scene bs-theme-ink" data-composition-id="r3-payoff" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r3y-ghost" class="bs-ghost" data-layout-ignore>23:47</div>
+        <h2 id="r3y-a" class="bs-headline">Siz uyurken de</h2>
+        <h2 id="r3y-b" class="bs-hook">cevap veren bir <span class="bs-serif">işletme.</span><span id="r3y-caret" class="bs-caret"></span></h2>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const clock = BS.clock(tl, 1.957);
+          BS.reveal(tl, document.getElementById("r3y-a"), 0.06, "rise", { stagger: 0.06 });
+          BS.reveal(tl, document.getElementById("r3y-b"), 0.4, "tilt", { stagger: 0.08 });
+          tl.fromTo("#r3y-ghost", { x: 0, opacity: 0 }, { x: -90, opacity: 0.08, duration: 1.95, ease: "none" }, 0);
+          BS.blink(clock, document.getElementById("r3y-caret"), 1.0, 1.957, { before: 0 });
+          window.__timelines["r3-payoff"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

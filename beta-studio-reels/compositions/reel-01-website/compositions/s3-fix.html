@@ -1,0 +1,299 @@
+<!doctype html>
+<!-- Reel 01 · s3-fix (10.20–14.40, local 0–4.2)
+     "Şimdi doğrusu:" — the same browser rebuilds clean. Each fix lands as a
+     cobalt chip + a cobalt mark on the page (red pen = problem, cobalt = answer).
+     A customer clicks the one clear CTA → reservation notification. -->
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #r1f-root {
+          position: absolute;
+          inset: 0;
+        }
+        #r1f-head {
+          position: absolute;
+          left: 72px;
+          top: 300px;
+          width: 860px;
+        }
+        #r1f-head .bs-label {
+          margin-bottom: 14px;
+        }
+        #r1f-head .bs-headline {
+          font-size: 88px;
+        }
+        #r1f-chips {
+          position: absolute;
+          left: 72px;
+          top: 452px;
+          display: flex;
+          gap: 14px;
+        }
+        #r1f-chips .bs-chip {
+          padding: 10px 22px 10px 12px;
+          font-size: 36px;
+          background: var(--bs-signal-soft);
+          color: var(--bs-signal-deep);
+        }
+        #r1f-chips .bs-check {
+          width: 46px;
+          height: 46px;
+          font-size: 26px;
+        }
+        #r1f-browser {
+          position: absolute;
+          left: 110px;
+          top: 560px;
+          width: 860px;
+        }
+        #r1f-view {
+          height: 836px;
+          background: var(--bs-sheet);
+        }
+        .r1f-bar {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 8px;
+          background: var(--bs-paper-3);
+        }
+        .r1f-bar > i {
+          position: absolute;
+          inset: 0;
+          display: block;
+          background: var(--bs-signal);
+          transform-origin: left center;
+        }
+        .r1f-nav {
+          position: absolute;
+          left: 40px;
+          right: 40px;
+          top: 34px;
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          color: var(--bs-ink);
+        }
+        .r1f-nav b {
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 34px;
+          letter-spacing: -0.02em;
+        }
+        .r1f-nav span {
+          font-family: var(--bs-font-display);
+          font-weight: 500;
+          font-size: 26px;
+          color: var(--bs-muted);
+        }
+        /* synthetic hero illustration: harbour at dusk (no stock photo) */
+        .r1f-hero {
+          position: absolute;
+          left: 40px;
+          top: 100px;
+          width: 780px;
+          height: 330px;
+          border-radius: 26px;
+          overflow: hidden;
+          background: linear-gradient(180deg, #f7d9c4 0%, #f3c7b5 55%, #e9b3a6 100%);
+        }
+        .r1f-sun {
+          position: absolute;
+          left: 470px;
+          top: 92px;
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          background: #ff8a4c;
+        }
+        .r1f-sea {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 200px;
+          bottom: 0;
+          background: #4045e6;
+        }
+        .r1f-wave {
+          position: absolute;
+          height: 5px;
+          border-radius: 3px;
+          background: #a3a8ff;
+        }
+        .r1f-hill {
+          position: absolute;
+          left: -40px;
+          top: 150px;
+          width: 360px;
+          height: 120px;
+          border-radius: 50% 50% 0 0;
+          background: #2b2db8;
+        }
+        .r1f-boat {
+          position: absolute;
+          left: 300px;
+          top: 214px;
+          width: 120px;
+          height: 22px;
+          border-radius: 0 0 40px 40px;
+          background: #0a0c16;
+        }
+        .r1f-sail {
+          position: absolute;
+          left: 352px;
+          top: 140px;
+          width: 0;
+          height: 0;
+          border-left: 44px solid transparent;
+          border-bottom: 72px solid #fbfaf7;
+        }
+        .r1f-eyebrow {
+          position: absolute;
+          left: 40px;
+          top: 458px;
+          font-family: var(--bs-font-mono);
+          font-weight: 700;
+          font-size: 24px;
+          letter-spacing: 0.06em;
+          color: var(--bs-muted);
+        }
+        .r1f-h {
+          position: absolute;
+          left: 40px;
+          top: 496px;
+          margin: 0;
+          font-family: var(--bs-font-display);
+          font-weight: 800;
+          font-size: 62px;
+          line-height: 1;
+          letter-spacing: -0.03em;
+          color: var(--bs-ink);
+        }
+        .r1f-p {
+          position: absolute;
+          left: 40px;
+          top: 576px;
+          width: 700px;
+          margin: 0;
+          font-family: var(--bs-font-display);
+          font-size: 30px;
+          line-height: 1.25;
+          color: #3c3f4e;
+        }
+        #r1f-cta {
+          position: absolute;
+          left: 40px;
+          top: 672px;
+          --accent: var(--bs-signal);
+          --on-accent: var(--bs-paper);
+          font-size: 38px;
+          padding: 26px 40px;
+        }
+        #r1f-notif {
+          position: absolute;
+          left: 110px;
+          top: 318px;
+          z-index: 30;
+        }
+        #r1f-notif .bs-notif__icon {
+          background: var(--bs-iris);
+          font-size: 32px;
+        }
+      </style>
+      <div id="r1f-root" class="bs-scene bs-theme-paper" data-composition-id="r1-fix" data-width="1080" data-height="1920">
+        <div class="bs-dots"></div>
+        <div id="r1f-head">
+          <div class="bs-label bs-label--accent"><span lang="en">Beta Studio</span> yaklaşımı</div>
+          <h2 class="bs-headline">Şimdi doğrusu:</h2>
+        </div>
+        <div id="r1f-chips">
+          <span id="r1f-c1" class="bs-chip"><span class="bs-check">✓</span>Hızlı</span>
+          <span id="r1f-c2" class="bs-chip"><span class="bs-check">✓</span>Net</span>
+          <span id="r1f-c3" class="bs-chip"><span class="bs-check">✓</span>Tek buton</span>
+        </div>
+
+        <div id="r1f-browser" class="bs-browser">
+          <div class="bs-browser__bar">
+            <div class="bs-browser__dots"><i></i><i></i><i></i></div>
+            <div class="bs-browser__url">isletmeniz.com</div>
+            <div class="bs-browser__close">×</div>
+          </div>
+          <div id="r1f-view" class="bs-browser__view">
+            <div class="r1f-bar"><i id="r1f-load"></i></div>
+            <div id="r1f-nav" class="r1f-nav"><b>Liman Meze Evi</b><span>Menü · Konum</span></div>
+            <div id="r1f-hero" class="r1f-hero">
+              <div class="r1f-sun"></div>
+              <div class="r1f-hill" data-layout-ignore></div>
+              <div class="r1f-sea"></div>
+              <div class="r1f-wave" style="left: 60px; top: 236px; width: 140px"></div>
+              <div class="r1f-wave" style="left: 520px; top: 262px; width: 190px"></div>
+              <div class="r1f-wave" style="left: 230px; top: 292px; width: 120px"></div>
+              <div class="r1f-boat"></div>
+              <div class="r1f-sail"></div>
+            </div>
+            <div id="r1f-eyebrow" class="r1f-eyebrow">GİRNE LİMANI · 12:00–24:00</div>
+            <h3 id="r1f-h" class="r1f-h">Limanın en taze mezesi.</h3>
+            <p id="r1f-p" class="r1f-p">Her sabah tezgâha gelen balık, ev yapımı mezeler.</p>
+            <div id="r1f-cta" class="bs-cta">WhatsApp'tan rezervasyon <span class="bs-cta__arrow">→</span></div>
+          </div>
+        </div>
+
+        <div id="r1f-notif" class="bs-notif">
+          <div class="bs-notif__icon">LM</div>
+          <div>
+            <div class="bs-notif__head"><span>Liman Meze Evi</span><span>şimdi</span></div>
+            <div class="bs-notif__title">Yeni rezervasyon talebi</div>
+            <div class="bs-notif__body">Cumartesi 20:00 · 4 kişi</div>
+          </div>
+        </div>
+
+        <div id="r1f-cursor" class="bs-cursor">
+          <svg viewBox="0 0 72 72" aria-hidden="true"><path d="M12 6 L12 58 L25.5 45.5 L35 66 L44.5 61.5 L35 41.5 L53 41.5 Z" fill="#0A0C16" stroke="#F2F0EB" stroke-width="4.5" stroke-linejoin="round" /></svg>
+          <span class="bs-ripple" data-layout-ignore></span>
+          <span class="bs-cursor__label bs-cursor__label--accent" data-layout-allow-overflow data-layout-allow-overlap>Müşteri</span>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const view = document.getElementById("r1f-view");
+
+          // rebuild: the closed tab comes back, clean
+          tl.fromTo("#r1f-browser", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 0);
+          tl.fromTo(["#r1f-nav", "#r1f-hero", "#r1f-eyebrow", "#r1f-h", "#r1f-p", "#r1f-cta"], { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "expo.out", stagger: 0.06 }, 0.12);
+          tl.fromTo("#r1f-head .bs-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.05);
+          BS.reveal(tl, document.querySelector("#r1f-head .bs-headline"), 0.1, "rise");
+
+          // fix 1 · fast: the load bar completes at once
+          tl.fromTo("#r1f-load", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 0.25);
+          BS.pop(tl, "#r1f-c1", 0.6, { from: 0.6, ease: "back.out(2.2)", dur: 0.36 });
+          BS.draw(tl, BS.pen(view, "underline", { x: 10, y: 6, w: 840, h: 26 }, { fix: true, thin: true, seed: 3 }), 0.6, 0.35);
+          // fix 2 · clear: bracket the one-sentence promise
+          BS.pop(tl, "#r1f-c2", 1.2, { from: 0.6, ease: "back.out(2.2)", dur: 0.36 });
+          BS.draw(tl, BS.pen(view, "bracket", { x: 16, y: 448, w: 40, h: 200 }, { fix: true, thin: true }), 1.2, 0.4);
+          // fix 3 · one button: circle the CTA
+          BS.pop(tl, "#r1f-c3", 1.8, { from: 0.6, ease: "back.out(2.2)", dur: 0.36 });
+          BS.draw(tl, BS.pen(view, "circle", { x: 14, y: 648, w: 640, h: 140 }, { fix: true, seed: 8 }), 1.8, 0.5);
+
+          // customer clicks the CTA (CTA centre ≈ x 400, y 1360 → tip offset 12/6)
+          const cursor = document.getElementById("r1f-cursor");
+          BS.cursorPath(tl, cursor, [
+            { t: 2.0, x: 1010, y: 1760 },
+            { t: 2.05, x: 420, y: 1352, dur: 0.5, ease: "power3.out" },
+          ]);
+          tl.fromTo(cursor, { opacity: 0 }, { opacity: 1, duration: 0.12 }, 2.0);
+          BS.click(tl, cursor, 2.6, { target: "#r1f-cta" });
+          // the headline zone hands over to the notification (no overlap with the page)
+          BS.exit(tl, ["#r1f-head", "#r1f-chips"], 2.8, "lift", { dur: 0.2 });
+          BS.drop(tl, "#r1f-notif", 2.95);
+          window.__timelines["r1-fix"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
