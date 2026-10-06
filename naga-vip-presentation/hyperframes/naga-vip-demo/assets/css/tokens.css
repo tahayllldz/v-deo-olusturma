@@ -1,7 +1,6 @@
 /* NAGA VIP — design tokens
    Brand colours follow the Naga Exchange logo (black · gold · white).
    Status colours are product UI colours, not brand colours. */
-@import url("fonts.css");
 
 :root {
   /* Brand */

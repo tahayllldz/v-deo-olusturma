@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>NAGA VIP — ürün demosu</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/naga-app.css">
+    <style>
+      /* Local fonts (SIL OFL) — latin + latin-ext for Turkish and ₺ */
+      @font-face { font-family: "Manrope"; font-weight: 400; src: url("assets/fonts/manrope-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+      @font-face { font-family: "Manrope"; font-weight: 400; src: url("assets/fonts/manrope-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "Manrope"; font-weight: 500; src: url("assets/fonts/manrope-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+      @font-face { font-family: "Manrope"; font-weight: 500; src: url("assets/fonts/manrope-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "Manrope"; font-weight: 600; src: url("assets/fonts/manrope-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+      @font-face { font-family: "Manrope"; font-weight: 600; src: url("assets/fonts/manrope-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "Manrope"; font-weight: 700; src: url("assets/fonts/manrope-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+      @font-face { font-family: "Manrope"; font-weight: 700; src: url("assets/fonts/manrope-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "Manrope"; font-weight: 800; src: url("assets/fonts/manrope-latin-ext-800-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+      @font-face { font-family: "Manrope"; font-weight: 800; src: url("assets/fonts/manrope-latin-800-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "Fraunces"; font-weight: 300; src: url("assets/fonts/fraunces-latin-ext-300-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+      @font-face { font-family: "Fraunces"; font-weight: 300; src: url("assets/fonts/fraunces-latin-300-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      @font-face { font-family: "Fraunces"; font-weight: 400; src: url("assets/fonts/fraunces-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+      @font-face { font-family: "Fraunces"; font-weight: 400; src: url("assets/fonts/fraunces-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0b0b0d; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Manrope", sans-serif; color: #f4efe4; }
+      .full { position: absolute; inset: 0; }
+      /* Scene roots fill the frame; title + outro centre their content */
+      [data-composition-id="naga-bg"], [data-composition-id="naga-stage"] { position: absolute; inset: 0; }
+      [data-composition-id="naga-title"], [data-composition-id="naga-outro"] { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+      .frame-center { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+      .mono { background: url("assets/brand/naga-monogram.svg") center / contain no-repeat; }
+
+      /* Background */
+      #bg { background: radial-gradient(110% 80% at 70% 50%, #18161a 0%, #0d0d10 55%, #09090b 100%); }
+      .glow { position: absolute; width: 1300px; height: 1300px; left: 650px; top: -110px; border-radius: 50%; background: radial-gradient(circle, rgba(207, 167, 82, 0.2) 0%, rgba(207, 167, 82, 0.06) 38%, rgba(207, 167, 82, 0) 66%); }
+      .ghost-mark { position: absolute; width: 720px; height: 840px; left: 1180px; top: 150px; opacity: 0.045; }
+      .hair { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, rgba(207, 167, 82, 0) 0%, rgba(207, 167, 82, 0.22) 30%, rgba(207, 167, 82, 0) 100%); }
+
+      /* Title + outro cards */
+      .card-center { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+      .tc-mark { width: 120px; height: 140px; display: block; }
+      .tc-name { margin-top: 34px; font-weight: 800; font-size: 104px; letter-spacing: 0.16em; line-height: 1; padding-left: 0.16em; }
+      .tc-name b { font-weight: 800; color: #e2c47f; }
+      .tc-line { margin-top: 30px; font-family: "Fraunces", serif; font-weight: 300; font-size: 54px; letter-spacing: -0.02em; color: #efe8da; max-width: 1300px; line-height: 1.15; }
+      .tc-foot { margin-top: 44px; font-size: 22px; font-weight: 700; letter-spacing: 0.18em; color: #9a9386; }
+
+      /* Captions (left column) */
+      #captions { position: absolute; left: 150px; top: 300px; width: 800px; height: 520px; }
+      .progress { position: absolute; left: 0; top: 0; width: 420px; display: flex; gap: 8px; }
+      .progress span { position: relative; flex: 1; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, 0.12); overflow: hidden; }
+      .progress span i { position: absolute; inset: 0; display: block; background: #cfa752; border-radius: 3px; }
+      .cap { position: absolute; left: 0; top: 46px; width: 800px; }
+      .cap__num { font-size: 22px; font-weight: 800; letter-spacing: 0.22em; color: #d9b56a; }
+      .cap__title { margin-top: 18px; font-family: "Fraunces", serif; font-weight: 300; font-size: 82px; line-height: 1.04; letter-spacing: -0.025em; color: #f4efe4; }
+      .cap__sub { margin-top: 24px; font-size: 30px; font-weight: 600; line-height: 1.35; color: #c3bcae; max-width: 720px; }
+      .cap__sub b { color: #f1da9c; font-weight: 800; }
+
+      /* Mini Naga panel card */
+      #panel-card { position: absolute; left: 150px; top: 730px; width: 700px; border-radius: 24px; padding: 22px 26px; background: #f6f2e9; color: #121216; }
+      .pc-head { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 800; letter-spacing: 0.16em; color: #6b655a; }
+      .pc-head img { height: 26px; }
+      .pc-row { margin-top: 16px; display: flex; align-items: center; gap: 22px; font-size: 26px; font-weight: 800; }
+      .pc-row .t { font-size: 30px; }
+      .pc-row .c { font-size: 21px; font-weight: 700; color: #4a463f; white-space: nowrap; }
+      .pc-vip { display: inline-grid; place-items: center; height: 22px; padding: 0 8px; border-radius: 11px; background: linear-gradient(135deg, #f1da9c, #cfa752 48%, #a9823a); font-size: 11px; font-weight: 800; letter-spacing: 0.08em; color: #17130a; margin-left: 6px; vertical-align: 3px; }
+      .pc-st { position: relative; margin-left: auto; width: 190px; height: 38px; }
+      .pc-st span { position: absolute; right: 0; top: 0; height: 38px; padding: 0 16px; border-radius: 19px; display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 800; letter-spacing: 0.08em; }
+      .pc-st span::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+      .pc-new { color: #2f62c9; background: rgba(77, 128, 230, 0.14); }
+      .pc-prep { color: #9a5d08; background: rgba(229, 166, 64, 0.24); }
+
+      /* Phone */
+      #phone-pos { position: absolute; left: 1086px; top: 63px; width: 414px; height: 868px; }
+      .device-scale { width: 414px; height: 868px; transform: scale(1.095); transform-origin: 50% 0%; }
+      #phone { width: 414px; height: 868px; }
+      .scr { position: absolute; inset: 0; overflow: hidden; }
+      .scr .app__body { top: 54px; }
+      .chrome { position: absolute; inset: 0; z-index: 40; pointer-events: none; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 3px solid #f1da9c; background: rgba(241, 218, 156, 0.18); z-index: 50; }
+      .swap { position: relative; display: block; height: 20px; }
+      .swap > span { position: absolute; left: 0; top: 0; white-space: nowrap; }
+      .muted { color: #9a9488; }
+      .chip-wrap { position: relative; }
+      .chip-on { position: absolute; inset: -1px; border-radius: 13px; border: 1px solid #cfa752; background: rgba(207, 167, 82, 0.16); color: #f1da9c; display: grid; place-items: center; font-size: 14px; font-weight: 700; }
+      .focus-ring { position: absolute; inset: -6px; border-radius: 26px; border: 2px solid rgba(241, 218, 156, 0.85); box-shadow: 0 0 0 6px rgba(207, 167, 82, 0.14); }
+      .btn-label { position: relative; display: grid; place-items: center; width: 100%; height: 100%; }
+      .btn-label > span { position: absolute; display: flex; align-items: center; gap: 10px; }
+      .spinner { width: 20px; height: 20px; border-radius: 50%; border: 3px solid rgba(23, 19, 10, 0.25); border-top-color: #17130a; }
+      .done-ring svg { display: block; }
+      .done__title { max-width: 300px; margin-left: auto; margin-right: auto; }
+      .demo-flag { position: absolute; right: 64px; top: 52px; display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 700; color: #9a9386; letter-spacing: 0.04em; }
+      .demo-flag b { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: 15px; border: 1px solid rgba(207, 167, 82, 0.5); color: #e2c47f; font-size: 14px; font-weight: 800; letter-spacing: 0.16em; }
+      .brand-corner { position: absolute; left: 150px; top: 56px; height: 52px; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-dcwt" id="root" data-composition-id="main" data-start="0" data-duration="18" data-width="1920" data-height="1080">
+      <div data-hf-id="hf-5f73" id="bg" class="clip full" data-composition-id="naga-bg" data-composition-src="compositions/naga-bg.html" data-start="0" data-duration="18" data-track-index="0" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-z6wj" id="title-card" class="clip full" data-composition-id="naga-title" data-composition-src="compositions/naga-title.html" data-start="0" data-duration="2.8" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-tn3i" id="stage" class="clip full" data-composition-id="naga-stage" data-composition-src="compositions/naga-stage.html" data-start="2" data-duration="13.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-550n" id="outro" class="clip full" data-composition-id="naga-outro" data-composition-src="compositions/naga-outro.html" data-start="15.3" data-duration="2.7" data-track-index="3" data-width="1920" data-height="1080"></div>
+    </div>
+    <script>
+      // Scenes register their own timelines; the root timeline only anchors the film.
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

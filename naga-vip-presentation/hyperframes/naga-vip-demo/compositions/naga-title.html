@@ -1,0 +1,21 @@
+<template id="naga-title-template">
+  <div data-hf-id="hf-199h" data-composition-id="naga-title" data-width="1920" data-height="1080" data-duration="2.8">
+    <div data-hf-id="hf-pg5i" id="tc-inner" class="frame-center">
+          <div data-hf-id="hf-5ouq" class="tc-mark mono" id="tc-mark" role="img" aria-label="Naga Exchange"></div>
+          <div data-hf-id="hf-xtcx" class="tc-name" id="tc-name">NAGA <b data-hf-id="hf-by40">VIP</b></div>
+          <div data-hf-id="hf-fq5k" class="tc-line" id="tc-line">Döviz işlemini müşteriniz gelmeden hazırlayın.</div>
+        </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const T = (globalTime) => globalTime - 0; // film time -> this scene's local time
+      // ---------- Title card (0 – 2.8) ----------
+      tl.fromTo("#tc-mark", { opacity: 0, y: 30, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out" }, 0.15);
+      tl.fromTo("#tc-name", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "power3.out" }, 0.35);
+      tl.fromTo("#tc-line", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 0.75);
+      tl.fromTo("#tc-inner", { opacity: 1, y: 0 }, { opacity: 0, y: -60, duration: 0.55, ease: "power2.in", immediateRender: false }, 2.2);
+      window.__timelines["naga-title"] = tl;
+    })();
+  </script>
+</template>

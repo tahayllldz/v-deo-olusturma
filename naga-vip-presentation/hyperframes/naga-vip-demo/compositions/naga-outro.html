@@ -1,0 +1,21 @@
+<template id="naga-outro-template">
+  <div data-hf-id="hf-nh2d" data-composition-id="naga-outro" data-width="1920" data-height="1080" data-duration="2.7">
+    <div data-hf-id="hf-p8y8" class="frame-center">
+          <div data-hf-id="hf-vbf3" class="tc-mark mono" id="out-mark" role="img" aria-label="Naga Exchange"></div>
+          <div data-hf-id="hf-4fki" class="tc-name" id="out-name">NAGA <b data-hf-id="hf-by40">VIP</b></div>
+          <div data-hf-id="hf-towy" class="tc-line" id="out-line">Müşteri gelmeden işlem hazır.</div>
+          <div data-hf-id="hf-oupu" class="tc-foot" id="out-foot">BETA STUDIO · ÜRÜN DEMOSU · KUR VE TUTARLAR ÖRNEKTİR</div>
+        </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      const T = (globalTime) => globalTime - 15.3; // film time -> this scene's local time
+      tl.fromTo("#out-mark", { opacity: 0, y: 30, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, T(15.45));
+      tl.fromTo("#out-name", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, T(15.6));
+      tl.fromTo("#out-line", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, T(15.9));
+      tl.fromTo("#out-foot", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, T(16.35));
+      window.__timelines["naga-outro"] = tl;
+    })();
+  </script>
+</template>
