@@ -1,0 +1,172 @@
+[
+  {
+    "file": "renders/reel-01-website.mp4",
+    "ok": true,
+    "seconds": "49.4",
+    "duration": "18.000",
+    "size_mb": "5.52",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -16.6 LUFS",
+    "peak": "Peak: -1.5 dBFS"
+  },
+  {
+    "file": "renders/ab/reel-01-website-A.mp4",
+    "ok": true,
+    "seconds": "49.1",
+    "duration": "18.000",
+    "size_mb": "5.52",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -16.6 LUFS",
+    "peak": "Peak: -1.5 dBFS",
+    "note": "copy of the main render (A is the default hook)"
+  },
+  {
+    "file": "renders/ab/reel-01-website-B.mp4",
+    "ok": true,
+    "seconds": "48.5",
+    "duration": "18.000",
+    "size_mb": "5.56",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -16.6 LUFS",
+    "peak": "Peak: -1.5 dBFS"
+  },
+  {
+    "file": "renders/reel-02-social.mp4",
+    "ok": true,
+    "seconds": "46.2",
+    "duration": "18.333",
+    "size_mb": "6.43",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -14.5 LUFS",
+    "peak": "Peak: -1.5 dBFS"
+  },
+  {
+    "file": "renders/ab/reel-02-social-A.mp4",
+    "ok": true,
+    "seconds": "46.8",
+    "duration": "18.333",
+    "size_mb": "6.43",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -14.5 LUFS",
+    "peak": "Peak: -1.5 dBFS",
+    "note": "copy of the main render (A is the default hook)"
+  },
+  {
+    "file": "renders/ab/reel-02-social-B.mp4",
+    "ok": true,
+    "seconds": "47.4",
+    "duration": "18.333",
+    "size_mb": "6.31",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -14.5 LUFS",
+    "peak": "Peak: -1.6 dBFS"
+  },
+  {
+    "file": "renders/reel-03-ai.mp4",
+    "ok": true,
+    "seconds": "52.1",
+    "duration": "19.567",
+    "size_mb": "4.68",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -16.8 LUFS",
+    "peak": "Peak: -3.2 dBFS"
+  },
+  {
+    "file": "renders/ab/reel-03-ai-A.mp4",
+    "ok": true,
+    "seconds": "53.0",
+    "duration": "19.567",
+    "size_mb": "4.68",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -16.8 LUFS",
+    "peak": "Peak: -3.2 dBFS",
+    "note": "copy of the main render (A is the default hook)"
+  },
+  {
+    "file": "renders/ab/reel-03-ai-B.mp4",
+    "ok": true,
+    "seconds": "53.4",
+    "duration": "19.567",
+    "size_mb": "4.67",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -16.8 LUFS",
+    "peak": "Peak: -3.0 dBFS"
+  },
+  {
+    "file": "renders/reel-04-redesign.mp4",
+    "ok": true,
+    "seconds": "53.4",
+    "duration": "18.000",
+    "size_mb": "7.03",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -16.3 LUFS",
+    "peak": "Peak: -1.6 dBFS"
+  },
+  {
+    "file": "renders/ab/reel-04-redesign-A.mp4",
+    "ok": true,
+    "seconds": "53.8",
+    "duration": "18.000",
+    "size_mb": "7.03",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -16.3 LUFS",
+    "peak": "Peak: -1.6 dBFS",
+    "note": "copy of the main render (A is the default hook)"
+  },
+  {
+    "file": "renders/ab/reel-04-redesign-B.mp4",
+    "ok": true,
+    "seconds": "56.0",
+    "duration": "18.000",
+    "size_mb": "6.94",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -16.4 LUFS",
+    "peak": "Peak: -1.6 dBFS"
+  },
+  {
+    "file": "renders/reel-05-hot-take.mp4",
+    "ok": true,
+    "seconds": "53.2",
+    "duration": "17.633",
+    "size_mb": "4.71",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -15.2 LUFS",
+    "peak": "Peak: -1.1 dBFS"
+  },
+  {
+    "file": "renders/ab/reel-05-hot-take-A.mp4",
+    "ok": true,
+    "seconds": "50.9",
+    "duration": "17.633",
+    "size_mb": "4.71",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -15.2 LUFS",
+    "peak": "Peak: -1.1 dBFS",
+    "note": "copy of the main render (A is the default hook)"
+  },
+  {
+    "file": "renders/ab/reel-05-hot-take-B.mp4",
+    "ok": true,
+    "seconds": "52.8",
+    "duration": "17.633",
+    "size_mb": "4.67",
+    "video": "h264 1080x1920",
+    "audio": "aac",
+    "loudness": "I: -15.2 LUFS",
+    "peak": "Peak: -1.1 dBFS"
+  }
+]
