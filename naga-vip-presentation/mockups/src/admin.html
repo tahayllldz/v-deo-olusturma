@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>NAGA VIP — Admin Dashboard</title>
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/naga-admin.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 40px 60px 90px;
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="admin" style="display: inline-block; padding: 10px 30px 60px">
+      <div class="win">
+        <div class="win__bar">
+          <i></i><i></i><i></i>
+          <div class="win__url">NAGA VIP · Admin Panel</div>
+        </div>
+        <div class="adm">
+          <aside class="adm__side">
+            <div class="adm__logo"><img src="../../assets/brand/naga-logo-horizontal.svg" alt="Naga Exchange" /></div>
+            <div class="adm__label">BRANCH DESK</div>
+            <nav class="adm__nav">
+              <a class="on">Today <span class="count">4</span></a>
+              <a>Reservations</a>
+              <a>Customers</a>
+              <a>Rates</a>
+              <a>Settings</a>
+            </nav>
+            <div class="adm__branch"><b>İskele Branch</b>Front desk · 2 staff online</div>
+          </aside>
+
+          <main class="adm__main">
+            <div class="adm__head">
+              <div>
+                <div class="adm__title">Today's Reservations</div>
+                <div class="adm__date">Tuesday, 6 October · İskele Branch</div>
+              </div>
+              <span class="demo-chip">DEMO DATA</span>
+            </div>
+
+            <div class="stats">
+              <div class="stat"><div class="stat__k">Total today</div><div class="stat__v">4</div></div>
+              <div class="stat stat--new"><div class="stat__k">New</div><div class="stat__v">1</div></div>
+              <div class="stat stat--prep"><div class="stat__k">Preparing</div><div class="stat__v">1</div></div>
+              <div class="stat stat--ready"><div class="stat__k">Ready</div><div class="stat__v">2</div></div>
+            </div>
+
+            <div class="list">
+              <div class="list__head"><span>TIME</span><span>CUSTOMER</span><span>CURRENCY</span><span>AMOUNT</span><span>STATUS</span></div>
+              <div class="row">
+                <span class="row__time">10:30</span>
+                <span class="row__cust">Customer #1039<small>Reservation via app</small></span>
+                <span class="row__pair">EUR → TRY</span>
+                <span class="row__amt">€5,000</span>
+                <span class="st st--ready">READY</span>
+              </div>
+              <div class="row">
+                <span class="row__time">12:00</span>
+                <span class="row__cust">Customer #1040<small>Reservation via app</small></span>
+                <span class="row__pair">GBP → TRY</span>
+                <span class="row__amt">£3,000</span>
+                <span class="st st--prep">PREPARING</span>
+              </div>
+              <div class="row sel">
+                <span class="row__time">16:30</span>
+                <span class="row__cust">VIP Customer <span class="vip">VIP</span><small>#1042 · created 14:13</small></span>
+                <span class="row__pair">GBP → TRY</span>
+                <span class="row__amt">£10,000</span>
+                <span class="st st--new">NEW</span>
+              </div>
+              <div class="row">
+                <span class="row__time">18:00</span>
+                <span class="row__cust">Customer #1043<small>Reservation via app</small></span>
+                <span class="row__pair">USD → TRY</span>
+                <span class="row__amt">$7,500</span>
+                <span class="st st--ready">READY</span>
+              </div>
+            </div>
+          </main>
+
+          <section class="adm__detail" id="admin-detail">
+            <div class="det__over">RESERVATION</div>
+            <div class="det__title">#1042</div>
+            <div class="det__list">
+              <div class="det__kv"><span>Customer</span><b>VIP Customer <span class="vip">VIP</span></b></div>
+              <div class="det__kv"><span>Currency</span><b>GBP → TRY</b></div>
+              <div class="det__kv det__amt"><span>Amount</span><b>£10,000</b></div>
+              <div class="det__kv"><span>Branch</span><b>İskele</b></div>
+              <div class="det__kv"><span>Time</span><b>Today · 16:30</b></div>
+              <div class="det__kv"><span>Created</span><b>14:13 · via app</b></div>
+              <div class="det__kv"><span>Status</span><span class="st st--new">NEW</span></div>
+            </div>
+            <div class="det__btns">
+              <div class="abtn abtn--gold">PREPARE</div>
+              <div class="abtn abtn--line">CONTACT CUSTOMER</div>
+              <div class="abtn abtn--ready">MARK AS READY</div>
+            </div>
+            <div class="det__hint">Rate and final terms are confirmed by Naga at the counter.</div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

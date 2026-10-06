@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <title>NAGA VIP — Sistem</title>
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/diagrams.css" />
+    <style>
+      body { margin: 0; background: var(--ink); }
+      #system { position: relative; width: 1040px; height: 850px; }
+      .chain { position: absolute; left: 40px; top: 30px; width: 470px; display: flex; flex-direction: column; align-items: stretch; }
+      .sn { height: 100px; border-radius: 22px; padding: 0 22px; display: flex; align-items: center; gap: 18px; background: rgba(255, 255, 255, 0.045); border: 1px solid rgba(255, 255, 255, 0.1); }
+      .sn__ic { flex: none; width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: rgba(207, 167, 82, 0.14); color: var(--gold-hi); }
+      .sn__t { font-size: 21px; font-weight: 800; letter-spacing: 0.06em; }
+      .sn__s { margin-top: 3px; font-size: 15.5px; font-weight: 600; color: var(--on-dark-2); }
+      .sn--hero { background: var(--gold-grad); border-color: transparent; color: #17130a; }
+      .sn--hero .sn__ic { background: #121216; color: var(--gold-hi); }
+      .sn--hero .sn__s { color: rgba(23, 19, 10, 0.75); }
+      .down { height: 38px; position: relative; }
+      .down::before { content: ""; position: absolute; left: 47px; top: 6px; bottom: 9px; width: 2px; background: rgba(207, 167, 82, 0.55); }
+      .down::after { content: ""; position: absolute; left: 42px; bottom: 3px; border: 6px solid transparent; border-top: 8px solid rgba(207, 167, 82, 0.8); border-bottom: 0; }
+      .future { position: absolute; left: 600px; top: 420px; width: 400px; }
+      .future__label { font-size: 13px; font-weight: 800; letter-spacing: 0.16em; color: var(--on-dark-3); margin-bottom: 14px; }
+      .fn { height: 86px; border-radius: 20px; padding: 0 20px; display: flex; align-items: center; gap: 16px; border: 1.5px dashed rgba(207, 167, 82, 0.45); margin-bottom: 14px; }
+      .fn__t { font-size: 19px; font-weight: 800; color: var(--gold-hi); }
+      .fn__s { margin-top: 2px; font-size: 14.5px; font-weight: 600; color: var(--on-dark-2); }
+      .link { position: absolute; border: 1.5px dashed rgba(207, 167, 82, 0.45); border-right: 0; border-top: 0; border-bottom: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="system" class="dg dg--dark">
+      <div class="chain">
+        <div class="sn sn--hero"><span class="sn__ic"><svg width="20" height="26" viewBox="0 0 16 24"><rect x="1.5" y="1.5" width="13" height="21" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span><div><div class="sn__t">NAGA VIP APP</div><div class="sn__s">Müşteri uygulaması</div></div></div>
+        <div class="down"></div>
+        <div class="sn"><span class="sn__ic"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div><div class="sn__t">RESERVATION</div><div class="sn__s">Rezervasyon: miktar, şube, saat</div></div></div>
+        <div class="down"></div>
+        <div class="sn"><span class="sn__ic"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 20.5h7M12 17.5v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div><div class="sn__t">NAGA ADMIN PANEL</div><div class="sn__s">Naga yönetim paneli: hazırla, hazır işaretle</div></div></div>
+        <div class="down"></div>
+        <div class="sn"><span class="sn__ic"><svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 20c1.2-3.8 4-5.5 7.5-5.5s6.3 1.7 7.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div><div class="sn__t">CUSTOMER</div><div class="sn__s">Müşteri şubeye gelir</div></div></div>
+        <div class="down"></div>
+        <div class="sn"><span class="sn__ic"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 8h13l-3.5-3.5M20 16H7l3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="sn__t">TRANSACTION</div><div class="sn__s">İşlem tamamlanır</div></div></div>
+        <div class="down"></div>
+        <div class="sn"><span class="sn__ic"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 9.5h8M8 14.5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div><div class="sn__t">CUSTOMER HISTORY</div><div class="sn__s">Müşteri geçmişi kayda geçer</div></div></div>
+      </div>
+
+      <svg class="abs" width="140" height="340" viewBox="0 0 140 340" style="position: absolute; left: 512px; top: 470px">
+        <path d="M0 300 H44 V23 H88" fill="none" stroke="rgba(207,167,82,0.5)" stroke-width="1.5" stroke-dasharray="6 6"/>
+        <path d="M44 123 H88 M44 223 H88" fill="none" stroke="rgba(207,167,82,0.5)" stroke-width="1.5" stroke-dasharray="6 6"/>
+      </svg>
+
+      <div class="future">
+        <div class="future__label">İLERİDE EKLENEBİLİR</div>
+        <div class="fn"><div><div class="fn__t">CRM</div><div class="fn__s">Müşteri Takip Sistemi</div></div></div>
+        <div class="fn"><div><div class="fn__t">Automation</div><div class="fn__s">Otomatik bildirim ve hatırlatmalar</div></div></div>
+        <div class="fn"><div><div class="fn__t">Analytics</div><div class="fn__s">İşletme raporları ve analiz</div></div></div>
+      </div>
+    </div>
+  </body>
+</html>

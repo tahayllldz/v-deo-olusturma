@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <title>NAGA VIP — Müşteri yolculuğu</title>
+    <link rel="stylesheet" href="../../assets/css/tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/diagrams.css" />
+    <style>
+      body { margin: 0; background: var(--ivory); }
+      #journey { position: relative; width: max-content; height: 420px; padding: 40px 48px; display: flex; gap: 44px; }
+      .grp { display: flex; flex-direction: column; }
+      .grp__head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+      .grp__line { flex: 1; height: 1px; background: rgba(18, 18, 22, 0.16); }
+      .cards { position: relative; display: flex; gap: 14px; }
+      .cards::before { content: ""; position: absolute; left: 30px; right: 30px; top: 49px; height: 2px; background: rgba(18, 18, 22, 0.14); }
+      .jc { position: relative; width: 206px; height: 280px; border-radius: 22px; padding: 22px 20px; background: #fffdf8; border: 1px solid var(--hair-light); display: flex; flex-direction: column; }
+      .jc__n { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: #121216; color: var(--gold-hi); font-size: 20px; font-weight: 800; position: relative; z-index: 1; }
+      .jc__t { margin-top: 22px; font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+      .jc__v { margin-top: 8px; font-size: 25px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+      .jc__s { margin-top: auto; font-size: 14.5px; font-weight: 600; color: var(--text-2); line-height: 1.4; }
+      .jc--naga { background: #121216; border-color: #121216; color: var(--on-dark); }
+      .jc--naga .jc__n { background: var(--gold-grad); color: #17130a; }
+      .jc--naga .jc__t { color: var(--on-dark-3); }
+      .jc--naga .jc__s { color: var(--on-dark-2); }
+      .jc--ready { background: #e6f4ec; border-color: rgba(23, 122, 79, 0.3); }
+      .jc--ready .jc__n { background: #1e8a5b; color: #fff; }
+      .jc--ready .jc__v { color: #125c3c; }
+      .pills { display: grid; gap: 7px; margin-top: 12px; }
+      .pill { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 11px; border-radius: 14px; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; justify-self: start; }
+      .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+      .pill--new { color: #9dbcf7; background: rgba(109, 156, 242, 0.16); }
+      .pill--prep { color: #f0bd62; background: rgba(229, 166, 64, 0.18); }
+      .pill--ready { color: #5fd29c; background: rgba(54, 185, 127, 0.18); }
+      .demo { display: inline-flex; height: 20px; align-items: center; padding: 0 8px; border-radius: 10px; border: 1px solid rgba(156, 119, 44, 0.45); color: #8a6721; font-size: 10px; font-weight: 800; letter-spacing: 0.14em; vertical-align: 4px; margin-left: 4px; }
+    </style>
+  </head>
+  <body>
+    <div id="journey" class="dg dg--light">
+      <div class="grp">
+        <div class="grp__head"><span class="lane-tag lane-tag--vip">MÜŞTERİ · TELEFONDAN</span><span class="grp__line"></span></div>
+        <div class="cards">
+          <div class="jc"><div class="jc__n">1</div><div class="jc__t">Para birimi</div><div class="jc__v">GBP → TRY</div><div class="jc__s">Bozdurmak istediği dövizi seçer.</div></div>
+          <div class="jc"><div class="jc__n">2</div><div class="jc__t">Miktar</div><div class="jc__v">10.000 GBP</div><div class="jc__s">Tutarı yazar, hesap anında görünür.</div></div>
+          <div class="jc"><div class="jc__n">3</div><div class="jc__t">Kur bilgisi</div><div class="jc__v">₺649.500<span class="demo">DEMO</span></div><div class="jc__s">Tahmini tutarı görür. Koşulları Naga onaylar.</div></div>
+          <div class="jc"><div class="jc__n">4</div><div class="jc__t">Şube ve saat</div><div class="jc__v">İskele · 16:30</div><div class="jc__s">Gelmek istediği zamanı seçer.</div></div>
+          <div class="jc"><div class="jc__n">5</div><div class="jc__t">Rezervasyon</div><div class="jc__v">NGR-1042</div><div class="jc__s">Tek dokunuşla oluşturur, bildirim alır.</div></div>
+        </div>
+      </div>
+      <div class="grp">
+        <div class="grp__head"><span class="lane-tag" style="background: var(--gold-grad); color: #17130a">NAGA · ŞUBEDE</span><span class="grp__line"></span></div>
+        <div class="cards">
+          <div class="jc jc--naga"><div class="jc__n">6</div><div class="jc__t">Naga hazırlar</div>
+            <div class="pills"><span class="pill pill--new">NEW</span><span class="pill pill--prep">PREPARING</span><span class="pill pill--ready">READY</span></div>
+            <div class="jc__s">Panelde görür, müşteri gelmeden hazırlar.</div></div>
+          <div class="jc jc--ready"><div class="jc__n">7</div><div class="jc__t">Müşteri gelir</div><div class="jc__v">İşlem hazır</div><div class="jc__s">Beklemeden işlemini tamamlar.</div></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "naga-vip-presentation",
+  "private": true,
+  "type": "module",
+  "description": "NAGA VIP — Naga Exchange (İskele) için ürün sunumu, mockup'lar ve HyperFrames demo videosu. Beta Studio.",
+  "scripts": {
+    "logo": "python3 -I scripts/build_logo.py",
+    "mockups": "node scripts/build-mockups.mjs",
+    "pdf": "node scripts/export-pdf.mjs",
+    "video": "cd hyperframes/naga-vip-demo && npx hyperframes render --quality delivery --output ../../demo-video/naga-vip-demo.mp4",
+    "present": "npx serve . -l 4173"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

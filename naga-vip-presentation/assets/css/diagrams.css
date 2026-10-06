@@ -1,0 +1,113 @@
+/* NAGA VIP — explanatory diagrams (before/after, journey, system) */
+
+.dg {
+  font-family: var(--sans);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+  box-sizing: border-box;
+}
+.dg *,
+.dg *::before,
+.dg *::after {
+  box-sizing: border-box;
+}
+.dg--light {
+  background: var(--ivory);
+}
+.dg--dark {
+  background: var(--ink);
+  color: var(--on-dark);
+}
+
+.lane-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 17px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+.lane-tag--today {
+  background: rgba(217, 97, 76, 0.12);
+  color: #b4472f;
+}
+.lane-tag--vip {
+  background: #121216;
+  color: var(--gold-hi);
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 68px;
+  padding: 0 18px;
+  border-radius: 18px;
+  background: #fffdf8;
+  border: 1px solid var(--hair-light);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.node__ic {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--sand);
+  color: var(--text-2);
+}
+.node--wait {
+  background: repeating-linear-gradient(-45deg, rgba(217, 97, 76, 0.1) 0 10px, rgba(217, 97, 76, 0.04) 10px 20px);
+  border: 1.5px dashed rgba(180, 71, 47, 0.5);
+  color: #9b3c27;
+}
+.node--wait .node__ic {
+  background: rgba(217, 97, 76, 0.16);
+  color: #b4472f;
+}
+.node--phone .node__ic {
+  background: #121216;
+  color: var(--gold-hi);
+}
+.node--gold {
+  background: #121216;
+  color: var(--on-dark);
+  border-color: #121216;
+}
+.node--gold .node__ic {
+  background: var(--gold-grad);
+  color: #17130a;
+}
+.node--ready {
+  background: #e6f4ec;
+  border: 1.5px solid rgba(23, 122, 79, 0.35);
+  color: #125c3c;
+}
+.node--ready .node__ic {
+  background: #1e8a5b;
+  color: #fff;
+}
+.arrow {
+  flex: none;
+  width: 30px;
+  height: 2px;
+  background: rgba(18, 18, 22, 0.25);
+  position: relative;
+}
+.arrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  border: 5px solid transparent;
+  border-left: 7px solid rgba(18, 18, 22, 0.35);
+  border-right: 0;
+}

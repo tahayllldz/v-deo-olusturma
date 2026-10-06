@@ -1,0 +1,45 @@
+/* NAGA VIP — design tokens
+   Brand colours follow the Naga Exchange logo (black · gold · white).
+   Status colours are product UI colours, not brand colours. */
+@import url("fonts.css");
+
+:root {
+  /* Brand */
+  --ink: #0b0b0d;
+  --ink-2: #141418;
+  --ink-3: #1c1c22;
+  --ink-4: #26262e;
+  --gold: #cfa752;
+  --gold-hi: #f1da9c;
+  --gold-lo: #9c772c;
+  --gold-text: #d9b56a;
+  --gold-grad: linear-gradient(135deg, #f1da9c 0%, #cfa752 48%, #a9823a 100%);
+  --gold-soft: rgba(207, 167, 82, 0.14);
+  --gold-line: rgba(207, 167, 82, 0.38);
+
+  /* Warm neutrals */
+  --ivory: #f6f2e9;
+  --paper: #fbf8f1;
+  --sand: #ece5d6;
+  --text: #121216;
+  --text-2: #4a463f;
+  --text-3: #7a7468;
+  --on-dark: #f4efe4;
+  --on-dark-2: #b9b2a5;
+  --on-dark-3: #8a8478;
+  --hair-dark: rgba(255, 255, 255, 0.08);
+  --hair-light: rgba(18, 18, 22, 0.1);
+
+  /* Reservation status */
+  --st-new: #6d9cf2;
+  --st-new-bg: rgba(109, 156, 242, 0.14);
+  --st-prep: #e5a640;
+  --st-prep-bg: rgba(229, 166, 64, 0.15);
+  --st-ready: #36b97f;
+  --st-ready-bg: rgba(54, 185, 127, 0.15);
+  --st-wait: #d9614c;
+
+  /* Type */
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
+}
