@@ -1,0 +1,77 @@
+{
+  "available": true,
+  "source": "local-piper fahrettin (TEMP)",
+  "file": "audio/voiceover.mp3",
+  "sections": [
+    {
+      "id": "01-hook",
+      "start": 0.44,
+      "end": 1.937,
+      "text": "Müşteriniz şubeye gelmeden...",
+      "heard": "Müşteriniz Şube'ye gelmeden."
+    },
+    {
+      "id": "02-hook",
+      "start": 3.04,
+      "end": 4.1,
+      "text": "...işlemi hazır olsun.",
+      "heard": "İşlemi hazır olsun."
+    },
+    {
+      "id": "03-amount",
+      "start": 6.34,
+      "end": 8.015,
+      "text": "Döviz türünü ve miktarını seçsin,",
+      "heard": "Doğusturunu ve Mitharnas'ı çeksin"
+    },
+    {
+      "id": "04-receive",
+      "start": 9.94,
+      "end": 11.478,
+      "text": "alacağı tutarı anında görsün.",
+      "heard": "Alacağı tutarı anında görsün."
+    },
+    {
+      "id": "05-branch",
+      "start": 12.928,
+      "end": 14.642,
+      "text": "Şubesini ve saatini belirlesin.",
+      "heard": "Şubesini ve saati belirlesin."
+    },
+    {
+      "id": "06-reserve",
+      "start": 16.633,
+      "end": 18.688,
+      "text": "Tek dokunuşla rezervasyonunu oluştursun.",
+      "heard": "Tek dokunuşla rezervasyonun oluştursun."
+    },
+    {
+      "id": "07-admin",
+      "start": 21.14,
+      "end": 23.511,
+      "text": "Siz de, müşteri gelmeden işlemi hazırlayın.",
+      "heard": "Siz de müşteri gelmeden işlemi hazırlayın."
+    },
+    {
+      "id": "08-arrival",
+      "start": 25.64,
+      "end": 27.44,
+      "text": "Müşteri geldiğinde, işlemi hazır.",
+      "heard": "Müşteri geldiğinde işlemi hazır."
+    },
+    {
+      "id": "09-message",
+      "start": 29.14,
+      "end": 31.762,
+      "text": "Daha hızlı. Daha kolay. Daha Vi-Ay-Pi.",
+      "heard": "Daha hızlı, daha kolay, daha VIP."
+    },
+    {
+      "id": "10-cta",
+      "start": 32.64,
+      "end": 36.12,
+      "text": "Naga Vi-Ay-Pi. Müşteriniz gelsin, işlemi hazır olsun.",
+      "heard": "Naga viyaipe, müşteriniz gelsin, işlemi hazır olsun."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "naga-vip-promo",
+  "version": "1.0.0",
+  "description": "NAGA VIP — promo video, product mockups and owner presentation (Remotion)",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@remotion/bundler": "4.0.533",
+    "@remotion/cli": "4.0.533",
+    "@remotion/fonts": "4.0.533",
+    "@remotion/media": "4.0.533",
+    "@remotion/renderer": "4.0.533",
+    "@remotion/transitions": "4.0.533",
+    "lucide-react": "^1.52.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.533"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.533",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.39.5",
+    "pdf-lib": "^1.17.1",
+    "pptxgenjs": "^4.0.1",
+    "prettier": "3.8.1",
+    "sharp": "^0.35.5",
+    "tsx": "^4.23.15",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "studio": "remotion studio",
+    "preflight": "tsx ../scripts/promo-video-skill/preflight.ts",
+    "timing": "tsx ../scripts/promo-video-skill/timing-calculator.ts --scenes 630,150,120,108,150 --transition 12 --fps 30 --target 37",
+    "voiceover": "cd audio && tsx ../../scripts/promo-video-skill/generate-voiceover.ts --config voiceover-config.json",
+    "voiceover:check": "python ../scripts/vo-finalize.py --source elevenlabs:Matilda",
+    "sfx": "python ../scripts/make-sfx.py",
+    "render": "node ../scripts/render-video.mjs",
+    "render:landscape": "node ../scripts/render-video.mjs landscape",
+    "render:portrait": "node ../scripts/render-video.mjs portrait",
+    "mockups": "node ../scripts/render-stills.mjs mockups",
+    "slides": "node ../scripts/render-stills.mjs slides",
+    "deck": "node ../scripts/build-deck.mjs",
+    "export": "npm run mockups && npm run slides && npm run deck && npm run render",
+    "lint": "eslint src && tsc",
+    "build": "remotion bundle",
+    "upgrade": "remotion upgrade"
+  }
+}

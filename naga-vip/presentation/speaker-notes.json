@@ -1,0 +1,62 @@
+[
+  {
+    "n": 1,
+    "title": "NAGA VIP — Döviz işlemini müşteriniz gelmeden hazırlayın.",
+    "notes": "Naga Exchange İskele için hazırladığımız yeni müşteri deneyimi: NAGA VIP. Tek cümleyle: müşteriniz işlemini telefondan oluşturur, siz müşteri gelmeden hazırlarsınız. Ekrandaki kur ve veriler örnektir (DEMO)."
+  },
+  {
+    "n": 2,
+    "title": "Bugün: müşteri gelir, işlemini söyler, bekler, işlem hazırlanır.",
+    "notes": "Bugün her şey müşteri şubeye geldikten sonra başlıyor. Müşteri gelir, ne istediğini söyler, bekler; işlem o sırada hazırlanır. Örnek: Ahmet Bey 10.000 GBP bozduracak — tüm süreç şubede başlıyor."
+  },
+  {
+    "n": 3,
+    "title": "Peki ya müşteri gelmeden hazırlasak?",
+    "notes": "Bu slaytta durup soruyu sorun. Fikrin tamamı bu soruda."
+  },
+  {
+    "n": 4,
+    "title": "NAGA VIP — Müşteri telefonundan: Döviz → Miktar → Şube → Saat → Rezervasyon",
+    "notes": "NAGA VIP bir mobil uygulamadan fazlası: Naga'nın VIP müşterilerinin döviz işlemlerini şubeye gelmeden önce planlayabildiği yeni bir müşteri deneyimi. Müşteri telefonundan döviz türünü, miktarı, şubeyi ve saati seçer, rezervasyon oluşturur."
+  },
+  {
+    "n": 5,
+    "title": "30 saniyede rezervasyon — 5 adım",
+    "notes": "Ahmet Bey uygulamayı açar, 10.000 GBP girer, alacağı tahmini TL tutarını anında görür, İskele şubesini ve 16:30'u seçer, onaylar. Rezervasyon numarası: NGR-1042. 30 saniye, konsept akış için hedeflenen süredir."
+  },
+  {
+    "n": 6,
+    "title": "Naga tarafında: NEW → PREPARING → READY",
+    "notes": "Rezervasyon anında Naga panelinde görünür: £10,000, 16:30, İskele, durum NEW. Ekip işlemi hazırlar (PREPARING), hazır olunca READY yapar ve müşteriye bildirim gider. Panel sade: liste, detay ve üç buton."
+  },
+  {
+    "n": 7,
+    "title": "Müşteri deneyimi: Bekleme yerine hazır işlem",
+    "notes": "Önce: şubeye gelir, bekler, işlem hazırlanır. NAGA VIP ile: uygulamadan rezervasyon, Naga hazırlar, müşteri gelir, işlem tamamlanır. Müşteri geldiğinde işlem hazırdır."
+  },
+  {
+    "n": 8,
+    "title": "Naga'ya ne kazandırır?",
+    "notes": "Daha hızlı hizmet, VIP müşteri deneyimi, daha düzenli operasyon (günün talebi önceden görünür), müşteri sadakati ve daha güçlü dijital marka. Rakam vermiyoruz; ilk aşamada pilotla ölçülebilir."
+  },
+  {
+    "n": 9,
+    "title": "İlk versiyon (MVP)",
+    "notes": "İlk versiyonda yalnızca gerekli olanlar var: mobil uygulama, kur görüntüleme, döviz hesaplama, rezervasyon, şube seçimi, tarih/saat, rezervasyon durumu, bildirim, işlem geçmişi ve Naga ekibi için admin panel. Kur konusu: uygulama tahmini kuru gösterir (Rate Reservation). Kurun kesin kilitlenmesi ve geçerlilik süresi Naga'nın operasyonel ve yasal kurallarına göre belirlenir."
+  },
+  {
+    "n": 10,
+    "title": "Sonraki aşama: NAGA VIP+",
+    "notes": "Bunlar ilk sürümün parçası değil. Kullanıma göre: Faz 2 VIP + kur alarmı (favori para birimleri, tekrar işlem, VIP seviyeleri), Faz 3 CRM + otomasyon (WhatsApp, analytics, loyalty), Faz 4 çok şube ve kurumsal müşteriler. Rate Lock ileride ayrıca değerlendirilebilir."
+  },
+  {
+    "n": 11,
+    "title": "Beta Studio — Digital Growth & Technology Studio",
+    "notes": "Beta Studio: App + Web + Automation + Digital Growth. NAGA VIP'i tasarımdan geliştirmeye, yayından büyümeye kadar uçtan uca hayata geçirebilecek teknoloji partneri."
+  },
+  {
+    "n": 12,
+    "title": "Müşteriniz gelsin. İşlemi hazır olsun.",
+    "notes": "Kapanış: Müşteriniz gelsin, işlemi hazır olsun. Sonraki adım önerisi: kısa bir keşif görüşmesi (şube süreçleri, kur politikası, rezervasyon kuralları) ve ardından ilk versiyon için plan."
+  }
+]

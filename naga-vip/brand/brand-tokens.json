@@ -1,0 +1,36 @@
+{
+  "product": "NAGA VIP",
+  "company": "Naga Exchange",
+  "location": "İskele / KKTC",
+  "slogan": "Döviz işlemini müşteriniz gelmeden hazırlayın.",
+  "tagline": "Müşteriniz gelsin. İşlemi hazır olsun.",
+  "logo": {
+    "official": null,
+    "note": "Official logo not available as a file during production. Typographic NAGA / EXCHANGE wordmark is used. Drop the original into promo-video/public/brand/ and set OFFICIAL_LOGO in promo-video/src/brand.ts."
+  },
+  "colors": {
+    "ink": "#08080A",
+    "surface": "#16161A",
+    "surface2": "#1E1E23",
+    "gold": "#CDA652",
+    "goldLight": "#EED597",
+    "goldDeep": "#8C6A27",
+    "ivory": "#F7F2E8",
+    "muted": "#A3A1AA",
+    "statusNew": "#EED597",
+    "statusPreparing": "#78A2FF",
+    "statusReady": "#3FCB8E"
+  },
+  "gradients": {
+    "gold": "linear-gradient(135deg, #F3DDA2 0%, #D7B062 38%, #B98D3C 70%, #8C6A27 100%)"
+  },
+  "fonts": {
+    "display": "Montserrat (500–800, OFL)",
+    "ui": "Inter (400–800, OFL)"
+  },
+  "demoData": {
+    "rates": { "GBP": "64.95", "EUR": "55.20", "USD": "49.35", "TRY": "1.00" },
+    "reservation": { "id": "NGR-1042", "sell": "10,000 GBP", "receiveEstimate": "₺649,500", "branch": "Naga Exchange — İskele", "time": "16:30" },
+    "label": "DEMO RATE / DEMO VERİ"
+  }
+}

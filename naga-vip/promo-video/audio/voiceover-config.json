@@ -1,0 +1,20 @@
+{
+  "voiceId": "XrExE9yKIg1WjnnlVkGX",
+  "voiceName": "Matilda (warm, confident) — ElevenLabs built-in voice",
+  "model": "eleven_multilingual_v2",
+  "outputDir": ".",
+  "outputFile": "voiceover.mp3",
+  "totalDurationSeconds": 37,
+  "sections": [
+    {"id": "01-hook", "scene": "S1 Hook", "sceneEnd": 2.8, "startTime": 0.4, "emotion": "warm", "text": "Müşteriniz şubeye gelmeden..."},
+    {"id": "02-hook", "scene": "S2", "sceneEnd": 6.0, "startTime": 3.0, "emotion": "warm", "text": "...işlemi hazır olsun."},
+    {"id": "03-amount", "scene": "S3 Döviz + miktar", "sceneEnd": 9.67, "startTime": 6.3, "emotion": "confident", "text": "Döviz türünü ve miktarını seçsin,"},
+    {"id": "04-receive", "scene": "S4 Alacağı tutar", "sceneEnd": 12.6, "startTime": 9.9, "emotion": "confident", "text": "alacağı tutarı anında görsün."},
+    {"id": "05-branch", "scene": "S5 Şube + saat", "sceneEnd": 16.4, "startTime": 12.9, "emotion": "confident", "text": "Şubesini ve saatini belirlesin."},
+    {"id": "06-reserve", "scene": "S6 Rezervasyon", "sceneEnd": 21.0, "startTime": 16.6, "emotion": "confident", "text": "Tek dokunuşla rezervasyonunu oluştursun."},
+    {"id": "07-admin", "scene": "S7 Naga paneli", "sceneEnd": 25.6, "startTime": 21.1, "emotion": "confident", "text": "Siz de, müşteri gelmeden işlemi hazırlayın."},
+    {"id": "08-arrival", "scene": "S8 Müşteri gelir", "sceneEnd": 29.2, "startTime": 25.6, "emotion": "warm", "text": "Müşteri geldiğinde, işlemi hazır."},
+    {"id": "09-message", "scene": "S9 Mesaj", "sceneEnd": 32.4, "startTime": 29.1, "emotion": "confident", "text": "Daha hızlı. Daha kolay. Daha Vi-Ay-Pi.", "ttsText": "Daha hızlı. Daha kolay. Daha, vi-ay-pi."},
+    {"id": "10-cta", "scene": "S10 CTA", "sceneEnd": 37.0, "startTime": 32.6, "emotion": "warm", "text": "Naga Vi-Ay-Pi. Müşteriniz gelsin, işlemi hazır olsun.", "ttsText": "Naga, vi-ay-pi. Müşteriniz gelsin, işlemi hazır olsun."}
+  ]
+}
