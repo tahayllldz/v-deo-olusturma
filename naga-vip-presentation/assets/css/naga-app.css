@@ -12,8 +12,8 @@
   box-shadow:
     0 0 0 1.5px #4a4a52 inset,
     0 0 0 4px #0a0a0c inset,
-    0 50px 90px -30px rgba(0, 0, 0, 0.55),
-    0 24px 40px -24px rgba(0, 0, 0, 0.45);
+    0 36px 60px -24px rgba(0, 0, 0, 0.5),
+    0 18px 30px -18px rgba(0, 0, 0, 0.4);
 }
 .device::before {
   /* side button */
