@@ -1,0 +1,55 @@
+{
+  "name": "d-svc",
+  "frames": 390,
+  "width": 2160,
+  "height": 1350,
+  "css": {
+    "width": 1440,
+    "height": 900,
+    "dpr": 1.5
+  },
+  "labels": {
+    "svc-web": [
+      60,
+      126
+    ],
+    "svc-social": [
+      192,
+      258
+    ],
+    "svc-video": [
+      324,
+      390
+    ]
+  },
+  "guards": [
+    {
+      "label": "svc-web",
+      "frame": 125,
+      "win": null,
+      "bad": [],
+      "near": [],
+      "rects": {},
+      "scrollY": 1760
+    },
+    {
+      "label": "svc-social",
+      "frame": 257,
+      "win": null,
+      "bad": [],
+      "near": [],
+      "rects": {},
+      "scrollY": 2420
+    },
+    {
+      "label": "svc-video",
+      "frame": 389,
+      "win": null,
+      "bad": [],
+      "near": [],
+      "rects": {},
+      "scrollY": 3130
+    }
+  ],
+  "errors": []
+}

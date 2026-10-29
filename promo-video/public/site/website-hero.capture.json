@@ -1,0 +1,36 @@
+{
+  "name": "d-hero",
+  "frames": 240,
+  "width": 2160,
+  "height": 1350,
+  "css": {
+    "width": 1440,
+    "height": 900,
+    "dpr": 1.5
+  },
+  "labels": {
+    "hero": [
+      120,
+      240
+    ]
+  },
+  "guards": [
+    {
+      "label": "hero",
+      "frame": 239,
+      "win": null,
+      "bad": [],
+      "near": [],
+      "rects": {
+        "art": {
+          "x": 567.8,
+          "y": 0,
+          "w": 880.4,
+          "h": 900
+        }
+      },
+      "scrollY": 0
+    }
+  ],
+  "errors": []
+}
